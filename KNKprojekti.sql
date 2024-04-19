@@ -3,8 +3,9 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-create database KNKprojekti;
-use KNKprojekti;
+-- Database : 'KNKprojekti'
+
+-- ------------------------------------------------------------------------------------------------------------------
 
 /*Table structure for table Adresat*/
 CREATE TABLE `Adresat` (

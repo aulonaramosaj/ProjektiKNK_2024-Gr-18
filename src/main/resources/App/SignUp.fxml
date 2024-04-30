@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
+   <children>
+      <Pane prefHeight="500.0" prefWidth="114.0" style="-fx-background-color: #FA8072;" />
+      <Label layoutX="163.0" layoutY="14.0" prefHeight="27.0" prefWidth="136.0" text="SIGN UP" textFill="SALMON">
+         <font>
+            <Font name="Bell MT Bold" size="31.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEmri" layoutX="167.0" layoutY="101.0" promptText="Emri:" style="-fx-background-color: #000000;" />
+      <TextField fx:id="txtMbiemri" layoutX="418.0" layoutY="101.0" promptText="Mbiemri:" style="-fx-background-color: #000000;" />
+      <Label layoutX="167.0" layoutY="74.0" text="Emri:" textFill="SALMON">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="418.0" layoutY="74.0" text="Mbiemri:" textFill="SALMON">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="167.0" layoutY="150.0" text="Numri Personal:" textFill="SALMON">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNumriPersonal" layoutX="167.0" layoutY="175.0" prefHeight="26.0" prefWidth="432.0" promptText="Numri Personal:" style="-fx-background-color: #000000;" />
+      <Label layoutX="167.0" layoutY="217.0" text="Username:" textFill="SALMON">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUsername" layoutX="167.0" layoutY="243.0" prefHeight="26.0" prefWidth="432.0" promptText="Username:" style="-fx-background-color: #000000;" />
+      <Label layoutX="167.0" layoutY="277.0" text="Email:" textFill="SALMON">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtEmail" layoutX="167.0" layoutY="308.0" prefHeight="26.0" prefWidth="432.0" promptText="Email:" style="-fx-background-color: #000000;" />
+      <Label layoutX="167.0" layoutY="350.0" text="Fjalëkalimi:" textFill="SALMON">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="418.0" layoutY="350.0" text="Konfirmo Fjalëkalimin:" textFill="SALMON">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="pwdFjalekalimi" layoutX="167.0" layoutY="381.0" promptText="Fjalëkalimi:" style="-fx-background-color: #000000;" />
+      <PasswordField fx:id="pwdKonfirmoFjalekalimin" layoutX="418.0" layoutY="381.0" promptText="Konfirmo fjalëkalimin:" style="-fx-background-color: #000000;" />
+      <Button fx:id="handleCancel" layoutX="179.0" layoutY="432.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #FA8072;" text="Anulo" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="handleSignUp" layoutX="534.0" layoutY="431.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: #FA8072;" text="Sign Up" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

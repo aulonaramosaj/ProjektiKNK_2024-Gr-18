@@ -3,15 +3,12 @@ use KNK
 
 CREATE TABLE `Adresa` (
   `Id` int NOT NULL AUTO_INCREMENT,
-  `Qyteti` varchar(50) DEFAULT NULL,
   `Komuna` varchar(50) DEFAULT NULL,
   `LlojiVendbanimit` char(1) DEFAULT NULL,
   `Fshati` varchar(50) DEFAULT NULL,
   `Rruga` varchar(100) DEFAULT NULL,
-  `Objekti` varchar(50) DEFAULT NULL,
-  `Hyrja` varchar(10) DEFAULT NULL,
-  `Numri` int DEFAULT NULL,
-  `NumriPostal` int DEFAULT NULL,
+  `NumriNderteses` int DEFAULT NULL,
+  `KodiPostar` int DEFAULT NULL,
   `Created_at` datetime,
   `user` int ,
   PRIMARY KEY (`Id`)

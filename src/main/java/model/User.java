@@ -10,14 +10,14 @@ public class User {
     private String Salt;
     private String passwordHash;
 
-    public User(int id, String emri, String mbiemri, String nrPersonal, String username, String email, String salt, String passwordHash) {
-        Id = id;
-        Emri = emri;
-        Mbiemri = mbiemri;
-        NrPersonal = nrPersonal;
-        Username = username;
-        Email = email;
-        Salt = salt;
+    public User(int Id, String Emri, String Mbiemri, String NrPersonal, String Username, String Email, String Salt, String passwordHash) {
+        this.Id = Id;
+        this.Emri = Emri;
+        this.Mbiemri = Mbiemri;
+        this.NrPersonal = NrPersonal;
+        this.Username = Username;
+        this.Email = Email;
+        this.Salt = Salt;
         this.passwordHash = passwordHash;
     }
 

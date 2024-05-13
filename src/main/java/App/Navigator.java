@@ -10,6 +10,7 @@ import java.io.IOException;
 
 public class Navigator {
     public final static String SIGNUP_PAGE = "SignUp.fxml";
+    public final static String ADRESA = "Adresa.fxml";
     //public final static String HOME_PAGE = "home.fxml";
     //public final static String CREATE_ACCOUNT_PAGE = "create_user_form.fxml";
 

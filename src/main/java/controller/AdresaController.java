@@ -1,5 +1,6 @@
 package controller;
 
+import App.Navigator;
 import Database.DatabaseUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,6 +8,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import model.dto.CreateAdresaDto;
 import repository.AdresaRepository;
+
+
 
 
 import java.sql.Connection;
@@ -49,6 +52,9 @@ public class AdresaController {
             AdresaRepository adresaRepository = new AdresaRepository();
             adresaRepository.create(adresaDto);
             System.out.println("Adresa u shtua me sukses");
+
+                Navigator.navigate(ae, Navigator.QYTETARI);
+
         } else {
             System.out.println("Adresa dështoi që të shtohet në databazë");
         }

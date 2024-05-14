@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.ParallelCamera?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="408.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QytetariController">
+  <children>
+      <Pane prefHeight="411.0" prefWidth="640.0">
+         <children>
+          <AnchorPane layoutX="-5.0" layoutY="3.0" maxHeight="-1.0" maxWidth="-1.0" prefHeight="402.0" prefWidth="650.0" style="-fx-background-color: #fffafa;">
+               <children>
+                  <Label layoutX="205.0" layoutY="116.0" text="Numri Personal:" textFill="SALMON" />
+                  <Label layoutX="206.0" layoutY="153.0" text="Emri:" textFill="SALMON" />
+                  <Label layoutX="395.0" layoutY="153.0" text="Mbiemri:" textFill="SALMON" />
+                  <Label layoutX="207.0" layoutY="208.0" text="Ditelindja:" textFill="SALMON" />
+                  <Label layoutX="207.0" layoutY="246.0" text="Adresa:" textFill="SALMON" />
+                  <Label layoutX="204.0" layoutY="308.0" text="Email:" textFill="SALMON" />
+                  <Label layoutX="396.0" layoutY="308.0" text="Numri Telefonit:" textFill="SALMON" />
+                  <Label layoutX="203.0" layoutY="279.0" text="Gjinia:" textFill="SALMON" />
+                  <TextField fx:id="txtNrPersonal" layoutX="395.0" layoutY="112.0" prefHeight="25.0" prefWidth="149.0" />
+                  <TextField fx:id="txtEmri" layoutX="206.0" layoutY="170.0" />
+                  <TextField fx:id="txtMbiemri" layoutX="395.0" layoutY="170.0" />
+                  <TextField fx:id="txtDitelindja" layoutX="395.0" layoutY="204.0" />
+                  <TextField fx:id="txtAdresa" layoutX="395.0" layoutY="242.0" />
+                  <TextField fx:id="txtEmaili" layoutX="206.0" layoutY="329.0" />
+                  <TextField fx:id="txtNrTelefonit" layoutX="395.0" layoutY="329.0" />
+                  <RadioButton fx:id="radioFemer" layoutX="282.0" layoutY="279.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="69.0" text="Femer" textFill="SALMON" />
+                  <RadioButton fx:id="radioMashkull" layoutX="395.0" layoutY="279.0" mnemonicParsing="false" text="Mashkull" textFill="SALMON" />
+                  <Button fx:id="btnVendosTeDhenat" layoutX="441.0" layoutY="363.0" mnemonicParsing="false" onAction="#VendosTeDhenat" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #eb5548;" text="VENDOS TË DHËNAT" textFill="#f5f4f4">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Pane layoutX="1.0" layoutY="23.0" prefHeight="382.0" prefWidth="139.0" style="-fx-background-color: #FA8072;">
+                     <children>
+                        <ImageView fitHeight="154.0" fitWidth="159.0" layoutX="-14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../Desktop/Picture1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="140.0" layoutY="23.0" prefHeight="78.0" prefWidth="510.0" style="-fx-background-color: #FA8072;">
+                     <children>
+                        <Button fx:id="txtOpen1" layoutX="34.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #eb5548;" text="Open1" textFill="#f8f3f3" />
+                        <Button fx:id="txtOpen2" layoutX="158.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #eb5548;" text="Open2" textFill="#fffafa" />
+                        <Button fx:id="txtOpen3" layoutX="290.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #eb5548;" text="Open3" textFill="#fffbfb" />
+                     </children>
+                  </Pane>
+                <MenuBar layoutY="-6.0" prefHeight="33.0" prefWidth="650.0">
+                  <menus>
+                    <Menu mnemonicParsing="false" text="File">
+                      <items>
+                        <MenuItem mnemonicParsing="false" text="New" />
+                        <MenuItem mnemonicParsing="false" text="Open…" />
+                        <Menu mnemonicParsing="false" text="Open Recent" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save As…" />
+                        <MenuItem mnemonicParsing="false" text="Revert" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Preferences…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
+                      </items>
+                    </Menu>
+                    <Menu mnemonicParsing="false" text="Edit">
+                      <items>
+                        <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Cut" />
+                        <MenuItem mnemonicParsing="false" text="Copy" />
+                        <MenuItem mnemonicParsing="false" text="Paste" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Unselect All" />
+                      </items>
+                    </Menu>
+                    <Menu mnemonicParsing="false" text="Help">
+                      <items>
+                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                      </items>
+                    </Menu>
+                  </menus>
+                </MenuBar>
+               </children>
+          </AnchorPane>
+         </children>
+      </Pane>
+      <ParallelCamera />
+  </children>
+</VBox>

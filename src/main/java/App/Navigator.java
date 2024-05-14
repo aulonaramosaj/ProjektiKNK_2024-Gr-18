@@ -13,6 +13,7 @@ public class Navigator {
     public final static String ADRESA = "Adresa.fxml";
     //public final static String HOME_PAGE = "home.fxml";
     //public final static String CREATE_ACCOUNT_PAGE = "create_user_form.fxml";
+    public final static String QYTETARI="Qytetari.fxml";
 
     public static void navigate(Stage stage, String page){
         FXMLLoader loader = new FXMLLoader(

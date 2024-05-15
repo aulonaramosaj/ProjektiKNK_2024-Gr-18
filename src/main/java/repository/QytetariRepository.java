@@ -6,12 +6,11 @@ import service.DBConnector;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import model.dto.CreateQytetariDto;
+import java.sql.SQLException;
 
 public class QytetariRepository {
 
-    public static boolean create(CreateQytetariDto qytetariData){
+    public static boolean create(CreateQytetariDto qytetariData, Connection connection){
         Connection conn = DBConnector.getConnection();
         String query = """
                 INSERT INTO Qytetari (NrPersonal, Emri, Mbiemri, Gjinia, Ditelindja, Adresa, NrTelefonit, Email)
@@ -23,9 +22,9 @@ public class QytetariRepository {
             pst.setString(2, qytetariData.getEmri());
             pst.setString(3, qytetariData.getMbiemri());
             pst.setString(4, qytetariData.getGjinia());
-            pst.setString(5, qytetariData.getDitelindja());
+            pst.setString(5, qytetariData.getDitelindja);
             pst.setString(6, qytetariData.getAdresa());
-            pst.setInt(7, qytetariData.getNrTelefonit());
+            pst.setString(7, qytetariData.getNrTel());
             pst.setString(8, qytetariData.getEmail());
             pst.execute();
             pst.close();
@@ -53,5 +52,21 @@ public class QytetariRepository {
             return null;
         }
     }
+
+    public static boolean qytetariExists(String nrPersonal, int adresa,Connection connection) throws SQLException, SQLException {
+        String sql = "Select * from qytetari where NrPersonal = ? and Adresa = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, nrPersonal);
+        statement.setInt(2, adresa);
+        ResultSet resultSet = statement.executeQuery();
+        if(resultSet.next()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
 
 }

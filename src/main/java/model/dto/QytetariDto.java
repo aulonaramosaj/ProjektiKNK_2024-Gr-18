@@ -2,17 +2,20 @@ package model.dto;
 
 import javafx.scene.control.RadioButton;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public class QytetariDto {
    private String NrPersonal;
    private String Emri;
    private String Mbiemri;
    private RadioButton Gjinia;
-   private String Ditelindja;
+   private LocalDate Ditelindja;
    private String Adresa;
    private int NrTelefonit;
    private String Email;
 
-    public QytetariDto(String nrPersonal, String emri, String mbiemri, RadioButton gjinia, String ditelindja, String adresa, int nrTelefonit, String email) {
+    public QytetariDto(String nrPersonal, String emri, String mbiemri, RadioButton gjinia, LocalDate ditelindja, String adresa, int nrTelefonit, String email) {
         NrPersonal = nrPersonal;
         Emri = emri;
         Mbiemri = mbiemri;
@@ -23,7 +26,7 @@ public class QytetariDto {
         Email = email;
     }
 
-    public QytetariDto(int i, String nrPersonal, String emri, String mbiemri, String ditelindja, String email, String nrTel, String gjinia, int adresa) {
+    public QytetariDto(int i, String nrPersonal, String emri, String mbiemri, LocalDate ditelindja, String email, String nrTel, String gjinia, int adresa) {
     }
 
     public String getNrPersonal() {
@@ -42,7 +45,7 @@ public class QytetariDto {
         return Gjinia;
     }
 
-    public String getDitelindja() {
+    public LocalDate getDitelindja() {
         return Ditelindja;
     }
 

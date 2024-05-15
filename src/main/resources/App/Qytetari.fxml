@@ -80,7 +80,7 @@
                      <children>
                         <ImageView fitHeight="154.0" fitWidth="159.0" layoutX="-14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../Desktop/Picture1.png" />
+                              <Image url="@../img/Picture1.png" />
                            </image>
                         </ImageView>
                      </children>

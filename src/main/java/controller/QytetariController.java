@@ -42,7 +42,7 @@ public class QytetariController {
     private TextField txtNrTelefonit;
 
     @FXML
-    void vendosTeDhenat(ActionEvent event) {
+    void VendosTeDhenat(ActionEvent event) {
         String emri = txtEmri.getText();
         String mbiemri = txtMbiemri.getText();
         String nrPersonal = txtNrPersonal.getText();

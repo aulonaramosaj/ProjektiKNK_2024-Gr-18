@@ -65,7 +65,7 @@ public class SignUpController {
     }
 
     @FXML
-    private void handleAnulo(ActionEvent ae) {
+    private void handleCancel(ActionEvent ae) {
         // Kthe tekstin e seciles pjese ne nje empty string
         this.txtEmri.setText("");
         this.txtMbiemri.setText("");

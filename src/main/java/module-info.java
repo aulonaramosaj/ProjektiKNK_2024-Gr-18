@@ -9,4 +9,8 @@ module com.projekti.projektiknk_2024gr18 {
 
     exports App;
     opens controller to javafx.fxml;
+
+    exports Login;
+    opens Login to javafx.fxml;
+
 }

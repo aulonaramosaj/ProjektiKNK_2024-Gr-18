@@ -15,6 +15,8 @@ public class Navigator {
     //public final static String CREATE_ACCOUNT_PAGE = "create_user_form.fxml";
     public final static String QYTETARI="Qytetari.fxml";
 
+    public final static String DASHBOARD = "Dashboard.fxml";
+    public final static  String Help = "Help.fxml";
     public static void navigate(Stage stage, String page){
         FXMLLoader loader = new FXMLLoader(
                 Navigator.class.getResource(page)

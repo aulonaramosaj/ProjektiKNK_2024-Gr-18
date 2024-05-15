@@ -31,3 +31,10 @@ public class LogInController {
     }
 
 
+    @FXML
+    private void notHaveAccount(MouseEvent me){
+        Navigator.navigate(me, Navigator.SIGNUP_PAGE);
+    }
+}
+
+

@@ -10,13 +10,14 @@ import java.io.IOException;
 
 public class Navigator {
     public final static String SIGNUP_PAGE = "SignUp.fxml";
+    public final static String LOGIN_PAGE = "Login.fxml";
     public final static String ADRESA = "Adresa.fxml";
     //public final static String HOME_PAGE = "home.fxml";
     //public final static String CREATE_ACCOUNT_PAGE = "create_user_form.fxml";
     public final static String QYTETARI="Qytetari.fxml";
 
     public final static String DASHBOARD = "Dashboard.fxml";
-    public final static  String Help = "Help.fxml";
+    public final static  String HELP = "Help.fxml";
     public static void navigate(Stage stage, String page){
         FXMLLoader loader = new FXMLLoader(
                 Navigator.class.getResource(page)

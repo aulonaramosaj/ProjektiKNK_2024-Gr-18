@@ -57,7 +57,7 @@ public class SignUpController {
         // Provo te regjistrosh perdoruesin
         boolean response = UserService.signUp(userSignUpData);
         if (response) {
-            // Navigator.navigate(ae, Navigator.LOGIN_PAGE);
+             Navigator.navigate(ae, Navigator.LOGIN_PAGE);
             System.out.println("Sign up successful. Navigate to login page.");
         } else {
             System.out.println("Sign up failed.");

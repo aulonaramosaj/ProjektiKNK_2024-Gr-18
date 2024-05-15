@@ -99,12 +99,12 @@
       </Label>
       <PasswordField fx:id="pwdFjalekalimi" layoutX="167.0" layoutY="381.0" promptText="Fjalëkalimi:" style="-fx-background-color: #EEEEEE;" />
       <PasswordField fx:id="pwdKonfirmoFjalekalimin" layoutX="418.0" layoutY="381.0" promptText="Konfirmo fjalëkalimin:" style="-fx-background-color: #EEEEEE;" />
-      <Button fx:id="handleCancel" layoutX="179.0" layoutY="432.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #FA8072;" text="Anulo" textFill="WHITE">
+      <Button fx:id="handleCancel" layoutX="179.0" layoutY="432.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #FA8072;" text="Anulo" textFill="WHITE">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="handleSignUp" layoutX="534.0" layoutY="431.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: #FA8072;" text="Sign Up" textFill="WHITE">
+      <Button fx:id="handleSignUp" layoutX="534.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: #FA8072;" text="Sign Up" textFill="WHITE">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
          </font>

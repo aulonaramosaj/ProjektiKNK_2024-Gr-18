@@ -147,48 +147,35 @@ public class QytetariController {
 
 
     public void initialize() {
-        currentText = "";
-        // Add a listener to the text property to enforce the mask
-        NrTel.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                // Strip all non-digit characters from the input
-                String strippedText = newValue.replaceAll("[^\\d]", "");
+        NrTel.textProperty().addListener((observable, oldValue, newValue) -> {
+            String strippedText = newValue.replaceAll("[^\\d]", "");
+            StringBuilder formattedText = new StringBuilder();
 
-                // Insert the spaces between the segments of the mask
-                StringBuilder formattedText = new StringBuilder();
-                for (int i = 0; i < strippedText.length(); i++) {
-                    if (i == 0) {
-                        formattedText.append("+").append(strippedText.charAt(i));
-                    } else if (i == 3 || i == 5 || i == 8) {
-                        formattedText.append(" ").append(strippedText.charAt(i));
-                    } else {
-                        formattedText.append(strippedText.charAt(i));
-                    }
+            for (int i = 0; i < strippedText.length(); i++) {
+                if (i == 0) {
+                    formattedText.append("+").append(strippedText.charAt(i));
+                } else if (i == 3 || i == 5 || i == 8) {
+                    formattedText.append(" ").append(strippedText.charAt(i));
+                } else {
+                    formattedText.append(strippedText.charAt(i));
                 }
+            }
 
-                // Set the new text on the TextField
-                if (!formattedText.toString().equals(currentText)) {
-                    currentText = formattedText.toString();
-                    NrTel.setText(currentText);
-                    NrTel.positionCaret(currentText.length());
-                }
+            if (!formattedText.toString().equals(currentText)) {
+                currentText = formattedText.toString();
+                NrTel.setText(currentText);
+                NrTel.positionCaret(currentText.length());
             }
         });
 
         Femer.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) {
-                Mashkull.setSelected(false);
-            }
+            if (newValue) Mashkull.setSelected(false);
         });
         Mashkull.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) {
-                Femer.setSelected(false);
-            }
+            if (newValue) Femer.setSelected(false);
         });
-
-
     }
+
 
     public void setAddressInfo(int id, String qytetiValue, String komuna, String fshati, String rrugaValue, int numriNdertesesValue, int kodiPostarValue) {
         this.qytetiValue = qytetiValue;
@@ -340,7 +327,7 @@ public class QytetariController {
                 // Insert the new address into the database
                 CreateQytetariDto qytetariDto = new CreateQytetariDto(NrPersonal.getText(), Emri.getText(),  Mbiemri.getText(), ditelindjaStr, Email.getText(), NrTel.getText(), gjinia, Integer.parseInt(adresaId.getText()));
                 QytetariRepository qytetariRepository = new QytetariRepository();
-                boolean QytetariExists = QytetariRepository.qytetariExists(NrPersonal.getText(), AdresaId, Connection);
+                boolean QytetariExists = QytetariRepository.EkzistonQytetari(NrPersonal.getText(), AdresaId, Connection);
                 if (QytetariExists == false) {
                     qytetariRepository.create(qytetariDto, Connection);
                     System.out.println("Qytetari u krijua me sukses");

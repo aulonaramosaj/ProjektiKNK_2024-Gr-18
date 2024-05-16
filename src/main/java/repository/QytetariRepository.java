@@ -3,10 +3,8 @@ import model.Qytetari;
 import model.dto.CreateQytetariDto;
 import service.DBConnector;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 
 public class QytetariRepository {
 
@@ -45,15 +43,14 @@ public class QytetariRepository {
             String NrTelefonit=result.getString("NrTelefonit");
             String Email=result.getString("Email");
             return new Qytetari(
-                    NrPersonal,Emri,Mbiemri,Gjinia,Ditelindja,Adresa,NrTelefonit,Email
-            );
+                    NrPersonal,Emri,Mbiemri,Gjinia,Ditelindja,Adresa,NrTelefonit,Email);
         }
         catch (Exception e){
             return null;
         }
     }
 
-    public static boolean qytetariExists(String nrPersonal, int adresa,Connection connection) throws SQLException, SQLException {
+    public static boolean EkzistonQytetari(String nrPersonal, int adresa, Connection connection) throws SQLException, SQLException {
         String sql = "Select * from qytetari where NrPersonal = ? and Adresa = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, nrPersonal);
@@ -68,5 +65,18 @@ public class QytetariRepository {
     }
 
 
-
+    public void Update(Qytetari modifikoQytetarin, Connection connection) throws SQLException{
+        String sql = "UPDATE qytetari SET NrPersonal = ?, Emri = ?, Mbiemri = ?, Ditelindja = ?, Email = ?, NrTelefonit = ?, Gjinia = ?, Adresa = ? WHERE Id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, modifikoQytetarin.getNrPersonal());
+        statement.setString(2, modifikoQytetarin.Emri);
+        statement.setString(3, modifikoQytetarin.getMbiemri());
+        statement.setDate(4, Date.valueOf(modifikoQytetarin.getDitelindja()));
+        statement.setString(5, modifikoQytetarin.getEmail());
+        statement.setString(6, modifikoQytetarin.getNrTel());
+        statement.setString(7, modifikoQytetarin.getGjinia());
+        statement.setInt(8, modifikoQytetarin.Adresa);
+        statement.setInt(9, modifikoQytetarin.Id);
+        statement.executeUpdate();
+    }
 }

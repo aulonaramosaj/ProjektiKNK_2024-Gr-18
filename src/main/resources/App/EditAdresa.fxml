@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="1258.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar accessibleRole="CHECK_BOX" layoutX="226.0" layoutY="1.0" />
+      <Label layoutX="151.0" layoutY="140.0" prefHeight="18.0" prefWidth="57.0" text="Qyteti:" textFill="#ec4431" />
+      <Label layoutX="330.0" layoutY="141.0" text="Komuna :" textFill="#ec4431" />
+      <TextField layoutX="151.0" layoutY="183.0" />
+      <TextField layoutX="330.0" layoutY="183.0" />
+      <Label layoutX="509.0" layoutY="141.0" text="Fshati  : " textFill="#ec4431" />
+      <TextField layoutX="509.0" layoutY="183.0" />
+      <TextField layoutX="1044.0" layoutY="183.0" />
+      <Label layoutX="690.0" layoutY="141.0" text="Rruga :" textFill="#ec4431" />
+      <TextField layoutX="690.0" layoutY="183.0" />
+      <Label layoutX="867.0" layoutY="141.0" text="Objekti : " textFill="#ec4431" />
+      <TextField layoutX="867.0" layoutY="183.0" />
+      <Label layoutX="151.0" layoutY="244.0" text="Numri : " textFill="#ec4431" />
+      <TextField layoutX="151.0" layoutY="284.0" />
+      <Label layoutX="330.0" layoutY="244.0" text="Numri Postal :" textFill="#ec4431" />
+      <TextField layoutX="330.0" layoutY="284.0" />
+      <Label layoutX="509.0" layoutY="244.0" text="Lloji i Vendbanimit :" textFill="#ec4431" />
+      <ChoiceBox layoutX="508.0" layoutY="284.0" prefWidth="150.0" />
+      <Label layoutX="1044.0" layoutY="141.0" text="Hyrja : " textFill="#ec4431" />
+      <Pane prefHeight="594.0" prefWidth="142.0" style="-fx-background-color: #FA8072;">
+         <children>
+            <Button layoutX="13.0" layoutY="201.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: EE5342;" text="Adresat" textFill="WHITE" />
+            <Button layoutX="12.0" layoutY="242.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: EE5342;" text="Dashboard" textAlignment="JUSTIFY" textFill="WHITE" />
+            <Button layoutX="10.0" layoutY="284.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="124.0" style="-fx-background-color: EE5342;" text="Qytetaret" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutY="1.0" prefHeight="119.0" prefWidth="1258.0" style="-fx-background-color: #FA8072;">
+         <children>
+            <ImageView fitHeight="151.0" fitWidth="150.0" layoutX="-5.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Desktop/Picture1.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="483.0" layoutY="47.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: EE5342;" text="Shfaq Qytetaret" textFill="#fffefe" />
+            <Button layoutX="329.0" layoutY="47.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: EE5342;" text="Shto Qytetarin " textFill="WHITE" />
+            <Button layoutX="178.0" layoutY="47.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: EE5342;" text="Shto Adresen" textFill="WHITE" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

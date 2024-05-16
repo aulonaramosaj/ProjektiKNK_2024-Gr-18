@@ -68,6 +68,7 @@ public class UserRepository {
                     Id, Emri, Mbiemri, NrPersonal, Username, Email, Salt, passwordHash
             );
         }catch (Exception e){
+            System.out.println("Error");
             return null;
         }
     }

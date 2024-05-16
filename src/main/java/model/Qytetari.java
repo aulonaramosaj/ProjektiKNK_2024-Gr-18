@@ -1,19 +1,21 @@
 package model;
 
+import java.time.LocalDate;
+
 public class Qytetari {
     private String NrPersonal;
     private String Mbiemri;
-    private String Ditelidnja;
+    private LocalDate Ditelindja;
     private String Email;
-    private String NrTelefonit;
+    private String NrTel;
     private String Gjinia;
 
-    public Qytetari(String nrPersonal, String mbiemri, String ditelidnja, String email, String nrTelefonit, String gjinia) {
+    public Qytetari(String nrPersonal, String mbiemri, LocalDate ditelindja, String email, String nrTel, String gjinia) {
         NrPersonal = nrPersonal;
         Mbiemri = mbiemri;
-        Ditelidnja = ditelidnja;
+        Ditelindja = ditelindja;
         Email = email;
-        NrTelefonit = nrTelefonit;
+        NrTel = nrTel;
         Gjinia = gjinia;
     }
 
@@ -25,16 +27,16 @@ public class Qytetari {
         return Mbiemri;
     }
 
-    public String getDitelidnja() {
-        return Ditelidnja;
+    public LocalDate getDitelindja() {
+        return Ditelindja;
     }
 
     public String getEmail() {
         return Email;
     }
 
-    public String getNrTelefonit() {
-        return NrTelefonit;
+    public String getNrTel() {
+        return NrTel;
     }
 
     public String getGjinia() {

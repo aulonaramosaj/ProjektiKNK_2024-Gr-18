@@ -2,118 +2,49 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="588.0" prefWidth="1484.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.HelpController">
-    <children>
-        <MenuBar layoutY="-1.0" prefHeight="26.0" prefWidth="1484.0" style="-fx-background-color: #474749;" stylesheets="@../AdresatDashboard/AdresatDashboard.css">
-            <menus>
-                <Menu mnemonicParsing="false" style="-fx-text-fill: white;" text="File">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                    </items>
-                </Menu>
-                <Menu fx:id="gjuha" mnemonicParsing="false" style="-fx-text-fill: white;" text="Gjuha">
-                    <items>
-                        <MenuItem mnemonicParsing="false" onAction="#translateAl" text="Shqip" />
-                        <MenuItem mnemonicParsing="false" onAction="#translateEn" text="English" />
-                    </items>
-                </Menu>
-                <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help.Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                </Menu>
-            </menus>
-            <effect>
-                <DropShadow height="4.62" radius="1.225" width="2.28">
-                    <color>
-                        <Color opacity="0.5" />
-                    </color>
-                </DropShadow>
-            </effect>
-        </MenuBar>
-        <Button fx:id="backToDashboard" layoutX="1338.0" layoutY="41.0" mnemonicParsing="false" onAction="#openAdresatDashboard" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: #474749; -fx-background-radius: 5;" text="&lt;&lt; Go back" textAlignment="CENTER" textFill="WHITE">
-            <font>
-                <Font size="15.0" />
-            </font>
-            <effect>
-                <DropShadow height="4.92" radius="1.2999999999999998" width="2.28">
-                    <color>
-                        <Color opacity="0.5" />
-                    </color>
-                </DropShadow>
-            </effect>
-        </Button>
-        <Pane layoutY="24.0" prefHeight="564.0" prefWidth="200.0" style="-fx-background-color: #474749;">
-            <children>
-                <Button fx:id="adresatBtn" alignment="CENTER" layoutX="18.0" layoutY="105.0" mnemonicParsing="false" onAction="#openAdresatDashboard" prefHeight="38.0" prefWidth="165.0" styleClass="unactive" stylesheets="@../AdresatDashboard/AdresatDashboard.css" text="Adresat" textFill="WHITE">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Button>
-                <Button fx:id="qytetaretBtn" layoutX="18.0" layoutY="165.0" mnemonicParsing="false" onAction="#openQytetaretDashboard" prefHeight="38.0" prefWidth="165.0" styleClass="unactive" stylesheets="@../AdresatDashboard/AdresatDashboard.css" text="Qytetaret" textFill="WHITE" wrapText="true">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Button>
-                <Button fx:id="dashboardBtn" alignment="CENTER" layoutX="18.0" layoutY="44.0" mnemonicParsing="false" onAction="#openDashboard" prefHeight="38.0" prefWidth="165.0" styleClass="unactive" stylesheets="@../AdresatDashboard/AdresatDashboard.css" text="Fillimi" textFill="WHITE">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Button>
-            </children>
-        </Pane>
-        <Label layoutX="220.0" layoutY="53.0" prefHeight="36.0" prefWidth="113.0" text="Ndihma">
-            <font>
-                <Font size="25.0" />
-            </font>
-        </Label>
-        <Label layoutX="220.0" layoutY="106.0" prefHeight="20.0" prefWidth="490.0" text="Ky sistem sherben per regjistrimin e popullsise dhe adresave brenda Kosoves">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Label>
-        <Label layoutX="220.0" layoutY="146.0" text="Si punon telefoni">
-            <font>
-                <Font size="1.0" />
-            </font>
-        </Label>
-        <Label layoutX="220.0" layoutY="146.0" text="Si punon sistemi?">
-            <font>
-                <Font size="22.0" />
-            </font>
-        </Label>
-        <Label layoutX="220.0" layoutY="201.0" text="Adresat" underline="true">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
-        <Label layoutX="220.0" layoutY="236.0" text="Per regjistrimin e adresave duhet te hyni tek kategoria Adresat ku shfaqen te gjitha te dhenat per adresat e regjistruara. " />
-        <Label layoutX="220.0" layoutY="254.0" text="Per te shtuar adresen e re duhet te klikohet ne butonin Shto Adresen" />
-        <Label layoutX="220.0" layoutY="272.0" text="Pas klikimit te butonit shfaqet forma per regjistrimin e adreses se re. Pas regjistrimit te asaj adrese duhet te shtohen te dhenat e qytetarit per ate adrese" />
-        <Label layoutX="220.0" layoutY="297.0" text="Mund te shtohen disa qytetarë per nje adrese" />
-        <Label layoutX="220.0" layoutY="315.0" text="Nese ka nevoje per shtimin e nje qytetari te ri per nje adrese qe ekziston ne tabele, duhet te klikohet adresa ne tabel dhe pastaj butonin Shto Qytetarin" />
-        <Label layoutX="220.0" layoutY="333.0" text="Nese doni te shfaqni te gjithe qytetaret per nje adrese duhet te selektohet adresa ne tabel dhe te klikohet ne butonin Shfaq Qytetaret" />
-        <Label layoutX="220.0" layoutY="363.0" prefHeight="22.0" prefWidth="80.0" text="Qytetaret" underline="true">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
-        <Label layoutX="220.0" layoutY="393.0" text="Tek kategoria qytetaret shfaqen te gjitha te dhenat per qytetaret e regjistruar" />
-        <Label layoutX="220.0" layoutY="411.0" text="Mund te behet filtrimi i qytetareve" />
-        <Label layoutX="220.0" layoutY="447.0" prefHeight="22.0" prefWidth="80.0" text="Dashboard" underline="true">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
-        <Label layoutX="220.0" layoutY="469.0" text="Tek kategoria e dashboard-it shfaqen statistikat rreth numrit dhe llojit te popullsise ne Kosove" />
-    </children>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelpController">
+   <children>
+      <Pane layoutY="1.0" prefHeight="500.0" prefWidth="132.0" style="-fx-background-color: #FA8072;" />
+      <Pane prefHeight="122.0" prefWidth="800.0" style="-fx-background-color: #FA8072;">
+         <children>
+            <ImageView fitHeight="168.0" fitWidth="146.0" layoutX="-9.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Picture1.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="handleFaqjaKryesore" layoutX="616.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleFaqjaKryesore" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #dc3d3d;" text="Faqja Kryesore" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT" size="12.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
+         </children>
+      </Pane>
+      <Label fx:id="ckaeshteSistemi" layoutX="138.0" layoutY="148.0" prefHeight="22.0" prefWidth="661.0" text="Çka është Sistemi Interaktiv për regjistrimin dhe gjetjen e Adresave në Republikën e Kosovës?">
+         <font>
+            <Font name="Bell MT Bold" size="15.5" />
+         </font>
+      </Label>
+      <Label fx:id="ckaeshtesistemi1" layoutX="178.0" layoutY="188.0" prefHeight="18.0" prefWidth="542.0" text="Ky sistem është krijuar për qëllim të regjistrimit të adresave në Republikën e Kosovës. ">
+         <font>
+            <Font name="Bell MT" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="funksionimiSistemit" layoutX="138.0" layoutY="228.0" prefHeight="22.0" prefWidth="208.0" text="Si funksionon Sistemi?">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="funksionimiSistemit1" layoutX="178.0" layoutY="276.0" prefHeight="18.0" prefWidth="415.0" text="Funksionimi i Sistemit" />
+   </children>
 </AnchorPane>

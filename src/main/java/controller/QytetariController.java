@@ -329,7 +329,7 @@ public class QytetariController {
                 QytetariRepository qytetariRepository = new QytetariRepository();
                 boolean QytetariExists = QytetariRepository.EkzistonQytetari(NrPersonal.getText(), AdresaId, Connection);
                 if (QytetariExists == false) {
-                    qytetariRepository.create(qytetariDto, Connection);
+                    qytetariRepository.create(qytetariDto);
                     System.out.println("Qytetari u krijua me sukses");
                     clearForm();
                 } else {

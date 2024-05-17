@@ -21,8 +21,6 @@ public class QytetariController {
     private String komuna;
     private String fshati;
     private String rrugaValue;
-    private String objekti;
-    private String hyrja;
     private int numriNdertesesValue;
     private int kodiPostarValue;
     private int adresaId;
@@ -96,8 +94,6 @@ public class QytetariController {
         appendToAddress(adresaValue, komuna);
         appendToAddress(adresaValue, fshati);
         appendToAddress(adresaValue, rrugaValue);
-        appendToAddress(adresaValue, objekti);
-        appendToAddress(adresaValue, hyrja);
         appendToAddress(adresaValue, String.valueOf(numriNdertesesValue));
         appendToAddress(adresaValue, String.valueOf(kodiPostarValue));
 

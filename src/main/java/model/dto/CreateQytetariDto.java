@@ -24,9 +24,6 @@ public class CreateQytetariDto {
         Email = email;
     }
 
-    public CreateQytetariDto(String emri, String mbiemri, String nrPersonal, String email, String nrTelefonit, String ditelindja, int gjinia, String adresa, String salt, String passwordHash) {
-    }
-
     public CreateQytetariDto(String text, String text1, String text2, String ditelindjaStr, String text3, String text4, String gjinia, int i) {
     }
 

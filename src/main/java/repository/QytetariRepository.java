@@ -8,7 +8,7 @@ import java.sql.*;
 
 public class QytetariRepository {
 
-    public static boolean create(CreateQytetariDto qytetariData, Connection connection){
+    public static boolean create(CreateQytetariDto qytetariData){
         Connection conn = DBConnector.getConnection();
         String query = """
                 INSERT INTO Qytetari (NrPersonal, Emri, Mbiemri, Gjinia, Ditelindja, Adresa, NrTelefonit, Email)

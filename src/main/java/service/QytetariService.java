@@ -21,6 +21,6 @@ public class QytetariService {
         );
 
         // Thirr repository për të ruajtur qytetarin në bazën e të dhënave
-        return QytetariRepository.create(createQytetariData, getConnection());
+        return QytetariRepository.create(createQytetariData);
     }
 }

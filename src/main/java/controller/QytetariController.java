@@ -3,150 +3,49 @@ package controller;
 import model.Adresa;
 import Database.DatabaseUtil;
 import model.dto.CreateQytetariDto;
-import model.Qytetari;
 import repository.QytetariRepository;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 public class QytetariController {
 
-    public String qytetiValue;
-    public String rrugaValue;
-    public int numriNdertesesValue;
-    public int kodiPostarValue;
-    public String komuna;
-    public String fshati;
-    public String objekti;
-    public String hyrja;
-    @FXML
-    public TextField Adresa;
+    // Address Info Fields
+    private String qytetiValue;
+    private String komuna;
+    private String fshati;
+    private String rrugaValue;
+    private int numriNdertesesValue;
+    private int kodiPostarValue;
+    private int adresaId;
+    private String currentText;
 
+    // FXML UI Components
+    @FXML
+    private TextField Adresa, Email, Emri, Mbiemri, NrPersonal, NrTel, adresaIdField;
     @FXML
     private DatePicker Ditelindja;
-
     @FXML
-    private TextField Email;
-
+    private RadioButton Femer, Mashkull;
     @FXML
-    private TextField Emri;
-
-
+    private Button Ruaj, adresatBtn, dashboardBtn, qytetaretBtn;
     @FXML
-    private RadioButton Femer;
+    private Label ditelindjaError, emailError, emriLabel, errorEmri, errorNrPersonal, errorQytetariEkziston, gjiniaError, mbiemriError, nrTelError;
 
-    @FXML
-    private RadioButton Mashkull;
-
-    @FXML
-    private TextField Mbiemri;
-
-    @FXML
-    private TextField NrPersonal;
-
-    @FXML
-    private TextField NrTel;
-
-    @FXML
-    private Button Ruaj;
-
-    @FXML
-    private TextField adresaId;
-
-    @FXML
-    private Button adresatBtn;
-
-    @FXML
-    private Button dashboardBtn;
-
-    @FXML
-    private Label ditelindjaError;
-
-    @FXML
-    private Label ditelindjaLabel;
-
-    @FXML
-    private Label emailError;
-
-    @FXML
-    private Label emailLabel;
-
-
-    @FXML
-    private Label emriLabel;
-
-
-    @FXML
-    private Label errorEmri;
-
-    @FXML
-    private Label errorNrPersonal;
-
-    @FXML
-    private Label errorQytetariEkziston;
-
-    @FXML
-    private Label gjiniaError;
-
-    @FXML
-    private Label gjiniaLabel;
-
-    @FXML
-    private Label mbiemriError;
-
-    @FXML
-    private Label mbiemriLabel;
-
-
-
-    @FXML
-    private Label nrPersonalLabel;
-
-    @FXML
-    private Label nrTelError;
-
-    @FXML
-    private Label nrTelefonitLabel;
-
-    @FXML
-    private Label personalData;
-
-    @FXML
-    private Button qytetaretBtn;
-
-    @FXML
-    private Label qytetariAdresa;
-
-    @FXML
-    private Label qytetariAdresaLabel;
-
-    public String currentText;
-    public int AdresaId;
-    private int KodiPostarValue;
-
-
+    // Initialization method
     public void initialize() {
+        setupPhoneNumberFormatting();
+        setupGenderSelection();
+    }
+
+    // Setup phone number formatting
+    private void setupPhoneNumberFormatting() {
         NrTel.textProperty().addListener((observable, oldValue, newValue) -> {
             String strippedText = newValue.replaceAll("[^\\d]", "");
             StringBuilder formattedText = new StringBuilder();
@@ -167,7 +66,10 @@ public class QytetariController {
                 NrTel.positionCaret(currentText.length());
             }
         });
+    }
 
+    // Setup gender selection handling
+    private void setupGenderSelection() {
         Femer.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) Mashkull.setSelected(false);
         });
@@ -176,78 +78,39 @@ public class QytetariController {
         });
     }
 
-
+    // Set address info
     public void setAddressInfo(int id, String qytetiValue, String komuna, String fshati, String rrugaValue, int numriNdertesesValue, int kodiPostarValue) {
         this.qytetiValue = qytetiValue;
         this.komuna = komuna;
         this.fshati = fshati;
         this.rrugaValue = rrugaValue;
-        this.objekti = objekti;
-        this.hyrja = hyrja;
         this.numriNdertesesValue = numriNdertesesValue;
         this.kodiPostarValue = kodiPostarValue;
-        String adresaValue = "";
-        this.AdresaId = id;
+        this.adresaId = id;
 
+        StringBuilder adresaValue = new StringBuilder();
 
-        if (qytetiValue != null && !qytetiValue.isEmpty()) {
-            adresaValue += qytetiValue;
-        }
+        appendToAddress(adresaValue, qytetiValue);
+        appendToAddress(adresaValue, komuna);
+        appendToAddress(adresaValue, fshati);
+        appendToAddress(adresaValue, rrugaValue);
+        appendToAddress(adresaValue, String.valueOf(numriNdertesesValue));
+        appendToAddress(adresaValue, String.valueOf(kodiPostarValue));
 
-        if (komuna != null && !komuna.isEmpty()) {
-            if (!adresaValue.isEmpty()) {
-                adresaValue += ", ";
-            }
-            adresaValue += komuna;
-        }
-
-        if (fshati != null && !fshati.isEmpty()) {
-            if (!adresaValue.isEmpty()) {
-                adresaValue += ", ";
-            }
-            adresaValue += fshati;
-        }
-
-        if (rrugaValue != null && !rrugaValue.isEmpty()) {
-            if (!adresaValue.isEmpty()) {
-                adresaValue += ", ";
-            }
-            adresaValue += rrugaValue;
-        }
-
-        if (objekti != null && !objekti.isEmpty()) {
-            if (!adresaValue.isEmpty()) {
-                adresaValue += ", ";
-            }
-            adresaValue += objekti;
-        }
-
-        if (hyrja != null && !hyrja.isEmpty()) {
-            if (!adresaValue.isEmpty()) {
-                adresaValue += ", ";
-            }
-            adresaValue += hyrja;
-        }
-
-        if (numriNdertesesValue != 0) {
-            if (!adresaValue.isEmpty()) {
-                adresaValue += ", ";
-            }
-            adresaValue += String.valueOf(numriNdertesesValue);
-        }
-
-        if (kodiPostarValue != 0) {
-            if (!adresaValue.isEmpty()) {
-                adresaValue += ", ";
-            }
-            adresaValue += String.valueOf(kodiPostarValue);
-        }
-        Adresa.setText(adresaValue);
-        adresaId.setText(String.valueOf(AdresaId));
-
+        Adresa.setText(adresaValue.toString());
+        adresaIdField.setText(String.valueOf(adresaId));
     }
 
+    private void appendToAddress(StringBuilder adresaValue, String value) {
+        if (value != null && !value.isEmpty()) {
+            if (adresaValue.length() > 0) {
+                adresaValue.append(", ");
+            }
+            adresaValue.append(value);
+        }
+    }
 
+    // Clear form fields
     public void clearForm() {
         NrPersonal.setText("");
         Emri.setText("");
@@ -259,11 +122,10 @@ public class QytetariController {
         Mashkull.setSelected(false);
     }
 
+    // Save Qytetari
     @FXML
     void Ruaj(ActionEvent event) {
-
         try {
-            // Get the values entered in the text fields
             String nrPersonal = NrPersonal.getText();
             String emri = Emri.getText();
             String mbiemri = Mbiemri.getText();
@@ -273,69 +135,27 @@ public class QytetariController {
                     .toFormatter();
             String ditelindjaStr = ditelindja == null ? null : ditelindja.format(formatter);
 
-
             String email = Email.getText();
             String nrTel = NrTel.getText();
-            String gjinia = "";
+            String gjinia = Femer.isSelected() ? "Femer" : Mashkull.isSelected() ? "Mashkull" : "";
             String adresa = Adresa.getText();
-            if (Femer.isSelected()) {
-                gjinia = "Femer";
-            }
-            if (Mashkull.isSelected()) {
-                gjinia = "Mashkull";
-            }
 
-            //Nese njera prej textfieldave eshte i zbrazet
+            if (!validateInputs(nrPersonal, emri, mbiemri, ditelindjaStr, email, nrTel, gjinia)) return;
 
-            if (nrPersonal.length() < 10 || nrPersonal.length() > 10) {
-                errorNrPersonal.setVisible(true);
-                System.out.println("Numri personal eshte gabim");
-                return;
-            } else if (nrPersonal == null || nrPersonal == "") {
-                errorNrPersonal.setVisible(true);
-                errorNrPersonal.setText("Kerkohet numri personal!");
-                return;
-            } else if (emri == null || emri.equals("")) {
-                errorEmri.setVisible(true);
-                errorEmri.setText("Kerkohet emri!");
-                return;
-            } else if (mbiemri == null || mbiemri.equals("")) {
-                mbiemriError.setVisible(true);
-                mbiemriError.setText("Kerkohet mbiemri!");
-                return;
-            } else if (ditelindjaStr == null || ditelindjaStr.equals("")) {
-                ditelindjaError.setVisible(true);
-                ditelindjaError.setText("Kerkohet ditelindja!");
-                return;
-            } else if (email == null || email.equals("")) {
-                emailError.setVisible(true);
-                emailError.setText("Kerkohet email!");
-                return;
-            } else if (nrTel == null || nrTel.equals("")) {
-                nrTelError.setVisible(true);
-                nrTelError.setText("Kerkohet numri i telefonit!");
-                return;
-            } else if (gjinia == null || gjinia.equals("")) {
-                gjiniaError.setVisible(true);
-                gjiniaError.setText("Kerkohet gjinia!");
-                return;
-            }
+            Connection connection = DatabaseUtil.getConnection();
 
-            Connection Connection = DatabaseUtil.getConnection();
-
-            if (Connection != null) {
-                // Insert the new address into the database
-                CreateQytetariDto qytetariDto = new CreateQytetariDto(NrPersonal.getText(), Emri.getText(),  Mbiemri.getText(), ditelindjaStr, Email.getText(), NrTel.getText(), gjinia, Integer.parseInt(adresaId.getText()));
+            if (connection != null) {
+                CreateQytetariDto qytetariDto = new CreateQytetariDto(nrPersonal, emri, mbiemri, ditelindjaStr, email, nrTel, gjinia, Integer.parseInt(adresaIdField.getText()));
                 QytetariRepository qytetariRepository = new QytetariRepository();
-                boolean QytetariExists = QytetariRepository.EkzistonQytetari(NrPersonal.getText(), AdresaId, Connection);
-                if (QytetariExists == false) {
-                    qytetariRepository.create(qytetariDto, Connection);
+                boolean qytetariExists = QytetariRepository.EkzistonQytetari(nrPersonal, adresaId, connection);
+
+                if (!qytetariExists) {
+                    qytetariRepository.create(qytetariDto);
                     System.out.println("Qytetari u krijua me sukses");
                     clearForm();
                 } else {
                     errorQytetariEkziston.setVisible(true);
                 }
-
             } else {
                 System.out.println("Failed to connect to the database.");
             }
@@ -344,4 +164,40 @@ public class QytetariController {
         }
     }
 
+    private boolean validateInputs(String nrPersonal, String emri, String mbiemri, String ditelindjaStr, String email, String nrTel, String gjinia) {
+        if (nrPersonal == null || nrPersonal.length() != 10) {
+            showError(errorNrPersonal, "Kerkohet numri personal!");
+            return false;
+        }
+        if (emri == null || emri.isEmpty()) {
+            showError(errorEmri, "Kerkohet emri!");
+            return false;
+        }
+        if (mbiemri == null || mbiemri.isEmpty()) {
+            showError(mbiemriError, "Kerkohet mbiemri!");
+            return false;
+        }
+        if (ditelindjaStr == null || ditelindjaStr.isEmpty()) {
+            showError(ditelindjaError, "Kerkohet ditelindja!");
+            return false;
+        }
+        if (email == null || email.isEmpty()) {
+            showError(emailError, "Kerkohet email!");
+            return false;
+        }
+        if (nrTel == null || nrTel.isEmpty()) {
+            showError(nrTelError, "Kerkohet numri i telefonit!");
+            return false;
+        }
+        if (gjinia == null || gjinia.isEmpty()) {
+            showError(gjiniaError, "Kerkohet gjinia!");
+            return false;
+        }
+        return true;
+    }
+
+    private void showError(Label errorLabel, String errorMessage) {
+        errorLabel.setVisible(true);
+        errorLabel.setText(errorMessage);
+    }
 }

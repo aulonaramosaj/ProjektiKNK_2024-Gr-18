@@ -50,7 +50,4 @@ public class AdresaRepository {
             return null;
         }
     }
-
-
-
 }

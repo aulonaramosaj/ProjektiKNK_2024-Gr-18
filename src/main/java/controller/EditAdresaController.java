@@ -1,13 +1,19 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 public class EditAdresaController {
+
+    @FXML
+    private AnchorPane anchorPane;
+
+    @FXML
+    private ChoiceBox<String> llojiVendbanimitChoiceBox;
 
     @FXML
     private TextField qytetiTextField;
@@ -34,9 +40,6 @@ public class EditAdresaController {
     private TextField numriPostalTextField;
 
     @FXML
-    private ChoiceBox<String> llojiVendbanimitChoiceBox;
-
-    @FXML
     private Button adresatButton;
 
     @FXML
@@ -46,61 +49,26 @@ public class EditAdresaController {
     private Button qytetaretButton;
 
     @FXML
-    private Button shfaqQytetaretButton;
-
-    @FXML
-    private Button shtoQytetarinButton;
-
-    @FXML
-    private Button shtoAdresenButton;
-
-    @FXML
-    public void initialize() {
+    private void initialize() {
         // Initialize choice box with some options
-        llojiVendbanimitChoiceBox.getItems().addAll("Qytet", "Fshat");
+        llojiVendbanimitChoiceBox.getItems().addAll("Option 1", "Option 2", "Option 3");
     }
 
     @FXML
-    private void handleAdresatButtonClick() {
-        showAlert("Adresat button clicked");
-        // Implement logic to handle showing or managing addresses
+    private void handleAdresatButtonClick(ActionEvent event) {
+        // Handle Adresat button click
+        System.out.println("Adresat button clicked");
     }
 
     @FXML
-    private void handleDashboardButtonClick() {
-        showAlert("Dashboard button clicked");
-        // Implement logic to navigate to the dashboard
+    private void handleDashboardButtonClick(ActionEvent event) {
+        // Handle Dashboard button click
+        System.out.println("Dashboard button clicked");
     }
 
     @FXML
-    private void handleQytetaretButtonClick() {
-        showAlert("Qytetaret button clicked");
-        // Implement logic to show or manage city residents
-    }
-
-    @FXML
-    private void handleShfaqQytetaretButtonClick() {
-        showAlert("Shfaq Qytetaret button clicked");
-        // Implement logic to display a list of city residents
-    }
-
-    @FXML
-    private void handleShtoQytetarinButtonClick() {
-        showAlert("Shto Qytetarin button clicked");
-        // Implement logic to add a new city resident
-    }
-
-    @FXML
-    private void handleShtoAdresenButtonClick() {
-        showAlert("Shto Adresen button clicked");
-        // Implement logic to add a new address
-    }
-
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+    private void handleQytetaretButtonClick(ActionEvent event) {
+        // Handle Qytetaret button click
+        System.out.println("Qytetaret button clicked");
     }
 }

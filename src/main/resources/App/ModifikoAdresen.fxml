@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="1258.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="1258.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditAdresaController">
    <children>
       <MenuBar accessibleRole="CHECK_BOX" layoutX="226.0" layoutY="1.0" />
       <Label layoutX="151.0" layoutY="140.0" prefHeight="18.0" prefWidth="57.0" text="Qyteti:" textFill="#ec4431" />

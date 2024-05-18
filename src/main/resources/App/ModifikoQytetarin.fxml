@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+          <font>
+            <Font size="18.0" />
+          </font>
+        </Label>
+            <Label fx:id="NrPersonalLabel" layoutX="167.0" layoutY="89.0" text="Numri Personal:" textFill="SALMON" />
+            <Label fx:id="emriLabel" layoutX="167.0" layoutY="118.0" prefHeight="17.0" prefWidth="54.0" text="Emri:" textFill="SALMON" />
+            <Label layoutX="218.0" layoutY="179.0" />
+            <Label layoutX="164.0" layoutY="217.0" text="Adresa:" textFill="SALMON" />
+            <Label fx:id="gjiniaLabel" layoutX="164.0" layoutY="256.0" text="Gjinia:" textFill="SALMON" />
+            <Label fx:id="ditelindjaLabel" layoutX="164.0" layoutY="182.0" text="Ditelindja:" textFill="SALMON" />
+            <Label fx:id="mbiemriLabel" layoutX="339.0" layoutY="118.0" text="Mbiemri:" textFill="SALMON" />
+            <Label fx:id="emailLabel" layoutX="165.0" layoutY="286.0" text="Email:" textFill="SALMON" />
+            <Label fx:id="nrTelefonitLabel" layoutX="339.0" layoutY="286.0" text="Numri Telefonit: " textFill="SALMON" />
+            <TextField fx:id="nrPersonal" layoutX="339.0" layoutY="85.0" />
+            <TextField fx:id="emri" layoutX="164.0" layoutY="140.0" />
+            <TextField fx:id="mbiemri" layoutX="339.0" layoutY="140.0" />
+            <TextField fx:id="adresaId" layoutX="339.0" layoutY="213.0" />
+            <TextField fx:id="email" layoutX="164.0" layoutY="303.0" />
+            <TextField fx:id="nrTel" layoutX="339.0" layoutY="303.0" />
+            <Button fx:id="updateQytetarin" layoutX="511.0" layoutY="328.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #e14a4a;" text="UPDATE" textFill="#fcfcfc" />
+            <Button layoutX="595.0" layoutY="73.0" mnemonicParsing="false" style="-fx-background-color: #e14a4a;" text="BACK" textFill="#fffefe" />
+            <Pane layoutY="-2.0" prefHeight="382.0" prefWidth="149.0" style="-fx-background-color: #FA8072;" />
+            <Pane layoutX="149.0" layoutY="-2.0" prefHeight="72.0" prefWidth="492.0" style="-fx-background-color: #FA8072;">
+               <children>
+                  <Button layoutX="40.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #e14a4a;" text="Open1" textFill="#f2f0f0" />
+                  <Button layoutX="181.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #e14a4a;" text="Open2" textFill="#fffdfd" />
+                  <Button layoutX="320.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #e14a4a;" text="Open3" textFill="#f8f6f6" />
+               </children>
+            </Pane>
+            <DatePicker fx:id="ditelindja" layoutX="339.0" layoutY="178.0" prefHeight="25.0" prefWidth="149.0" />
+            <RadioButton fx:id="femer" layoutX="226.0" layoutY="256.0" mnemonicParsing="false" text="Femer" textFill="SALMON" />
+            <RadioButton fx:id="mashkull" layoutX="340.0" layoutY="256.0" mnemonicParsing="false" text="Mashkull" textFill="SALMON" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

@@ -16,6 +16,6 @@ public class HelpController {
     private Label funksionimiSistemit1;
     @FXML
     private void handleFaqjaKryesore (ActionEvent ae){
-        // Navigator.navigate(ae, Navigator.HOME);
+        Navigator.navigate(ae, Navigator.HOME_PAGE);
     }
 }

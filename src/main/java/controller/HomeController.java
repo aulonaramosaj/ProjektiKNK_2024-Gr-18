@@ -11,7 +11,7 @@ public class HomeController {
         //Navigator.navigate(ae, Navigator.ADRESA_DASHBOARD);
     }
     @FXML
-    private void handelQytetariDashboard (ActionEvent ae){
+    private void handleQytetariDashboard (ActionEvent ae){
         //Navigator.navigate(ae, Navigator.QYTETARI_DASHBOARD);
     }
     @FXML

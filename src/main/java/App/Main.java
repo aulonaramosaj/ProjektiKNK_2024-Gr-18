@@ -10,6 +10,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Navigator.navigate(stage, Navigator.MODIFIKO_ADRESEN);
+        Navigator.navigate(stage, Navigator.HOME_PAGE);
     }
 }

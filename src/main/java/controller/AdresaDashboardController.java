@@ -1,34 +1,14 @@
 package controller;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class AdresaDashboardController {
-        @FXML
-        private AnchorPane root;
-
-        @FXML
-        private ImageView imageView;
-
-        @FXML
-        private Label AdresaDashboard;
-
-        @FXML
-        private Label komunaLabel;
-
-        @FXML
-        private Label kodiPostarLabel;
-
-        @FXML
-        private Label fshatiLagjiaLabel;
-
-        @FXML
-        private Label rrugaLabel;
-
-        @FXML
-        private Label numriNdertesesLabel;
 
         @FXML
         private TextField komunaTextField;
@@ -67,6 +47,25 @@ public class AdresaDashboardController {
         private TableColumn<?, ?> numriNdertesesColumn;
         @FXML
         private Button button;
+
+
+        private ObservableList<Address> addressList = FXCollections.observableArrayList();
+
+        // Initialize method to set up initial states or bindings
+        @FXML
+        public void initialize() {
+
+                // Initialize table columns
+                idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+                komunaColumn.setCellValueFactory(new PropertyValueFactory<>("komuna"));
+                kodiPostarColumn.setCellValueFactory(new PropertyValueFactory<>("kodiPostar"));
+                fshatiLagjiaColumn.setCellValueFactory(new PropertyValueFactory<>("fshatiLagjia"));
+                rrugaColumn.setCellValueFactory(new PropertyValueFactory<>("rruga"));
+                numriNdertesesColumn.setCellValueFactory(new PropertyValueFactory<>("numriNderteses"));
+
+                // Bind the table view to the address list
+                tableView.setItems(addressList);
+        }
 
         @FXML
         private void addAddress() {

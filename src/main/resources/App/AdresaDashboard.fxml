@@ -39,7 +39,7 @@
       <TextField fx:id="fshatiLagjiaTextField" layoutX="526.0" layoutY="158.0" />
       <TextField fx:id="rruga" layoutX="722.0" layoutY="158.0" />
       <TextField fx:id="NrNderteses" layoutX="169.0" layoutY="254.0" />
-      <TableView layoutX="171.0" layoutY="319.0" prefHeight="204.0" prefWidth="728.0" style="-fx-background-color: #FA8072;">
+      <TableView fx:id="tableView" layoutX="171.0" layoutY="319.0" prefHeight="204.0" prefWidth="728.0" style="-fx-background-color: #FA8072;">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="108.79998779296875" text="Id" />
             <TableColumn fx:id="komunaColumn" prefWidth="127.20001220703125" text="Komuna" />

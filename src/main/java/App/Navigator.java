@@ -18,6 +18,7 @@ public class Navigator {
     public final static  String HELP = "Help.fxml";
     public final static String MODIFIKO_QYTETARIN = "ModifikoQytetarin.fxml";
     public final static String MODIFIKO_ADRESEN = "ModifikoAdresen.fxml";
+    public final static String ADRESA_DASHBOARD = "AdresaDashboard.fxml";
 
     public static void navigate(Stage stage, String page){
         FXMLLoader loader = new FXMLLoader(

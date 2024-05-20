@@ -1,47 +1,48 @@
-create database KNK;
-use KNK
-
-CREATE TABLE `Adresa` (
-  `Id` int NOT NULL AUTO_INCREMENT,
-  `Komuna` varchar(50) DEFAULT NULL,
-  `LlojiVendbanimit` char(1) DEFAULT NULL,
-  `Fshati` varchar(50) DEFAULT NULL,
-  `Rruga` varchar(100) DEFAULT NULL,
-  `NumriNderteses` int DEFAULT NULL,
-  `KodiPostar` int DEFAULT NULL,
-  `Created_at` datetime,
-  `user` int ,
-  PRIMARY KEY (`Id`)
-);
-
-
-CREATE TABLE `Qytetari` (
-  `Id` int NOT NULL AUTO_INCREMENT,
-  `NrPersonal` char(10) DEFAULT NULL,
-  `Emri` varchar(50) DEFAULT NULL,
-  `EmriBabait` varchar(50) DEFAULT NULL,
-  `EmriNenes` varchar(50) DEFAULT NULL,
-  `Mbiemri` varchar(50) DEFAULT NULL,
-  `Gjinia` varchar(20) DEFAULT NULL,
-  `Ditelindja` varchar(10) DEFAULT NULL,
-  `Adresa` int DEFAULT NULL,
-  `NrTelefonit` varchar(20) DEFAULT NULL,
-  `Email` varchar(150) DEFAULT NULL,
-  `Created_at` datetime DEFAULT NULL,
-  `user` int ,
-  PRIMARY KEY (`Id`),
-	FOREIGN KEY (`adresa`) REFERENCES `Adresa` (`Id`)
-);
+CREATE DATABASE KNK;
+USE KNK;
 
 CREATE TABLE `User` (
-  `Id` int NOT NULL AUTO_INCREMENT,
-  `NrPersonal` char(10) DEFAULT NULL,
-  `Emri` varchar(50) DEFAULT NULL,
-  `Mbiemri` varchar(50) DEFAULT NULL,
-  `Email` varchar(150) DEFAULT NULL,
-  `Username` varchar(50) DEFAULT NULL,
-  `Salt` varchar(100) DEFAULT NULL,
-  `Password` varchar(256) DEFAULT NULL,
-  `Created_at` datetime DEFAULT NULL,
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `NrPersonal` CHAR(10) NOT NULL UNIQUE, 
+  `Emri` VARCHAR(50) NOT NULL,
+  `Mbiemri` VARCHAR(50) NOT NULL,
+  `Email` VARCHAR(150) NOT NULL UNIQUE,
+  `Username` VARCHAR(50),
+  `Salt` VARCHAR(100) NOT NULL,
+  `passwordHash` VARCHAR(256) NOT NULL,
+  `Created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) 
+
+CREATE TABLE `Adresa` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `Komuna` VARCHAR(50) DEFAULT NULL,
+  `LlojiVendbanimit` CHAR(1) DEFAULT NULL, 
+  `Fshati` VARCHAR(50) DEFAULT NULL,
+  `Rruga` VARCHAR(100) DEFAULT NULL,
+  `NumriNderteses` INT DEFAULT NULL,
+  `KodiPostar` INT DEFAULT NULL,
+  `Created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `User` INT,
+  PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `Qytetari` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `NrPersonal` CHAR(10) NOT NULL UNIQUE, 
+  `Emri` VARCHAR(50) NOT NULL,
+  `Mbiemri` VARCHAR(50) NOT NULL,
+  `Gjinia` VARCHAR(20) NOT NULL, 
+  `Ditelindja` DATE NOT NULL, 
+  `Adresa` INT NOT NULL,
+  `NrTelefonit` VARCHAR(20) DEFAULT NULL,
+  `Email` VARCHAR(150) DEFAULT NULL,
+  `Created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `User` INT,
+  PRIMARY KEY (`Id`),
+  FOREIGN KEY (`Adresa`) REFERENCES `Adresa` (`Id`)
+);
+
+SELECT * FROM `User`;
+SELECT * FROM `Adresa`;
+SELECT * FROM `Qytetari`;

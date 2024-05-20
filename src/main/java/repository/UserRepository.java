@@ -1,6 +1,5 @@
 package repository;
 
-import Database.DatabaseUtil;
 import model.User;
 import model.dto.CreateUserDto;
 import service.DBConnector;
@@ -14,24 +13,25 @@ public class UserRepository {
     public static boolean create(CreateUserDto userData){
         Connection conn = DBConnector.getConnection();
         String query = """
-                INSERT INTO USER (Emri, Mbiemri, NrPersonal, Username, Email, Salt, passwordHash)
+                INSERT INTO USER (NrPersonal, Emri, Mbiemri, Email, Username, Salt, passwordHash)
                 VALUE (?, ?, ?, ?, ?,?,?)
                 """;
         //String query = "INSERT INTO USER VALUE (?, ?, ?, ?, ?,?,?)";
         try{
             PreparedStatement pst = conn.prepareStatement(query);
-            pst.setString(1, userData.getEmri());
-            pst.setString(2, userData.getMbiemri());
-            pst.setString(3, userData.getNrPersonal());
-            pst.setString(4, userData.getUsername());
-            pst.setString(5, userData.getEmail());
+            pst.setString(1, userData.getNrPersonal());
+            pst.setString(2, userData.getEmri());
+            pst.setString(3, userData.getMbiemri());
+            pst.setString(4, userData.getEmail());
+            pst.setString(5, userData.getUsername());
             pst.setString(6, userData.getSalt());
             pst.setString(7, userData.getPasswordHash());
             pst.execute();
             pst.close();
-            conn.close();
+ //           conn.close();
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
+            e.printStackTrace(); // or use a logger to log the exception
             return false;
         }
 
@@ -39,7 +39,7 @@ public class UserRepository {
 
 
     public static User getByEmail(String email){
-        String query = "SELECT * FROM USER WHERE email = ? LIMIT 1";
+        String query = "SELECT * FROM USER WHERE Email = ? LIMIT 1";
         Connection connection = DBConnector.getConnection();
         try{
             PreparedStatement pst = connection.prepareStatement(query);
@@ -57,15 +57,15 @@ public class UserRepository {
     private static User getFromResultSet(ResultSet result){
         try{
             int Id = result.getInt("Id");
+            String NrPersonal = result.getString("NrPersonal");
             String Emri = result.getString("Emri");
             String Mbiemri = result.getString("Mbiemri");
-            String NrPersonal = result.getString("NrPersonal");
-            String Username = result.getString("Username");
             String Email = result.getString("Email");
+            String Username = result.getString("Username");
             String Salt = result.getString("Salt");
             String passwordHash = result.getString("passwordHash");
             return new User(
-                    Id, Emri, Mbiemri, NrPersonal, Username, Email, Salt, passwordHash
+                    Id, NrPersonal, Emri, Mbiemri, Email, Username, Salt, passwordHash
             );
         }catch (Exception e){
             System.out.println("Error");

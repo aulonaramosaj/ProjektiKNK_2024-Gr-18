@@ -1,22 +1,22 @@
 package controller;
 
+
 import App.Navigator;
 import Database.DatabaseUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import model.Adresa;
+import model.dto.AdresaDto;
 import model.dto.CreateAdresaDto;
 import repository.AdresaRepository;
 
-
-
-
 import java.sql.Connection;
 
-
-
-public class AdresaController {
+public class ModifikoAdresaController {
+    @FXML
+    private TextField idAdresa;
     @FXML
     private RadioButton radioPerhershem;
     @FXML
@@ -32,9 +32,9 @@ public class AdresaController {
     @FXML
     private TextField txtNumriNderteses;
     @FXML
-    private void vendosAdresen (ActionEvent ae) {
-
+    private void modifikoAdresen(ActionEvent ae) {
         String llojiVendbanimit = "";
+        int idAdresaValue = Integer.parseInt(idAdresa.getText());
         int txtNumriNdertesesValue = Integer.parseInt(txtNumriNderteses.getText());
         int txtKodiPostarValue = Integer.parseInt(txtKodiPostar.getText());
 
@@ -47,18 +47,19 @@ public class AdresaController {
         Connection connection = DatabaseUtil.getConnection();
         if (connection != null) {
 
-            CreateAdresaDto adresaDto = new CreateAdresaDto(txtKomuna.getText(), txtFshati.getText(), txtRruga.getText(), txtNumriNdertesesValue, txtKodiPostarValue, llojiVendbanimit);
+            AdresaDto adresa = new AdresaDto(idAdresaValue,txtKomuna.getText(), txtFshati.getText(), txtRruga.getText(), txtNumriNdertesesValue, txtKodiPostarValue, llojiVendbanimit);
 
-            AdresaRepository adresaRepository = new AdresaRepository();
-            adresaRepository.create(adresaDto);
-            System.out.println("Adresa u shtua me sukses");
+            AdresaRepository modifikoAdresenRepository = new AdresaRepository();
+            modifikoAdresenRepository.modifiko(adresa);
+            System.out.println("Adresa u modifikua me sukses");
 
-            Navigator.navigate(ae, Navigator.QYTETARI);
+            //Navigator.navigate(ae, Navigator.QYTETARI);
 
         } else {
             System.out.println("Adresa dështoi që të shtohet në databazë");
         }
     }
+
     @FXML
     private void buttonOpen1 (ActionEvent ae){
 
@@ -71,5 +72,6 @@ public class AdresaController {
     private void buttonOpen3 (ActionEvent ae){
 
     }
+
 
 }

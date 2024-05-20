@@ -12,11 +12,9 @@ public class Navigator {
     public final static String SIGNUP_PAGE = "SignUp.fxml";
     public final static String LOGIN_PAGE = "Login.fxml";
     public final static String ADRESA = "Adresa.fxml";
-    //public final static String HOME_PAGE = "home.fxml";
+    public final static String HOME_PAGE = "Home.fxml";
     //public final static String CREATE_ACCOUNT_PAGE = "create_user_form.fxml";
     public final static String QYTETARI="Qytetari.fxml";
-
-    public final static String DASHBOARD = "Dashboard.fxml";
     public final static  String HELP = "Help.fxml";
     public final static String MODIFIKO_QYTETARIN = "ModifikoQytetarin.fxml";
     public final static String MODIFIKO_ADRESEN = "ModifikoAdresen.fxml";

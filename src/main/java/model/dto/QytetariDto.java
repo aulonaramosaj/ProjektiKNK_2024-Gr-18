@@ -3,19 +3,22 @@ package model.dto;
 import javafx.scene.control.RadioButton;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.sql.Date;
 
 public class QytetariDto {
-   private String NrPersonal;
-   private String Emri;
-   private String Mbiemri;
-   private RadioButton Gjinia;
-   private LocalDate Ditelindja;
-   private String Adresa;
-   private int NrTelefonit;
-   private String Email;
 
-    public QytetariDto(String nrPersonal, String emri, String mbiemri, RadioButton gjinia, LocalDate ditelindja, String adresa, int nrTelefonit, String email) {
+    private String NrPersonal;
+    private String Emri;
+    private String Mbiemri;
+    private String Gjinia;
+    private Date Ditelindja;
+    private int Adresa;
+    private String NrTelefonit;
+    private String Email;
+    private int UserId;
+
+    public QytetariDto(String nrPersonal, String emri, String mbiemri, String gjinia, Date ditelindja, int adresa, String nrTelefonit, String email, int userId) {
+
         NrPersonal = nrPersonal;
         Emri = emri;
         Mbiemri = mbiemri;
@@ -24,10 +27,10 @@ public class QytetariDto {
         Adresa = adresa;
         NrTelefonit = nrTelefonit;
         Email = email;
+        UserId=userId;
     }
 
-    public QytetariDto(int i, String nrPersonal, String emri, String mbiemri, LocalDate ditelindja, String email, String nrTel, String gjinia, int adresa) {
-    }
+
 
     public String getNrPersonal() {
         return NrPersonal;
@@ -41,23 +44,24 @@ public class QytetariDto {
         return Mbiemri;
     }
 
-    public RadioButton getGjinia() {
+    public String getGjinia() {
         return Gjinia;
     }
 
-    public LocalDate getDitelindja() {
+    public Date getDitelindja() {
         return Ditelindja;
     }
 
-    public String getAdresa() {
+    public int getAdresa() {
         return Adresa;
     }
 
-    public int getNrTelefonit() {
+    public String getNrTelefonit() {
         return NrTelefonit;
     }
 
     public String getEmail() {
         return Email;
     }
+    public int getUserId(){return UserId;}
 }

@@ -1,26 +1,16 @@
 package controller;
 
 import App.Navigator;
-import Database.DatabaseUtil;
+import App.SessionManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import model.User;
 import model.dto.CreateAdresaDto;
 import repository.AdresaRepository;
 
-
-
-
-import java.sql.Connection;
-
-
-
 public class AdresaController {
-    @FXML
-    private RadioButton radioPerhershem;
-    @FXML
-    private RadioButton radioPerkohshem;
     @FXML
     private TextField txtKomuna;
     @FXML
@@ -32,32 +22,49 @@ public class AdresaController {
     @FXML
     private TextField txtNumriNderteses;
     @FXML
-    private void vendosAdresen (ActionEvent ae) {
+    private RadioButton radioPerhershem;
+    @FXML
+    private RadioButton radioPerkohshem;
 
-        String llojiVendbanimit = "";
-        int txtNumriNdertesesValue = Integer.parseInt(txtNumriNderteses.getText());
-        int txtKodiPostarValue = Integer.parseInt(txtKodiPostar.getText());
-
-        if (radioPerhershem.isSelected()) {
-            llojiVendbanimit = "1";
+    @FXML
+    private void vendosAdresen(ActionEvent ae) {
+        if (!SessionManager.isLoggedIn()) {
+            System.out.println("Please log in first.");
+            Navigator.navigate(ae, Navigator.LOGIN_PAGE);
+            return;
         }
-        if (radioPerkohshem.isSelected()) {
-            llojiVendbanimit = "0";
-        }
-        Connection connection = DatabaseUtil.getConnection();
-        if (connection != null) {
+        String llojiVendbanimit = radioPerhershem.isSelected() ? "Perhershem" : "Perkohshem";
+        int numriNderteses = Integer.parseInt(txtNumriNderteses.getText());
+        int kodiPostar = Integer.parseInt(txtKodiPostar.getText());
 
-            CreateAdresaDto adresaDto = new CreateAdresaDto(txtKomuna.getText(), txtFshati.getText(), txtRruga.getText(), txtNumriNdertesesValue, txtKodiPostarValue, llojiVendbanimit);
+        User currentUser = SessionManager.getUser();
+        int userId = currentUser.getId();
 
-            AdresaRepository adresaRepository = new AdresaRepository();
-            adresaRepository.create(adresaDto);
-            System.out.println("Adresa u shtua me sukses");
+        CreateAdresaDto adresaDto = new CreateAdresaDto(
+                txtKomuna.getText(), txtFshati.getText(), txtRruga.getText(), numriNderteses, kodiPostar, llojiVendbanimit, userId);
 
-                Navigator.navigate(ae, Navigator.QYTETARI);
+        int addressId = AdresaRepository.create(adresaDto);
 
+        if (addressId > 0) {
+            System.out.println("Adresa u shtua me sukses, ID: " + addressId);
+            Navigator.navigate(ae, Navigator.QYTETARI, addressId);
         } else {
             System.out.println("Adresa dështoi që të shtohet në databazë");
         }
+    }
+
+
+    @FXML
+    private void buttonOpen1 (ActionEvent ae){
+
+    }
+    @FXML
+    private void buttonOpen2 (ActionEvent ae){
+
+    }
+    @FXML
+    private void buttonOpen3 (ActionEvent ae){
+
     }
 
 }

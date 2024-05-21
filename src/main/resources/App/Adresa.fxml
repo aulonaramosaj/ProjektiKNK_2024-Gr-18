@@ -2,9 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
@@ -16,38 +13,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdresaController">
    <children>
-      <MenuBar layoutX="-66.0" layoutY="1.0" prefHeight="26.0" prefWidth="850.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <Pane layoutY="27.0" prefHeight="86.0" prefWidth="850.0" style="-fx-background-color: #FA8072;">
+      <Pane prefHeight="98.0" prefWidth="850.0" style="-fx-background-color: #FA8072;">
          <children>
-            <Button fx:id="buttonOpen1" layoutX="211.0" layoutY="31.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="Open1" textFill="WHITE">
+            <Button fx:id="buttonOpen1" layoutX="216.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen1" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="Open1" textFill="WHITE">
                <effect>
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="buttonOpen2" layoutX="409.0" layoutY="31.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="Open2" textFill="WHITE">
+            <Button fx:id="buttonOpen2" layoutX="411.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen2" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="Open2" textFill="WHITE">
                <effect>
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="buttonOpen3" layoutX="606.0" layoutY="31.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="Open3" textFill="WHITE">
+            <Button fx:id="buttonOpen3" layoutX="605.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen3" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="Open3" textFill="WHITE">
                <effect>
                   <Glow />
                </effect>

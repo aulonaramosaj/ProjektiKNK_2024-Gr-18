@@ -34,6 +34,7 @@ public class UserService {
         return UserRepository.create(createUserData);
     }
 
+
     public static boolean login(LoginUserDto loginData){
         User user = UserRepository.getByEmail(loginData.getEmail());
         if(user == null){

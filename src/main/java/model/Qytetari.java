@@ -1,33 +1,48 @@
 package model;
 
-import java.time.LocalDate;
+
+import java.sql.Date;
 
 public class Qytetari {
+    public int Adresa;
+    public int Id;
     private String NrPersonal;
+    public String Emri;
     private String Mbiemri;
-    private LocalDate Ditelindja;
+    private Date Ditelindja;
     private String Email;
     private String NrTel;
     private String Gjinia;
+    private int User;
 
-    public Qytetari(String nrPersonal, String mbiemri, LocalDate ditelindja, String email, String nrTel, String gjinia) {
-        NrPersonal = nrPersonal;
-        Mbiemri = mbiemri;
-        Ditelindja = ditelindja;
-        Email = email;
-        NrTel = nrTel;
-        Gjinia = gjinia;
+    public Qytetari(int id, int adresa, String nrPersonal, String emri, String mbiemri, Date ditelindja, String email, String nrTel, String gjinia,int User) {
+        this.Id=id;
+        this.Adresa=adresa;
+        this.NrPersonal = nrPersonal;
+        this.Emri=emri;
+        this.Mbiemri = mbiemri;
+        this.Ditelindja = ditelindja;
+        this.Email = email;
+        this.NrTel = nrTel;
+        this.Gjinia = gjinia;
+        this.User=User;
     }
 
+    public int getId(){ return Id;}
     public String getNrPersonal() {
         return NrPersonal;
     }
+    public String getEmri() {
+        return Emri;
+    }
+
+    public int getAdresa(){return Adresa;}
 
     public String getMbiemri() {
         return Mbiemri;
     }
 
-    public LocalDate getDitelindja() {
+    public Date getDitelindja() {
         return Ditelindja;
     }
 
@@ -42,7 +57,7 @@ public class Qytetari {
     public String getGjinia() {
         return Gjinia;
     }
+    public int getUser(){return User;}
 
-    public Qytetari(int i, String nrPersonal, String emri, String mbiemri, String ditelindja, String email, String nrTel, String gjinia) {
-    }
+
 }

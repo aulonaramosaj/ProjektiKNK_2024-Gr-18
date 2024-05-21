@@ -12,12 +12,12 @@ CREATE TABLE `User` (
   `passwordHash` VARCHAR(256) NOT NULL,
   `Created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) 
+);
 
 CREATE TABLE `Adresa` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `Komuna` VARCHAR(50) DEFAULT NULL,
-  `LlojiVendbanimit` CHAR(1) DEFAULT NULL, 
+  `LlojiVendbanimit` VARCHAR(20) NOT NULL, 
   `Fshati` VARCHAR(50) DEFAULT NULL,
   `Rruga` VARCHAR(100) DEFAULT NULL,
   `NumriNderteses` INT DEFAULT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `Qytetari` (
   `Gjinia` VARCHAR(20) NOT NULL, 
   `Ditelindja` DATE NOT NULL, 
   `Adresa` INT NOT NULL,
-  `NrTelefonit` VARCHAR(20) DEFAULT NULL,
+  `NrTelefonit` VARCHAR(20) NOT NULL,
   `Email` VARCHAR(150) DEFAULT NULL,
   `Created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `User` INT,

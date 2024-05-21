@@ -1,6 +1,7 @@
 package controller;
 
 import App.Navigator;
+import App.SessionManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -25,6 +26,11 @@ public class SignUpController {
     private PasswordField pwdKonfirmoFjalekalimin;
     @FXML
     private void handleSignUp(ActionEvent ae) {
+        if (SessionManager.isLoggedIn()) {
+            System.out.println("Already logged in. No need to sign up.");
+            Navigator.navigate(ae, Navigator.HOME_PAGE);  // Redirect to home
+            return;
+        }
         // Merr tekstin nga secila pjese
         String emri = this.txtEmri.getText().trim();
         String mbiemri = this.txtMbiemri.getText().trim();

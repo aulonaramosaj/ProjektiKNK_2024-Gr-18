@@ -1,18 +1,15 @@
 package controller;
 
-
 import App.Navigator;
+import App.SessionManager;
 import Database.DatabaseUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import model.Adresa;
+import model.User;
 import model.dto.AdresaDto;
-import model.dto.CreateAdresaDto;
 import repository.AdresaRepository;
-
-import java.sql.Connection;
 
 public class ModifikoAdresaController {
     @FXML
@@ -31,47 +28,50 @@ public class ModifikoAdresaController {
     private TextField txtRruga;
     @FXML
     private TextField txtNumriNderteses;
+
     @FXML
     private void modifikoAdresen(ActionEvent ae) {
-        String llojiVendbanimit = "";
-        int idAdresaValue = Integer.parseInt(idAdresa.getText());
-        int txtNumriNdertesesValue = Integer.parseInt(txtNumriNderteses.getText());
-        int txtKodiPostarValue = Integer.parseInt(txtKodiPostar.getText());
-
-        if (radioPerhershem.isSelected()) {
-            llojiVendbanimit = "1";
+        if (!SessionManager.isLoggedIn()) {
+            SessionManager.setLastAttemptedPage(Navigator.MODIFIKO_ADRESEN); // Store last attempted page
+            System.out.println("Please log in first.");
+            Navigator.navigate(ae, Navigator.LOGIN_PAGE);
+            return;
         }
-        if (radioPerkohshem.isSelected()) {
-            llojiVendbanimit = "0";
-        }
-        Connection connection = DatabaseUtil.getConnection();
-        if (connection != null) {
 
-            AdresaDto adresa = new AdresaDto(idAdresaValue,txtKomuna.getText(), txtFshati.getText(), txtRruga.getText(), txtNumriNdertesesValue, txtKodiPostarValue, llojiVendbanimit);
+        try {
+            int idAdresaValue = Integer.parseInt(idAdresa.getText());
+            int txtNumriNdertesesValue = Integer.parseInt(txtNumriNderteses.getText());
+            int txtKodiPostarValue = Integer.parseInt(txtKodiPostar.getText());
 
-            AdresaRepository modifikoAdresenRepository = new AdresaRepository();
-            modifikoAdresenRepository.modifiko(adresa);
-            System.out.println("Adresa u modifikua me sukses");
+            User currentUser = SessionManager.getUser();
+            int userId = currentUser.getId();
 
-            //Navigator.navigate(ae, Navigator.QYTETARI);
+            String llojiVendbanimit = radioPerhershem.isSelected() ? "Perhershem" : radioPerkohshem.isSelected() ? "Perkohshem" : "";
 
-        } else {
-            System.out.println("Adresa dështoi që të shtohet në databazë");
+            AdresaDto adresa = new AdresaDto(idAdresaValue, txtKomuna.getText(), txtFshati.getText(), txtRruga.getText(), txtNumriNdertesesValue, txtKodiPostarValue, llojiVendbanimit, userId);
+
+            AdresaRepository adresaRepository = new AdresaRepository();
+            boolean isModified = adresaRepository.modifiko(adresa);
+
+            if (isModified) {
+                System.out.println("Adresa u modifikua me sukses");
+            } else {
+                System.out.println("Adresa dështoi që të modifikohet në databazë");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Error parsing numeric fields: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
     @FXML
-    private void buttonOpen1 (ActionEvent ae){
+    private void buttonOpen1(ActionEvent ae) {}
 
-    }
     @FXML
-    private void buttonOpen2 (ActionEvent ae){
+    private void buttonOpen2(ActionEvent ae) {}
 
-    }
     @FXML
-    private void buttonOpen3 (ActionEvent ae){
-
-    }
-
-
+    private void buttonOpen3(ActionEvent ae) {}
 }

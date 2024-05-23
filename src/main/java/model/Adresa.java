@@ -1,49 +1,57 @@
 package model;
 
 public class Adresa {
-    private int Id;
-    private String Komuna;
-    private String Fshati;
-    private String Rruga;
-    private int NumriNderteses;
-    private int KodiPostar;
-    private String LlojiVendbanimit;
+    private int id;
+    private String komuna;
+    private String fshati;
+    private String rruga;
+    private int numriNderteses;
+    private int kodiPostar;
+    private String llojiVendbanimit;
 
     public Adresa(int id, String komuna, String fshati, String rruga, int numriNderteses, int kodiPostar, String llojiVendbanimit) {
-        Id = id;
-        Komuna = komuna;
-        Fshati = fshati;
-        Rruga = rruga;
-        NumriNderteses = numriNderteses;
-        KodiPostar = kodiPostar;
-        LlojiVendbanimit = llojiVendbanimit;
+        this.id = id;
+        this.komuna = komuna;
+        this.fshati = fshati;
+        this.rruga = rruga;
+        this.numriNderteses = numriNderteses;
+        this.kodiPostar = kodiPostar;
+        this.llojiVendbanimit = llojiVendbanimit;
     }
 
+
     public int getId() {
-        return Id;
+        return id;
     }
 
     public String getKomuna() {
-        return Komuna;
+        return komuna;
     }
 
     public String getFshati() {
-        return Fshati;
+        return fshati;
     }
 
     public String getRruga() {
-        return Rruga;
+        return rruga;
     }
 
     public int getNumriNderteses() {
-        return NumriNderteses;
+        return numriNderteses;
     }
 
     public int getKodiPostar() {
-        return KodiPostar;
+        return kodiPostar;
     }
 
     public String getLlojiVendbanimit() {
-        return LlojiVendbanimit;
+        return llojiVendbanimit;
     }
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
 }

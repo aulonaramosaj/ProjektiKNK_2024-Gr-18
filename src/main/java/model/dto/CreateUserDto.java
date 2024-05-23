@@ -9,15 +9,17 @@ public class CreateUserDto {
     private String Salt;
     private String passwordHash;
 
-    public CreateUserDto(String emri, String mbiemri, String nrPersonal, String Username, String email, String salt, String passwordHash) {
+
+    public CreateUserDto(String emri, String mbiemri, String nrPersonal, String username, String email, String salt, String passwordHash) {
         Emri = emri;
         Mbiemri = mbiemri;
         NrPersonal = nrPersonal;
-        Username = Username;
+        Username = username;
         Email = email;
         Salt = salt;
         this.passwordHash = passwordHash;
     }
+
 
     public String getEmri() {
         return Emri;

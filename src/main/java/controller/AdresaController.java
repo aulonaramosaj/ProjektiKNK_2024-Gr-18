@@ -2,13 +2,15 @@ package controller;
 
 import App.Navigator;
 import App.SessionManager;
+import interfaces.AddressAddedListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import model.Adresa;
 import model.User;
 import model.dto.CreateAdresaDto;
-import repository.AdresaRepository;
+import service.AdresaService;
 
 public class AdresaController {
     @FXML
@@ -25,6 +27,9 @@ public class AdresaController {
     private RadioButton radioPerhershem;
     @FXML
     private RadioButton radioPerkohshem;
+
+    private final AdresaService adresaService = new AdresaService();
+    private AddressAddedListener addressAddedListener;
 
     @FXML
     private void vendosAdresen(ActionEvent ae) {
@@ -43,28 +48,32 @@ public class AdresaController {
         CreateAdresaDto adresaDto = new CreateAdresaDto(
                 txtKomuna.getText(), txtFshati.getText(), txtRruga.getText(), numriNderteses, kodiPostar, llojiVendbanimit, userId);
 
-        int addressId = AdresaRepository.create(adresaDto);
+        int addressId = adresaService.createAdresa(adresaDto);
 
         if (addressId > 0) {
             System.out.println("Adresa u shtua me sukses, ID: " + addressId);
-            Navigator.navigate(ae, Navigator.QYTETARI, addressId);
+            if (addressAddedListener != null) {
+                Adresa newAdresa = new Adresa(addressId, txtKomuna.getText(), txtFshati.getText(), txtRruga.getText(), numriNderteses, kodiPostar, llojiVendbanimit);
+                addressAddedListener.onAddressAdded(newAdresa);
+            }
+            Navigator.navigateWithParams(ae, Navigator.QYTETARI, addressId);
         } else {
             System.out.println("Adresa dështoi që të shtohet në databazë");
         }
     }
 
-
     @FXML
-    private void buttonOpen1 (ActionEvent ae){
-
-    }
-    @FXML
-    private void buttonOpen2 (ActionEvent ae){
-
-    }
-    @FXML
-    private void buttonOpen3 (ActionEvent ae){
+    private void buttonOpen1(ActionEvent ae) {
 
     }
 
+    @FXML
+    private void buttonOpen2(ActionEvent ae) {
+
+    }
+
+    @FXML
+    private void buttonOpen3(ActionEvent ae) {
+
+    }
 }

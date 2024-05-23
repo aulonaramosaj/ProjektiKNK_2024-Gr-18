@@ -47,8 +47,8 @@
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QytetariController">
-  <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="586.0" prefWidth="900.0" style="-fx-background-color: #fffafa;">
+   <children>
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="586.0" prefWidth="900.0" style="-fx-background-color: #fffafa;">
          <children>
             <Label fx:id="nrPersonalLabel" layoutX="215.0" layoutY="170.0" text="Numri Personal:" textFill="SALMON" />
             <Label fx:id="emriLabel" layoutX="218.0" layoutY="213.0" text="Emri:" textFill="SALMON" />
@@ -104,8 +104,8 @@
             </Pane>
             <DatePicker fx:id="Ditelindja" layoutX="316.0" layoutY="280.0" prefHeight="25.0" prefWidth="149.0" />
          </children>
-    </AnchorPane>
+      </AnchorPane>
       <Pane prefHeight="411.0" prefWidth="640.0" />
       <ParallelCamera />
-  </children>
+   </children>
 </VBox>

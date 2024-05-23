@@ -46,3 +46,4 @@ CREATE TABLE `Qytetari` (
 SELECT * FROM `User`;
 SELECT * FROM `Adresa`;
 SELECT * FROM `Qytetari`;
+

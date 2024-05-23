@@ -41,7 +41,7 @@
             <PasswordField fx:id="pwdPassword" layoutX="40.0" layoutY="318.0" prefHeight="25.0" prefWidth="224.0" promptText="Password:" />
             <ButtonBar layoutX="73.0" layoutY="360.0" prefHeight="40.0" prefWidth="110.0">
                <buttons>
-                <Button fx:id="handleLogIn" mnemonicParsing="false" onAction="#handleLogIn" style="-fx-background-color: #c74949;" text="LOG IN" textFill="WHITE">
+                  <Button fx:id="handleLogIn" mnemonicParsing="false" onAction="#handleLogIn" style="-fx-background-color: #c74949;" text="LOG IN" textFill="WHITE">
                      <font>
                         <Font name="Bell MT Bold" size="15.0" />
                      </font>
@@ -53,7 +53,7 @@
             </ButtonBar>
             <Label layoutX="40.0" layoutY="203.0" text="Email:" textFill="#c74949">
                <font>
-                  <Font name="Bell MT" size="15.0" /> 
+                  <Font name="Bell MT" size="15.0" />
                </font>
             </Label>
          </children>

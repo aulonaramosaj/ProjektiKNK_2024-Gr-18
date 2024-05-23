@@ -1,17 +1,17 @@
 package controller;
 
 import App.Navigator;
+import App.Navigator.ParametrizedController;
 import App.SessionManager;
-import Database.DatabaseUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import model.User;
 import model.dto.AdresaDto;
-import repository.AdresaRepository;
+import service.AdresaService;
 
-public class ModifikoAdresaController {
+public class ModifikoAdresaController implements ParametrizedController {
     @FXML
     private TextField idAdresa;
     @FXML
@@ -28,8 +28,47 @@ public class ModifikoAdresaController {
     private TextField txtRruga;
     @FXML
     private TextField txtNumriNderteses;
+    private final AdresaService adresaService = new AdresaService();
+
+    @Override
+    public void setParams(Object params) {
+        if (params instanceof Integer) {
+            loadAddressById((Integer) params);
+        }
+    }
+
+    private void loadAddressById(int addressId) {
+        AdresaDto adresa = adresaService.getAdresaById(addressId);
+        if (adresa != null) {
+            idAdresa.setText(String.valueOf(adresa.getId()));
+            txtKomuna.setText(adresa.getKomuna());
+            txtKodiPostar.setText(String.valueOf(adresa.getKodiPostar()));
+            txtFshati.setText(adresa.getFshati());
+            txtRruga.setText(adresa.getRruga());
+            txtNumriNderteses.setText(String.valueOf(adresa.getNumriNderteses()));
+            if ("Perhershem".equals(adresa.getLlojiVendbanimit())) {
+                radioPerhershem.setSelected(true);
+            } else if ("Perkohshem".equals(adresa.getLlojiVendbanimit())) {
+                radioPerkohshem.setSelected(true);
+            }
+        }
+    }
 
     @FXML
+    private void buttonOpen1(ActionEvent ae) {
+        Navigator.navigate(ae, Navigator.ADRESA);
+    }
+
+    @FXML
+    private void buttonOpen2(ActionEvent ae) {
+        Navigator.navigate(ae, Navigator.ADRESA_DASHBOARD);
+    }
+
+    @FXML
+    private void buttonOpen3(ActionEvent ae) {
+    }
+    @FXML
+
     private void modifikoAdresen(ActionEvent ae) {
         if (!SessionManager.isLoggedIn()) {
             SessionManager.setLastAttemptedPage(Navigator.MODIFIKO_ADRESEN); // Store last attempted page
@@ -50,8 +89,7 @@ public class ModifikoAdresaController {
 
             AdresaDto adresa = new AdresaDto(idAdresaValue, txtKomuna.getText(), txtFshati.getText(), txtRruga.getText(), txtNumriNdertesesValue, txtKodiPostarValue, llojiVendbanimit, userId);
 
-            AdresaRepository adresaRepository = new AdresaRepository();
-            boolean isModified = adresaRepository.modifiko(adresa);
+            boolean isModified = adresaService.updateAdresa(adresa);
 
             if (isModified) {
                 System.out.println("Adresa u modifikua me sukses");
@@ -65,13 +103,4 @@ public class ModifikoAdresaController {
             e.printStackTrace();
         }
     }
-
-    @FXML
-    private void buttonOpen1(ActionEvent ae) {}
-
-    @FXML
-    private void buttonOpen2(ActionEvent ae) {}
-
-    @FXML
-    private void buttonOpen3(ActionEvent ae) {}
 }

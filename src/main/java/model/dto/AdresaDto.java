@@ -8,8 +8,9 @@ public class AdresaDto {
     private int NumriNderteses;
     private int KodiPostar;
     private String LlojiVendbanimit;
+    private int UserId;
 
-    public AdresaDto(int id, String komuna, String fshati, String rruga, int numriNderteses, int kodiPostar, String llojiVendbanimit) {
+    public AdresaDto(int id, String komuna, String fshati, String rruga, int numriNderteses, int kodiPostar, String llojiVendbanimit, int userId) {
         Id = id;
         Komuna = komuna;
         Fshati = fshati;
@@ -17,6 +18,7 @@ public class AdresaDto {
         NumriNderteses = numriNderteses;
         KodiPostar = kodiPostar;
         LlojiVendbanimit = llojiVendbanimit;
+        UserId = userId;
     }
 
     public int getId() {
@@ -46,4 +48,10 @@ public class AdresaDto {
     public String getLlojiVendbanimit() {
         return LlojiVendbanimit;
     }
+
+    public int getUserId() {
+        return UserId;
+    }
+
+
 }

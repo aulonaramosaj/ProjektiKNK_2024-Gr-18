@@ -8,16 +8,19 @@ public class CreateAdresaDto {
     private int NumriNderteses;
     private int KodiPostar;
     private String LlojiVendbanimit;
+    private int UserId;
 
-    public CreateAdresaDto(String komuna, String fshati, String rruga, int numriNderteses, int kodiPostar, String llojiVendbanimit) {
 
+    public CreateAdresaDto(String komuna, String fshati, String rruga, int numriNderteses, int kodiPostar, String llojiVendbanimit, int userId) {
         Komuna = komuna;
         Fshati = fshati;
         Rruga = rruga;
         NumriNderteses = numriNderteses;
         KodiPostar = kodiPostar;
         LlojiVendbanimit = llojiVendbanimit;
+        UserId = userId;
     }
+
 
     public String getKomuna() {
         return Komuna;
@@ -39,7 +42,7 @@ public class CreateAdresaDto {
         return KodiPostar;
     }
 
-    public String getLlojiVendbanimit() {
-        return LlojiVendbanimit;
-    }
+    public String getLlojiVendbanimit() {return LlojiVendbanimit;}
+
+    public int getUserId() {return UserId;}
 }

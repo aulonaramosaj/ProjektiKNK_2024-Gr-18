@@ -1,142 +1,229 @@
 package controller;
+
+
+import App.Navigator;
+import Database.DatabaseUtil;
+import interfaces.AddressAddedListener;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import model.Adresa;
+import model.filter.AdresaFilter;
+import service.AdresaService;
 
-public class AdresaDashboardController {
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
+
+public class AdresaDashboardController implements Initializable, AddressAddedListener {
+
+        @FXML
+        private AnchorPane root;
+        @FXML
+        private ImageView imageView;
         @FXML
         private TextField komunaTextField;
-
         @FXML
         private TextField kodiPostarTextField;
-
         @FXML
         private TextField fshatiLagjiaTextField;
-
         @FXML
-        private TextField rruga;
-
+        private TextField rrugaTextField;
         @FXML
-        private TextField NrNderteses;
-
+        private TextField NrNdertesesTextField;
         @FXML
-        private TableView<?> tableView;
-
+        private TextField LlojiVendbanimitTextField;
         @FXML
-        private TableColumn<?, ?> idColumn;
-
+        private TableView<Adresa> tableView;
         @FXML
-        private TableColumn<?, ?> komunaColumn;
-
+        private TableColumn<Adresa, Number> kodiPostarColumn, numriNdertesesColumn, idColumn;
         @FXML
-        private TableColumn<?, ?> kodiPostarColumn;
-
-        @FXML
-        private TableColumn<?, ?> fshatiLagjiaColumn;
-
-        @FXML
-        private TableColumn<?, ?> rrugaColumn;
-
-        @FXML
-        private TableColumn<?, ?> numriNdertesesColumn;
+        private TableColumn<Adresa, String> komunaColumn, fshatiLagjiaColumn, rrugaColumn, llojiVendbanimitColumn;
         @FXML
         private Button button;
-
-
-        private ObservableList<Address> addressList = FXCollections.observableArrayList();
-
-        // Initialize method to set up initial states or bindings
         @FXML
-        public void initialize() {
+        private Button handleHome;
+        @FXML
+        private Button handleFilter;
+        @FXML
+        private Button handleClear;
+        @FXML
+        private Pagination faqet;
 
-                // Initialize table columns
-                idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-                komunaColumn.setCellValueFactory(new PropertyValueFactory<>("komuna"));
-                kodiPostarColumn.setCellValueFactory(new PropertyValueFactory<>("kodiPostar"));
-                fshatiLagjiaColumn.setCellValueFactory(new PropertyValueFactory<>("fshatiLagjia"));
-                rrugaColumn.setCellValueFactory(new PropertyValueFactory<>("rruga"));
-                numriNdertesesColumn.setCellValueFactory(new PropertyValueFactory<>("numriNderteses"));
+        private final AdresaService adresaService = new AdresaService();
+        private ObservableList<Adresa> addressList = FXCollections.observableArrayList();
+        private final int rowsPerPage = 10;
 
-                // Bind the table view to the address list
+        @Override
+        public void initialize(URL location, ResourceBundle resources) {
+                initializeTableColumns();
+                bindTableViewToObservableList();
+                setupPagination();
+                loadData();
+        }
+
+        private void initializeTableColumns() {
+                idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()));
+                komunaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getKomuna()));
+                kodiPostarColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getKodiPostar()));
+                fshatiLagjiaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFshati()));
+                rrugaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRruga()));
+                numriNdertesesColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getNumriNderteses()));
+                llojiVendbanimitColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLlojiVendbanimit()));
+        }
+
+        private void bindTableViewToObservableList() {
                 tableView.setItems(addressList);
         }
 
+        private void setupPagination() {
+                faqet.setPageFactory(this::createPage);
+        }
+
         @FXML
-        private void addAddress() {
-                // Create a new Address object from text field values
-                Address newAddress = new Address(
-                        addressList.size() + 1,
+        private void addAddress(ActionEvent ae) {
+                Navigator.navigateWithListener(root, Navigator.ADRESA, this);
+        }
+
+        @FXML
+        private void handleHome(ActionEvent ae) {
+                Navigator.navigate(ae, Navigator.HOME_PAGE);
+        }
+
+        @FXML
+        private void handleFilter() {
+                filterAddresses();
+        }
+
+        @FXML
+        private void handleClear() {
+                clearFilters();
+                loadData();
+        }
+
+        @Override
+        public void onAddressAdded(Adresa newAdresa) {
+                addressList.add(newAdresa);
+                refreshPagination();
+        }
+
+        private Node createPage(int pageIndex) {
+                int fromIndex = pageIndex * rowsPerPage;
+                int toIndex = Math.min(fromIndex + rowsPerPage, addressList.size());
+                tableView.setItems(FXCollections.observableArrayList(addressList.subList(fromIndex, toIndex)));
+                return new AnchorPane();
+        }
+
+        private void loadData() {
+                try (Connection conn = DatabaseUtil.getConnection()) {
+                        List<Adresa> addresses = adresaService.getAllAdresas(conn);
+                        addressList.setAll(addresses);
+                        refreshPagination();
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                }
+        }
+
+        private void filterAddresses() {
+                AdresaFilter filter = new AdresaFilter(
                         komunaTextField.getText(),
                         kodiPostarTextField.getText(),
                         fshatiLagjiaTextField.getText(),
-                        rruga.getText(),
-                        NrNderteses.getText()
+                        rrugaTextField.getText(),
+                        NrNdertesesTextField.getText(),
+                        LlojiVendbanimitTextField.getText()
                 );
 
-                // Add the new address to the list
-                addressList.add(newAddress);
+                String sqlQuery = filter.buildQuery();
+                loadDataFiltered(sqlQuery);
+        }
 
-                // Clear text fields after adding
+        private void loadDataFiltered(String filterConditions) {
+                try (Connection conn = DatabaseUtil.getConnection()) {
+                        List<Adresa> filteredAddresses = adresaService.getFilteredAdresas(conn, filterConditions);
+                        addressList.setAll(filteredAddresses);
+                        refreshPagination();
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                }
+        }
+
+
+        private void clearFilters() {
                 komunaTextField.clear();
                 kodiPostarTextField.clear();
                 fshatiLagjiaTextField.clear();
-                rruga.clear();
-                NrNderteses.clear();
+                rrugaTextField.clear();
+                NrNdertesesTextField.clear();
+                LlojiVendbanimitTextField.clear();
+                loadData();
         }
 
-        // Address class to represent address data
-        class Address {
-                private final int id;
-                private final String komuna;
-                private final String kodiPostar;
-                private final String fshatiLagjia;
-                private final String rruga;
-                private final String numriNderteses;
-
-                public Address(int id, String komuna, String kodiPostar, String fshatiLagjia, String rruga, String numriNderteses) {
-                        this.id = id;
-                        this.komuna = komuna;
-                        this.kodiPostar = kodiPostar;
-                        this.fshatiLagjia = fshatiLagjia;
-                        this.rruga = rruga;
-                        this.numriNderteses = numriNderteses;
-                }
-
-                public int getId() {
-                        return id;
-                }
-
-                public String getKomuna() {
-                        return komuna;
-                }
-
-                public String getKodiPostar() {
-                        return kodiPostar;
-                }
-
-                public String getFshatiLagjia() {
-                        return fshatiLagjia;
-                }
-
-                public String getRruga() {
-                        return rruga;
-                }
-
-                public String getNumriNderteses() {
-                        return numriNderteses;
-                }
+        private void refreshPagination() {
+                faqet.setPageCount((int) Math.ceil(addressList.size() / (double) rowsPerPage));
+                tableView.setItems(FXCollections.observableArrayList(addressList.subList(0, Math.min(rowsPerPage, addressList.size()))));
         }
 
+        @FXML
+        private void handleVendosQytetar(ActionEvent ae) {
+                Adresa selectedAddress = tableView.getSelectionModel().getSelectedItem();
+                if (selectedAddress != null) {
+                        Navigator.navigateWithParams(ae, Navigator.QYTETARI, selectedAddress.getId());
+                } else {
+                        showAlert(Alert.AlertType.WARNING, "No Selection", "Nuk është adresa e selektuar. Ju lutem selektoni një adresë.");
+                }
+        }
+        @FXML
+        private void handleShfaqQytetaret (ActionEvent ae){
 
+        }
+        private void showAlert(Alert.AlertType alertType, String title, String message) {
+                Alert alert = new Alert(alertType);
+                alert.setTitle(title);
+                alert.setHeaderText(null);
+                alert.setContentText(message);
+                alert.showAndWait();
+        }
+        @FXML
+        private void handleModifikoAdresen(ActionEvent ae) {
+                Adresa selectedAddress = tableView.getSelectionModel().getSelectedItem();
+                if (selectedAddress != null) {
+                        int addressId = selectedAddress.getId();
+                        Navigator.navigateWithParams(ae, Navigator.MODIFIKO_ADRESEN, addressId);
+                } else {
+                        showAlert(Alert.AlertType.WARNING, "No Selection", "Nuk është adresa e selektuar. Ju lutem selektoni një adresë.");
+                }
+        }
+        @FXML
+        private void handleClearAdresa(ActionEvent ae) {
+                Adresa selectedAddress = tableView.getSelectionModel().getSelectedItem();
+                if (selectedAddress != null) {
+                        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                        confirmationAlert.setTitle("Konfirmo fshirjen e Adresës");
+                        confirmationAlert.setHeaderText("Fshi Adresën");
+                        confirmationAlert.setContentText("A jeni i sigurt nëse dëshironi të fshini këtë adresë?");
 
+                        Optional<ButtonType> response = confirmationAlert.showAndWait();
+                        if (response.isPresent() && response.get() == ButtonType.OK) {
+                                adresaService.deleteAdresa(selectedAddress.getId());
+                                addressList.remove(selectedAddress);
+                                refreshPagination();
+                        }
+                } else {
+                        showAlert(Alert.AlertType.WARNING, "No Selection", "Nuk ka adresë të selektuar. Ju lutem selektoni një adresë për ta fshirë.");
+                }
+        }
 }
-
-
-
-

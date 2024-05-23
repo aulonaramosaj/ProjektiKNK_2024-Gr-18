@@ -2,53 +2,105 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdresaDashboardController">
+    <children>
+        <!-- Left color panel -->
+        <Pane layoutX="-1.0" prefHeight="638.0" prefWidth="156.0" style="-fx-background-color: #FA8072;">
+            <children>
+                <Button fx:id="button" layoutX="19.0" layoutY="199.0" mnemonicParsing="false" onAction="#addAddress" style="-fx-background-color: DF4255;" text="VENDOS ADRESËN" textFill="WHITE">
+                    <effect>
+                        <Glow />
+                    </effect>
+                </Button>
+                <Button fx:id="handleVendosQytetar" layoutX="19.0" layoutY="249.0" mnemonicParsing="false" onAction="#handleVendosQytetar" style="-fx-background-color: DF4255;" text="VENDOS QYTETAR" textFill="WHITE">
+                    <effect>
+                        <Glow />
+                    </effect>
+                </Button>
+                <Button fx:id="handleShfaqQytetaret" layoutX="21.0" layoutY="294.0" mnemonicParsing="false" onAction="#handleShfaqQytetaret" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: DF4255;" text="SHFAQ QYTETARËT" textFill="WHITE">
+                    <effect>
+                        <Glow />
+                    </effect>
+                    <font>
+                        <Font size="11.5" />
+                    </font>
+                </Button>
+                <Button fx:id="handleHome" layoutX="22.0" layoutY="575.0" mnemonicParsing="false" onAction="#handleHome" style="-fx-background-color: DF4255;" text="FAQJA KRYESORE" textFill="WHITE">
+                    <effect>
+                        <Glow />
+                    </effect>
+                </Button>
+                <Button fx:id="handleModifikoAdresen" layoutX="21.0" layoutY="339.0" mnemonicParsing="false" onAction="#handleModifikoAdresen" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: DF4255;" text="MODIFIKO ADRESËN" textFill="WHITE">
+                    <font>
+                        <Font size="10.5" />
+                    </font>
+                    <effect>
+                        <Glow />
+                    </effect>
+                </Button>
+                <Button fx:id="handleClearAdresa" layoutX="19.0" layoutY="383.0" mnemonicParsing="false" onAction="#handleClearAdresa" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: DF4255;" text="FSHI ADRESËN" textFill="WHITE">
+                    <effect>
+                        <Glow />
+                    </effect>
+                </Button>
+            </children></Pane>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="915.0" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdresaDashboardController">
-   <children>
-      <Pane prefHeight="638.0" prefWidth="156.0" style="-fx-background-color: #FA8072;" />
-      <Pane layoutX="-1.0" prefHeight="111.0" prefWidth="922.0" style="-fx-background-color: #FA8072;">
-         <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../Desktop/Picture1.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="162.0" layoutY="47.0" prefHeight="47.0" prefWidth="156.0" text="Adresa Dashboard" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Label fx:id="komunaLabel" layoutX="169.0" layoutY="123.0" text="Komuna" textFill="#b12727" />
-      <Label fx:id="kodiPostarLabel" layoutX="342.0" layoutY="123.0" text="Kodi Postar" textFill="#b12727" />
-      <Label fx:id="fshatiLagjiaLabel" layoutX="535.0" layoutY="123.0" text="Fshati/Lagjia" textFill="#b12727" />
-      <Label fx:id="rrugaLabel" layoutX="722.0" layoutY="123.0" text="Rruga" textFill="#b12727" />
-      <Label fx:id="numriNdertesesLabel" layoutX="171.0" layoutY="223.0" text="Numri i Nderteses" textFill="#b12727" />
-      <TextField fx:id="komunaTextField" layoutX="171.0" layoutY="158.0" />
-      <TextField fx:id="kodiPostarTextField" layoutX="342.0" layoutY="158.0" />
-      <TextField fx:id="fshatiLagjiaTextField" layoutX="526.0" layoutY="158.0" />
-      <TextField fx:id="rruga" layoutX="722.0" layoutY="158.0" />
-      <TextField fx:id="NrNderteses" layoutX="169.0" layoutY="254.0" />
-      <TableView fx:id="tableView" layoutX="171.0" layoutY="319.0" prefHeight="204.0" prefWidth="728.0" style="-fx-background-color: #FA8072;">
-        <columns>
-          <TableColumn fx:id="idColumn" prefWidth="108.79998779296875" text="Id" />
-            <TableColumn fx:id="komunaColumn" prefWidth="127.20001220703125" text="Komuna" />
-            <TableColumn fx:id="kodiPostarColumn" prefWidth="108.79989624023438" text="Kodi Postar" />
-            <TableColumn fx:id="fshatiLagjiaColumn" prefWidth="114.40008544921875" text="Fshati/Lagjia" />
-            <TableColumn fx:id="rrugaColumn" prefWidth="137.59991455078125" text="Rruga" />
-          <TableColumn fx:id="numriNdertesesColumn" prefWidth="135.199951171875" text="Numri i Nderteses" />
-        </columns>
-      </TableView>
-      <Button fx:id="button" layoutX="188.0" layoutY="576.0" mnemonicParsing="false" text="SHTO ADRESEN" onAction="#addAddress" />
-   </children>
-</fx:root>
+        <!-- Top color panel with image and title -->
+        <Pane layoutX="-1.0" prefHeight="111.0" prefWidth="1100.0" style="-fx-background-color: #FA8072;">
+            <children>
+                <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <!-- Ensure the image path is correct; use absolute path if necessary -->
+                        <Image url="@../img/Picture1.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="162.0" layoutY="47.0" prefHeight="47.0" prefWidth="156.0" text="Paneli Adresa" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+
+
+        <Label fx:id="komunaLabel" layoutX="169.0" layoutY="123.0" text="Komuna" textFill="#b12727" />
+        <Label fx:id="kodiPostarLabel" layoutX="342.0" layoutY="123.0" text="Kodi Postar" textFill="#b12727" />
+        <Label fx:id="fshatiLagjiaLabel" layoutX="510.0" layoutY="123.0" text="Fshati/Lagjia" textFill="#b12727" />
+        <Label fx:id="rrugaLabel" layoutX="672.0" layoutY="123.0" text="Rruga" textFill="#b12727" />
+        <Label fx:id="numriNdertesesLabel" layoutX="171.0" layoutY="223.0" text="Numri i Ndërtesës" textFill="#b12727" />
+        <TextField fx:id="komunaTextField" layoutX="171.0" layoutY="158.0" />
+        <TextField fx:id="kodiPostarTextField" layoutX="334.0" layoutY="158.0" />
+        <TextField fx:id="fshatiLagjiaTextField" layoutX="501.0" layoutY="158.0" />
+        <TextField fx:id="rrugaTextField" layoutX="666.0" layoutY="158.0" />
+        <TextField fx:id="NrNdertesesTextField" layoutX="169.0" layoutY="254.0" />
+
+
+        <TableView fx:id="tableView" layoutX="167.0" layoutY="319.0" prefHeight="204.0" prefWidth="867.0" style="-fx-background-color: #FA8072;">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="108.79998779296875" text="Id" />
+                <TableColumn fx:id="komunaColumn" prefWidth="127.20001220703125" text="Komuna" />
+                <TableColumn fx:id="kodiPostarColumn" prefWidth="108.79989624023438" text="Kodi Postar" />
+                <TableColumn fx:id="fshatiLagjiaColumn" prefWidth="114.40008544921875" text="Fshati/Lagjia" />
+                <TableColumn fx:id="rrugaColumn" prefWidth="137.59991455078125" text="Rruga" />
+                <TableColumn fx:id="numriNdertesesColumn" prefWidth="136.7999267578125" text="Numri i Ndërtesës" />
+                <TableColumn fx:id="llojiVendbanimitColumn" minWidth="20.0" prefWidth="128.0" text="Lloji i Vendbanimit" />
+            </columns>
+        </TableView>
+        <Button fx:id="handleFilter" layoutX="543.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleFilter" text="FILTER" />
+        <Pagination fx:id="faqet" layoutX="501.0" layoutY="541.0" prefHeight="47.0" prefWidth="200.0" style="-fx-background-color: F8DCD9;" />
+        <Button fx:id="handleClear" layoutX="771.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleClear" text="Fshi Filterat" />
+        <Label fx:id="llojiVendbanimitLabel" layoutX="342.0" layoutY="223.0" text="Lloji i Vendbanimit" textFill="#b12727" />
+        <TextField fx:id="LlojiVendbanimitTextField" layoutX="334.0" layoutY="254.0" />
+    </children>
+</AnchorPane>

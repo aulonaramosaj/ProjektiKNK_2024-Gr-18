@@ -131,7 +131,7 @@ public class QytetariController implements ParametrizedController {
     }
 
     @FXML
-    private void btnOpen2(ActionEvent ae) {}
+    private void btnOpen2(ActionEvent ae) {Navigator.navigate(ae,Navigator.ADRESA_DASHBOARD);}
 
     @FXML
     private void btnOpen3(ActionEvent ae) {}

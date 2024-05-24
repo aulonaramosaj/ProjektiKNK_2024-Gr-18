@@ -14,12 +14,13 @@ import javafx.scene.control.TextField;
 import model.User;
 import model.dto.QytetariDto;
 import repository.QytetariRepository;
+import App.Navigator.ParametrizedController;
 
 import java.sql.Connection;
 import java.sql.Date;
 import java.time.LocalDate;
 
-public class ModifikoQytetarinController {
+public class ModifikoQytetarinController implements ParametrizedController {
 
     @FXML
     private Label NrPersonalLabel;
@@ -72,43 +73,54 @@ public class ModifikoQytetarinController {
         }
 
         try {
-            String Gjinia = "";
-
             int idAdresaValue = Integer.parseInt(adresaId.getText());
+            String Gjinia = femer.isSelected() ? "Femer" : mashkull.isSelected() ? "Mashkull" : "";
             LocalDate localDate = ditelindja.getValue();
             Date ditelindjaValue = (localDate != null) ? Date.valueOf(localDate) : null;
-
-            if (femer.isSelected()) {
-                Gjinia = "Femer";
-            } else if (mashkull.isSelected()) {
-                Gjinia = "Mashkull";
-            }
-
-            if (nrTel.getText().length() > 20) {
-                showAlert(Alert.AlertType.ERROR, "Input Error", "Numri i telefonit eshte shume i gjate. Ju lutem shenoni nje numer te telefonit deri ne 20 karaktere.");
-                return;
-            }
 
             User currentUser = SessionManager.getUser();
             int userId = currentUser.getId();
 
-            Connection connection = DatabaseUtil.getConnection();
-            if (connection != null) {
-                QytetariDto qytetari = new QytetariDto( nrPersonal.getText(), emri.getText(), mbiemri.getText(), Gjinia, ditelindjaValue, idAdresaValue, email.getText(), nrTel.getText(), userId);
-                boolean success = QytetariRepository.modifiko(qytetari);
-                if (success) {
-                    showAlert(Alert.AlertType.INFORMATION, "Success", "Të dhënat e qytetarit u modifikuan me sukses");
-                } else {
-                    showAlert(Alert.AlertType.ERROR, "Failure", "Ndryshimi i të dhënave të qytetarit dështoi për shkak të problemeve me lidhjen në databazë");
-                }
-            } else {
-                showAlert(Alert.AlertType.ERROR, "Database Error", "Deshtoi qe te lidhet ne databaze.");
-            }
+            QytetariDto qytetari = new QytetariDto(nrPersonal.getText(), emri.getText(), mbiemri.getText(), Gjinia, ditelindjaValue, idAdresaValue, email.getText(), nrTel.getText(), userId);
+            boolean isModified = QytetariRepository.modifiko(qytetari);
 
-        } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.ERROR, "Input Error", "Id e adreses eshte invalide. Ju lutem shkruani nje numer valid.");
+            if (isModified) {
+                System.out.println("Të dhënat e qytetarit u modifikuan me sukses");
+            } else {
+                System.out.println("Ndryshimi i të dhënave të qytetarit dështoi për shkak të problemeve me lidhjen në databazë");
+            }
         } catch (Exception e) {
-            showAlert(Alert.AlertType.ERROR, "Error", "An error occurred: " + e.getMessage());
+            System.out.println("An error occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void setParams(Object params) {
+        if (params instanceof String) {
+            nrPersonal.setText((String) params);
+            loadCitizenData((String) params);
+        }
+    }
+
+    private void loadCitizenData(String nrPersonal) {
+        try (Connection conn = DatabaseUtil.getConnection()) {
+            QytetariDto qytetari = QytetariRepository.findByNrPersonal(nrPersonal);
+            if (qytetari != null) {
+                emri.setText(qytetari.getEmri());
+                mbiemri.setText(qytetari.getMbiemri());
+                email.setText(qytetari.getEmail());
+                nrTel.setText(qytetari.getNrTelefonit());
+                adresaId.setText(String.valueOf(qytetari.getAdresa()));
+                ditelindja.setValue(qytetari.getDitelindja().toLocalDate());
+                if (qytetari.getGjinia().equals("Femer")) {
+                    femer.setSelected(true);
+                } else if (qytetari.getGjinia().equals("Mashkull")) {
+                    mashkull.setSelected(true);
+                }
+            }
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Load Error", "Failed to load citizen data.");
             e.printStackTrace();
         }
     }
@@ -129,4 +141,9 @@ public class ModifikoQytetarinController {
 
     @FXML
     void btnOpen3(ActionEvent event) {}
+    @FXML
+    private void handleChangeLanguage(ActionEvent ae){
+        Navigator.changeLanguage();
+        Navigator.navigate(ae,Navigator.MODIFIKO_QYTETARIN);
+    }
 }

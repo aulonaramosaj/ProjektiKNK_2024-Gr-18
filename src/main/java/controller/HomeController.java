@@ -10,13 +10,13 @@ public class HomeController {
     @FXML
     private void handleAdresaDashboard(ActionEvent ae){
         if (!SessionManager.isLoggedIn()) {
-            SessionManager.setLastAttemptedPage(Navigator.ADRESA); // Store last attempted page
+            SessionManager.setLastAttemptedPage(Navigator.ADRESA_DASHBOARD); // Store last attempted page
             System.out.println("Please log in first.");
             Navigator.navigate(ae, Navigator.LOGIN_PAGE);
             return;
         }
 
-        //Navigator.navigate(ae, Navigator.ADRESA_DASHBOARD);
+        Navigator.navigate(ae, Navigator.ADRESA_DASHBOARD);
     }
 
     @FXML
@@ -26,7 +26,7 @@ public class HomeController {
             Navigator.navigate(ae, Navigator.LOGIN_PAGE);
             return;
         }
-        //Navigator.navigate(ae, Navigator.QYTETARI_DASHBOARD);
+        Navigator.navigate(ae, Navigator.QYTETARI_DASHBOARD);
     }
 
     @FXML
@@ -73,5 +73,10 @@ public class HomeController {
     private void handleHelp(ActionEvent ae){
         // Help mund te kete qasje edhe pa LogIn
         Navigator.navigate(ae,Navigator.HELP);
+    }
+    @FXML
+    private void handleChangeLanguage(ActionEvent ae){
+        Navigator.changeLanguage();
+        Navigator.navigate(ae,Navigator.HOME_PAGE);
     }
 }

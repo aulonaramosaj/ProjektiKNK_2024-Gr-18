@@ -80,11 +80,6 @@ public class QytetariController implements ParametrizedController {
                 return;
             }
 
-            if (nrTel.length() > 20) {
-                showAlert(Alert.AlertType.ERROR, "Input Error", "Numri i telefonit eshte shume i gjate. Ju lutem shenoni nje numer te telefonit deri ne 20 karaktere.");
-                return;
-            }
-
             // Check for duplicate NrPersonal before saving
             if (QytetariRepository.existsByNrPersonal(nrPersonal)) {
                 showAlert(Alert.AlertType.ERROR, "Duplicate Error", "Një qytetar me këtë Numër Personal tashmë ekziston.");
@@ -116,7 +111,6 @@ public class QytetariController implements ParametrizedController {
         }
     }
 
-
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -135,4 +129,9 @@ public class QytetariController implements ParametrizedController {
 
     @FXML
     private void btnOpen3(ActionEvent ae) {}
+    @FXML
+    private void handleChangeLanguage(ActionEvent ae){
+        Navigator.changeLanguage();
+        Navigator.navigate(ae,Navigator.QYTETARI);
+    }
 }

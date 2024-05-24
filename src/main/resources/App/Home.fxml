@@ -14,7 +14,7 @@
       <Pane layoutX="-9.0" prefHeight="600.0" prefWidth="162.0" style="-fx-background-color: #FA8072;">
          <children>
             <ImageView fitHeight="150.0" fitWidth="125.0" layoutX="14.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="handleHelp" layoutX="25.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleHelp" prefHeight="27.0" prefWidth="125.0" style="-fx-background-color: #c73f3f;" text="NDIHMA" textFill="WHITE">
+            <Button fx:id="handleHelp" layoutX="25.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleHelp" prefHeight="27.0" prefWidth="125.0" style="-fx-background-color: #c73f3f;" text="%btnNDIHMA" textFill="WHITE">
                <font>
                   <Font name="Bell MT Bold" size="14.0" />
                </font>
@@ -22,6 +22,7 @@
                   <Glow />
                </effect>
             </Button>
+            <Button layoutX="55.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" />
          </children>
       </Pane>
       <Pane layoutX="1.0" prefHeight="128.0" prefWidth="900.0" style="-fx-background-color: #FA8072;">
@@ -31,20 +32,20 @@
                   <Image url="@../img/Picture1.png" />
                </image>
             </ImageView>
-            <Label layoutX="143.0" layoutY="64.0" prefHeight="23.0" prefWidth="792.0" text="SISTEMI INTERAKTIV PËR REGJISTRIMIN E ADRESAVE NË KOSOVË" textFill="WHITE">
+            <Label layoutX="143.0" layoutY="64.0" prefHeight="23.0" prefWidth="792.0" text="%lblSISTEMIINTERAKTIVPËRREGJISTRIMINEADRESAVENËKOSOVË" textFill="WHITE">
                <font>
                   <Font name="Bell MT Bold" size="22.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Label layoutX="196.0" layoutY="184.0" text="SHIKO ADRESAT E REGJISTRUARA" textFill="#a61e1e">
+      <Label layoutX="196.0" layoutY="184.0" text="%lblSHIKOADRESATEREGJISTRUARA" textFill="#a61e1e">
          <font>
             <Font name="Bell MT Bold" size="18.0" />
          </font>
       </Label>
       <Label layoutX="302.0" layoutY="212.0" />
-      <Button fx:id="handleAdresaDashboard" layoutX="682.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleAdresaDashboard" prefHeight="27.0" prefWidth="184.0" style="-fx-background-color: #c73f3f;" text="PANELI I ADRESAVE" textFill="WHITE">
+      <Button fx:id="handleAdresaDashboard" layoutX="682.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleAdresaDashboard" prefHeight="27.0" prefWidth="209.0" style="-fx-background-color: #c73f3f;" text="%btnPANELIIADRESAVE" textFill="WHITE">
          <font>
             <Font name="Bell MT Bold" size="14.0" />
          </font>
@@ -52,12 +53,12 @@
             <Glow />
          </effect>
       </Button>
-      <Label layoutX="196.0" layoutY="263.0" text="SHIKO QYTETARËT E REGJISTRUAR NË ADRESA" textFill="#a61e1e">
+      <Label layoutX="196.0" layoutY="263.0" text="%lblSHIKOQYTETARËTEREGJISTRUARNËADRESA" textFill="#a61e1e">
          <font>
             <Font name="Bell MT Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="handleQytetariDashboard" layoutX="682.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleQytetariDashboard" style="-fx-background-color: #c73f3f;" text="PANELI I QYTETARËVE" textFill="WHITE">
+      <Button fx:id="handleQytetariDashboard" layoutX="682.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleQytetariDashboard" style="-fx-background-color: #c73f3f;" text="%btnPANELIIQYTETARËVE" textFill="WHITE">
          <font>
             <Font name="Bell MT Bold" size="14.0" />
          </font>
@@ -65,12 +66,12 @@
             <Glow />
          </effect>
       </Button>
-      <Label layoutX="196.0" layoutY="335.0" text="SHTO NJË ADRESË" textFill="#a61e1e">
+      <Label layoutX="196.0" layoutY="335.0" text="%lblSHTONJËADRESË" textFill="#a61e1e">
          <font>
             <Font name="Bell MT Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="handleAdresa" layoutX="682.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleAdresa" prefHeight="27.0" prefWidth="184.0" style="-fx-background-color: #c73f3f;" text="ADRESA" textFill="WHITE">
+      <Button fx:id="handleAdresa" layoutX="682.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleAdresa" prefHeight="27.0" prefWidth="184.0" style="-fx-background-color: #c73f3f;" text="%btnADRESA" textFill="WHITE">
          <font>
             <Font name="Bell MT Bold" size="14.0" />
          </font>
@@ -78,12 +79,12 @@
             <Glow />
          </effect>
       </Button>
-      <Label layoutX="196.0" layoutY="400.0" text="SHTO NJË QYTETAR" textFill="#a61e1e">
+      <Label layoutX="196.0" layoutY="400.0" text="%lblSHTONJËQYTETAR" textFill="#a61e1e">
          <font>
             <Font name="Bell MT Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="handleQytetari" layoutX="682.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleQytetari" prefHeight="27.0" prefWidth="184.0" style="-fx-background-color: #c73f3f;" text="QYTETARI" textFill="WHITE">
+      <Button fx:id="handleQytetari" layoutX="682.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleQytetari" prefHeight="27.0" prefWidth="184.0" style="-fx-background-color: #c73f3f;" text="%btnQYTETARI" textFill="WHITE">
          <font>
             <Font name="Bell MT Bold" size="14.0" />
          </font>
@@ -91,12 +92,12 @@
             <Glow />
          </effect>
       </Button>
-      <Label layoutX="196.0" layoutY="461.0" text="MODIFIKO NJË ADRESË" textFill="#a61e1e">
+      <Label layoutX="196.0" layoutY="461.0" text="%lblMODIFIKONJËADRESË" textFill="#a61e1e">
          <font>
             <Font name="Bell MT Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="handleModifikoAdresen" layoutX="682.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleModifikoAdresen" prefHeight="27.0" prefWidth="184.0" style="-fx-background-color: #c73f3f;" text="MODIFIKO ADRESËN" textFill="WHITE">
+      <Button fx:id="handleModifikoAdresen" layoutX="682.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleModifikoAdresen" prefHeight="27.0" prefWidth="184.0" style="-fx-background-color: #c73f3f;" text="%btnMODIFIKOADRESËN" textFill="WHITE">
          <font>
             <Font name="Bell MT Bold" size="14.0" />
          </font>
@@ -104,12 +105,12 @@
             <Glow />
          </effect>
       </Button>
-      <Label layoutX="196.0" layoutY="521.0" text="MODIFIKO NJË QYTETAR" textFill="#a61e1e">
+      <Label layoutX="196.0" layoutY="521.0" text="%lblMODIFIKONJËQYTETAR" textFill="#a61e1e">
          <font>
             <Font name="Bell MT Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="handleModifikoQytetarin" layoutX="682.0" layoutY="518.0" mnemonicParsing="false" onAction="#handleModifikoQytetarin" prefHeight="27.0" prefWidth="184.0" style="-fx-background-color: #c73f3f;" text="MODIFIKO QYTETARIN" textFill="WHITE">
+      <Button fx:id="handleModifikoQytetarin" layoutX="682.0" layoutY="518.0" mnemonicParsing="false" onAction="#handleModifikoQytetarin" prefHeight="27.0" prefWidth="184.0" style="-fx-background-color: #c73f3f;" text="%btnMODIFIKOQYTETARIN" textFill="WHITE">
          <font>
             <Font name="Bell MT Bold" size="13.5" />
          </font>

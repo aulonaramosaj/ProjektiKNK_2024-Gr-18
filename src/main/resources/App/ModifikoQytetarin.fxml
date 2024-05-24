@@ -54,22 +54,22 @@
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="NrPersonalLabel" layoutX="272.0" layoutY="210.0" text="Numri Personal:" textFill="SALMON" />
-                <Label fx:id="emriLabel" layoutX="274.0" layoutY="242.0" prefHeight="17.0" prefWidth="54.0" text="Emri:" textFill="SALMON" />
+                <Label fx:id="NrPersonalLabel" layoutX="272.0" layoutY="210.0" text="%lblNumriPersonal" textFill="SALMON" />
+                <Label fx:id="emriLabel" layoutX="274.0" layoutY="242.0" prefHeight="17.0" prefWidth="54.0" text="%lblEmri" textFill="SALMON" />
                 <Label layoutX="218.0" layoutY="179.0" />
-                <Label layoutX="275.0" layoutY="366.0" text="Adresa:" textFill="SALMON" />
-                <Label fx:id="gjiniaLabel" layoutX="278.0" layoutY="404.0" text="Gjinia:" textFill="SALMON" />
-                <Label fx:id="ditelindjaLabel" layoutX="275.0" layoutY="324.0" text="Ditelindja:" textFill="SALMON" />
-                <Label fx:id="mbiemriLabel" layoutX="454.0" layoutY="242.0" text="Mbiemri:" textFill="SALMON" />
-                <Label fx:id="emailLabel" layoutX="279.0" layoutY="438.0" text="Email:" textFill="SALMON" />
-                <Label fx:id="nrTelefonitLabel" layoutX="529.0" layoutY="438.0" text="Numri Telefonit: " textFill="SALMON" />
+                <Label layoutX="275.0" layoutY="366.0" text="%lblAdresa" textFill="SALMON" />
+                <Label fx:id="gjiniaLabel" layoutX="278.0" layoutY="404.0" text="%lblGjinia" textFill="SALMON" />
+                <Label fx:id="ditelindjaLabel" layoutX="275.0" layoutY="324.0" text="%lblDitelindja" textFill="SALMON" />
+                <Label fx:id="mbiemriLabel" layoutX="454.0" layoutY="242.0" text="%lblMbiemri" textFill="SALMON" />
+                <Label fx:id="emailLabel" layoutX="279.0" layoutY="438.0" text="%lblEmail" textFill="SALMON" />
+                <Label fx:id="nrTelefonitLabel" layoutX="529.0" layoutY="438.0" text="%lblNumriTelefonit" textFill="SALMON" />
                 <TextField fx:id="nrPersonal" layoutX="403.0" layoutY="206.0" />
                 <TextField fx:id="emri" layoutX="273.0" layoutY="277.0" />
                 <TextField fx:id="mbiemri" layoutX="454.0" layoutY="277.0" />
                 <TextField fx:id="adresaId" layoutX="348.0" layoutY="362.0" />
                 <TextField fx:id="email" layoutX="273.0" layoutY="473.0" />
                 <TextField fx:id="nrTel" layoutX="529.0" layoutY="473.0" />
-                <Button fx:id="modifikoQytetarin" layoutX="679.0" layoutY="516.0" mnemonicParsing="false" onAction="#modifikoQytetarin" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #e14a4a;" text="MODIFIKO QYTETARIN" textFill="#fcfcfc">
+                <Button fx:id="modifikoQytetarin" layoutX="679.0" layoutY="516.0" mnemonicParsing="false" onAction="#modifikoQytetarin" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #e14a4a;" text="%btnMODIFIKOQYTETARIN" textFill="#fcfcfc">
                     <effect>
                         <Glow />
                     </effect></Button>
@@ -80,27 +80,28 @@
                                 <Image url="@../img/Picture1.png" />
                             </image>
                         </ImageView>
+                        <Button layoutX="49.0" layoutY="167.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" />
                     </children></Pane>
                 <Pane layoutX="149.0" layoutY="-2.0" prefHeight="96.0" prefWidth="751.0" style="-fx-background-color: #FA8072;">
                     <children>
-                        <Button fx:id="btnOpen1" layoutX="147.0" layoutY="36.0" mnemonicParsing="false" onAction="#btnOpen1" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #e14a4a;" text="Open1" textFill="#f2f0f0">
+                        <Button fx:id="btnOpen1" layoutX="147.0" layoutY="36.0" mnemonicParsing="false" onAction="#btnOpen1" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #e14a4a;" text="%btnOpen1" textFill="#f2f0f0">
                             <effect>
                                 <Glow />
                             </effect></Button>
-                        <Button fx:id="btnOpen2" layoutX="335.0" layoutY="36.0" mnemonicParsing="false" onAction="#btnOpen2" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #e14a4a;" text="Open2" textFill="#fffdfd">
+                        <Button fx:id="btnOpen2" layoutX="335.0" layoutY="36.0" mnemonicParsing="false" onAction="#btnOpen2" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #e14a4a;" text="%btnOpen2" textFill="#fffdfd">
                             <effect>
                                 <Glow />
                             </effect></Button>
-                        <Button fx:id="btnOpen3" layoutX="506.0" layoutY="36.0" mnemonicParsing="false" onAction="#btnOpen3" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #e14a4a;" text="Open3" textFill="#f8f6f6">
+                        <Button fx:id="btnOpen3" layoutX="506.0" layoutY="36.0" mnemonicParsing="false" onAction="#btnOpen3" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #e14a4a;" text="%btnOpen3" textFill="#f8f6f6">
                             <effect>
                                 <Glow />
                             </effect></Button>
                     </children>
                 </Pane>
                 <DatePicker fx:id="ditelindja" layoutX="348.0" layoutY="320.0" prefHeight="25.0" prefWidth="149.0" />
-                <RadioButton fx:id="femer" layoutX="348.0" layoutY="404.0" mnemonicParsing="false" text="Femer" textFill="SALMON" />
-                <RadioButton fx:id="mashkull" layoutX="450.0" layoutY="404.0" mnemonicParsing="false" text="Mashkull" textFill="SALMON" />
-                <Label layoutX="218.0" layoutY="125.0" text="MODIFIKO QYTETARIN" textFill="SALMON">
+                <RadioButton fx:id="femer" layoutX="348.0" layoutY="404.0" mnemonicParsing="false" text="%rbtnFemer" textFill="SALMON" />
+                <RadioButton fx:id="mashkull" layoutX="450.0" layoutY="404.0" mnemonicParsing="false" text="%rbtnMashkull" textFill="SALMON" />
+                <Label layoutX="218.0" layoutY="125.0" text="%lblMODIFIKOQYTETARIN" textFill="SALMON">
                     <font>
                         <Font name="System Bold" size="19.0" />
                     </font>

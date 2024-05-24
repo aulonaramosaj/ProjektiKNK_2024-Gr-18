@@ -46,7 +46,9 @@ public class LogInController {
     private void notHaveAccount(MouseEvent me){
         Navigator.navigate(me, Navigator.SIGNUP_PAGE);
     }
+    @FXML
+    private void handleChangeLanguage(ActionEvent ae){
+        Navigator.changeLanguage();
+        Navigator.navigate(ae,Navigator.LOGIN_PAGE);
+    }
 }
-
-
-

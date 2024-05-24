@@ -9,10 +9,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelpController">
    <children>
-      <Pane layoutY="1.0" prefHeight="500.0" prefWidth="132.0" style="-fx-background-color: #FA8072;" />
+      <Pane layoutY="1.0" prefHeight="500.0" prefWidth="132.0" style="-fx-background-color: #FA8072;">
+         <children>
+            <Button layoutX="40.0" layoutY="156.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" />
+         </children></Pane>
       <Pane prefHeight="122.0" prefWidth="800.0" style="-fx-background-color: #FA8072;">
          <children>
             <ImageView fitHeight="168.0" fitWidth="146.0" layoutX="-9.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
@@ -20,7 +22,7 @@
                   <Image url="@../img/Picture1.png" />
                </image>
             </ImageView>
-            <Button fx:id="handleFaqjaKryesore" layoutX="616.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleFaqjaKryesore" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #dc3d3d;" text="Faqja Kryesore" textFill="WHITE">
+            <Button fx:id="handleFaqjaKryesore" layoutX="616.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleFaqjaKryesore" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #dc3d3d;" text="%btnFaqjaKryesore" textFill="WHITE">
                <font>
                   <Font name="Bell MT" size="12.0" />
                </font>
@@ -30,21 +32,21 @@
             </Button>
          </children>
       </Pane>
-      <Label fx:id="ckaeshteSistemi" layoutX="138.0" layoutY="148.0" prefHeight="22.0" prefWidth="661.0" text="Çka është Sistemi Interaktiv për regjistrimin dhe gjetjen e Adresave në Republikën e Kosovës?">
+      <Label fx:id="ckaeshteSistemi" layoutX="138.0" layoutY="148.0" prefHeight="22.0" prefWidth="661.0" text="%lblÇkaështëSistemiInteraktivpërregjistrimindhegjetjeneAdresavenëRepublikëneKosovës?">
          <font>
             <Font name="Bell MT Bold" size="15.5" />
          </font>
       </Label>
-      <Label fx:id="ckaeshtesistemi1" layoutX="178.0" layoutY="188.0" prefHeight="18.0" prefWidth="542.0" text="Ky sistem është krijuar për qëllim të regjistrimit të adresave në Republikën e Kosovës. ">
+      <Label fx:id="ckaeshtesistemi1" layoutX="178.0" layoutY="188.0" prefHeight="18.0" prefWidth="542.0" text="%lblKysistemështëkrijuarpërqëllimtëregjistrimittëadresavenëRepublikëneKosovës">
          <font>
             <Font name="Bell MT" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="funksionimiSistemit" layoutX="138.0" layoutY="228.0" prefHeight="22.0" prefWidth="208.0" text="Si funksionon Sistemi?">
+      <Label fx:id="funksionimiSistemit" layoutX="138.0" layoutY="228.0" prefHeight="22.0" prefWidth="208.0" text="%lblSifunksiononSistemi?">
          <font>
             <Font name="Bell MT Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="funksionimiSistemit1" layoutX="178.0" layoutY="276.0" prefHeight="18.0" prefWidth="415.0" text="Funksionimi i Sistemit" />
+      <Label fx:id="funksionimiSistemit1" layoutX="178.0" layoutY="276.0" prefHeight="18.0" prefWidth="415.0" text="%lblFunksionimiiSistemit" />
    </children>
 </AnchorPane>

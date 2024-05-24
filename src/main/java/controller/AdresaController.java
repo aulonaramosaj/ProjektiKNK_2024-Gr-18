@@ -56,7 +56,7 @@ public class AdresaController {
                 Adresa newAdresa = new Adresa(addressId, txtKomuna.getText(), txtFshati.getText(), txtRruga.getText(), numriNderteses, kodiPostar, llojiVendbanimit);
                 addressAddedListener.onAddressAdded(newAdresa);
             }
-            Navigator.navigateWithParams(ae, Navigator.QYTETARI, addressId);
+            Navigator.navigate(ae, Navigator.QYTETARI, addressId);
         } else {
             System.out.println("Adresa dështoi që të shtohet në databazë");
         }
@@ -75,5 +75,10 @@ public class AdresaController {
     @FXML
     private void buttonOpen3(ActionEvent ae) {
 
+    }
+    @FXML
+    private void handleChangeLanguage(ActionEvent ae){
+        Navigator.changeLanguage();
+        Navigator.navigate(ae,Navigator.ADRESA);
     }
 }

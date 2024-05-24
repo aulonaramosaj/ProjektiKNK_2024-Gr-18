@@ -18,17 +18,17 @@
         <!-- Left color panel -->
         <Pane layoutX="-1.0" prefHeight="638.0" prefWidth="156.0" style="-fx-background-color: #FA8072;">
             <children>
-                <Button fx:id="button" layoutX="19.0" layoutY="199.0" mnemonicParsing="false" onAction="#addAddress" style="-fx-background-color: DF4255;" text="VENDOS ADRESËN" textFill="WHITE">
+                <Button fx:id="button" layoutX="8.0" layoutY="201.0" mnemonicParsing="false" onAction="#addAddress" style="-fx-background-color: DF4255;" text="%btnVENDOSADRESËN" textFill="WHITE">
                     <effect>
                         <Glow />
                     </effect>
                 </Button>
-                <Button fx:id="handleVendosQytetar" layoutX="19.0" layoutY="249.0" mnemonicParsing="false" onAction="#handleVendosQytetar" style="-fx-background-color: DF4255;" text="VENDOS QYTETAR" textFill="WHITE">
+                <Button fx:id="handleVendosQytetar" layoutX="9.0" layoutY="249.0" mnemonicParsing="false" onAction="#handleVendosQytetar" style="-fx-background-color: DF4255;" text="%btnVENDOSQYTETAR" textFill="WHITE">
                     <effect>
                         <Glow />
                     </effect>
                 </Button>
-                <Button fx:id="handleShfaqQytetaret" layoutX="21.0" layoutY="294.0" mnemonicParsing="false" onAction="#handleShfaqQytetaret" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: DF4255;" text="SHFAQ QYTETARËT" textFill="WHITE">
+                <Button fx:id="handleShfaqQytetaret" layoutX="8.0" layoutY="294.0" mnemonicParsing="false" onAction="#handleShfaqQytetaret" prefHeight="26.0" prefWidth="139.0" style="-fx-background-color: DF4255;" text="%btnSHFAQQYTETARËT" textFill="WHITE">
                     <effect>
                         <Glow />
                     </effect>
@@ -36,12 +36,12 @@
                         <Font size="11.5" />
                     </font>
                 </Button>
-                <Button fx:id="handleHome" layoutX="22.0" layoutY="575.0" mnemonicParsing="false" onAction="#handleHome" style="-fx-background-color: DF4255;" text="FAQJA KRYESORE" textFill="WHITE">
+                <Button fx:id="handleHome" layoutX="12.0" layoutY="574.0" mnemonicParsing="false" onAction="#handleHome" style="-fx-background-color: DF4255;" text="%btnFAQJAKRYESORE" textFill="WHITE">
                     <effect>
                         <Glow />
                     </effect>
                 </Button>
-                <Button fx:id="handleModifikoAdresen" layoutX="21.0" layoutY="339.0" mnemonicParsing="false" onAction="#handleModifikoAdresen" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: DF4255;" text="MODIFIKO ADRESËN" textFill="WHITE">
+                <Button fx:id="handleModifikoAdresen" layoutX="9.0" layoutY="339.0" mnemonicParsing="false" onAction="#handleModifikoAdresen" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: DF4255;" text="%btnMODIFIKOADRESËN" textFill="WHITE">
                     <font>
                         <Font size="10.5" />
                     </font>
@@ -49,11 +49,12 @@
                         <Glow />
                     </effect>
                 </Button>
-                <Button fx:id="handleClearAdresa" layoutX="19.0" layoutY="383.0" mnemonicParsing="false" onAction="#handleClearAdresa" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: DF4255;" text="FSHI ADRESËN" textFill="WHITE">
+                <Button fx:id="handleClearAdresa" layoutX="9.0" layoutY="383.0" mnemonicParsing="false" onAction="#handleClearAdresa" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: DF4255;" text="%btnFSHIADRESËN" textFill="WHITE">
                     <effect>
                         <Glow />
                     </effect>
                 </Button>
+                <Button layoutX="51.0" layoutY="153.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" />
             </children></Pane>
 
         <!-- Top color panel with image and title -->
@@ -65,7 +66,7 @@
                         <Image url="@../img/Picture1.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="162.0" layoutY="47.0" prefHeight="47.0" prefWidth="156.0" text="Paneli Adresa" textFill="WHITE">
+                <Label layoutX="162.0" layoutY="47.0" prefHeight="47.0" prefWidth="156.0" text="%lblPaneliAdresa" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -73,19 +74,19 @@
             </children>
         </Pane>
 
-
-        <Label fx:id="komunaLabel" layoutX="169.0" layoutY="123.0" text="Komuna" textFill="#b12727" />
-        <Label fx:id="kodiPostarLabel" layoutX="342.0" layoutY="123.0" text="Kodi Postar" textFill="#b12727" />
-        <Label fx:id="fshatiLagjiaLabel" layoutX="510.0" layoutY="123.0" text="Fshati/Lagjia" textFill="#b12727" />
-        <Label fx:id="rrugaLabel" layoutX="672.0" layoutY="123.0" text="Rruga" textFill="#b12727" />
-        <Label fx:id="numriNdertesesLabel" layoutX="171.0" layoutY="223.0" text="Numri i Ndërtesës" textFill="#b12727" />
+        <!-- Labels and TextFields for address information -->
+        <Label fx:id="komunaLabel" layoutX="169.0" layoutY="123.0" text="%lblKomuna" textFill="#b12727" />
+        <Label fx:id="kodiPostarLabel" layoutX="342.0" layoutY="123.0" text="%lblKodiPostar" textFill="#b12727" />
+        <Label fx:id="fshatiLagjiaLabel" layoutX="510.0" layoutY="123.0" text="%lblFshatiLagjja" textFill="#b12727" />
+        <Label fx:id="rrugaLabel" layoutX="672.0" layoutY="123.0" text="%lblRruga" textFill="#b12727" />
+        <Label fx:id="numriNdertesesLabel" layoutX="171.0" layoutY="223.0" text="%lblNumriiNdërtesës" textFill="#b12727" />
         <TextField fx:id="komunaTextField" layoutX="171.0" layoutY="158.0" />
         <TextField fx:id="kodiPostarTextField" layoutX="334.0" layoutY="158.0" />
         <TextField fx:id="fshatiLagjiaTextField" layoutX="501.0" layoutY="158.0" />
         <TextField fx:id="rrugaTextField" layoutX="666.0" layoutY="158.0" />
         <TextField fx:id="NrNdertesesTextField" layoutX="169.0" layoutY="254.0" />
 
-
+        <!-- Table for displaying addresses -->
         <TableView fx:id="tableView" layoutX="167.0" layoutY="319.0" prefHeight="204.0" prefWidth="867.0" style="-fx-background-color: #FA8072;">
             <columns>
                 <TableColumn fx:id="idColumn" prefWidth="108.79998779296875" text="Id" />
@@ -94,13 +95,13 @@
                 <TableColumn fx:id="fshatiLagjiaColumn" prefWidth="114.40008544921875" text="Fshati/Lagjia" />
                 <TableColumn fx:id="rrugaColumn" prefWidth="137.59991455078125" text="Rruga" />
                 <TableColumn fx:id="numriNdertesesColumn" prefWidth="136.7999267578125" text="Numri i Ndërtesës" />
-                <TableColumn fx:id="llojiVendbanimitColumn" minWidth="20.0" prefWidth="128.0" text="Lloji i Vendbanimit" />
+                <TableColumn fx:id="llojiVendbanimitColumn" minWidth="20.0" prefWidth="128.0" text="Lloji i vendbanimit" />
             </columns>
         </TableView>
-        <Button fx:id="handleFilter" layoutX="543.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleFilter" text="FILTER" />
+        <Button fx:id="handleFilter" layoutX="543.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleFilter" text="%btnFILTER" />
         <Pagination fx:id="faqet" layoutX="501.0" layoutY="541.0" prefHeight="47.0" prefWidth="200.0" style="-fx-background-color: F8DCD9;" />
-        <Button fx:id="handleClear" layoutX="771.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleClear" text="Fshi Filterat" />
-        <Label fx:id="llojiVendbanimitLabel" layoutX="342.0" layoutY="223.0" text="Lloji i Vendbanimit" textFill="#b12727" />
+        <Button fx:id="handleClear" layoutX="771.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleClear" text="%btnFshiFilterat" />
+        <Label fx:id="llojiVendbanimitLabel" layoutX="342.0" layoutY="223.0" text="%lblLlojiivendbanimit" textFill="#b12727" />
         <TextField fx:id="LlojiVendbanimitTextField" layoutX="334.0" layoutY="254.0" />
     </children>
 </AnchorPane>

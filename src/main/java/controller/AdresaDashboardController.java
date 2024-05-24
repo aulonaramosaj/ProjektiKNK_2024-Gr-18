@@ -95,7 +95,7 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
 
         @FXML
         private void addAddress(ActionEvent ae) {
-                Navigator.navigateWithListener(root, Navigator.ADRESA, this);
+                Navigator.navigateWithListener(root,Navigator.ADRESA, this);
         }
 
         @FXML
@@ -181,7 +181,7 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
         private void handleVendosQytetar(ActionEvent ae) {
                 Adresa selectedAddress = tableView.getSelectionModel().getSelectedItem();
                 if (selectedAddress != null) {
-                        Navigator.navigateWithParams(ae, Navigator.QYTETARI, selectedAddress.getId());
+                        Navigator.navigate(ae, Navigator.QYTETARI, selectedAddress.getId());
                 } else {
                         showAlert(Alert.AlertType.WARNING, "No Selection", "Nuk është adresa e selektuar. Ju lutem selektoni një adresë.");
                 }
@@ -202,7 +202,7 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
                 Adresa selectedAddress = tableView.getSelectionModel().getSelectedItem();
                 if (selectedAddress != null) {
                         int addressId = selectedAddress.getId();
-                        Navigator.navigateWithParams(ae, Navigator.MODIFIKO_ADRESEN, addressId);
+                        Navigator.navigate(ae, Navigator.MODIFIKO_ADRESEN, addressId);
                 } else {
                         showAlert(Alert.AlertType.WARNING, "No Selection", "Nuk është adresa e selektuar. Ju lutem selektoni një adresë.");
                 }
@@ -212,18 +212,30 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
                 Adresa selectedAddress = tableView.getSelectionModel().getSelectedItem();
                 if (selectedAddress != null) {
                         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
-                        confirmationAlert.setTitle("Konfirmo fshirjen e Adresës");
-                        confirmationAlert.setHeaderText("Fshi Adresën");
-                        confirmationAlert.setContentText("A jeni i sigurt nëse dëshironi të fshini këtë adresë?");
+                        confirmationAlert.setTitle("Confirm Address Deletion");
+                        confirmationAlert.setHeaderText("Delete Address");
+                        confirmationAlert.setContentText("Are you sure you want to delete this address? This action cannot be undone and may affect related data.");
 
                         Optional<ButtonType> response = confirmationAlert.showAndWait();
                         if (response.isPresent() && response.get() == ButtonType.OK) {
-                                adresaService.deleteAdresa(selectedAddress.getId());
-                                addressList.remove(selectedAddress);
-                                refreshPagination();
+                                try {
+                                        adresaService.deleteAdresa(selectedAddress.getId());
+                                        addressList.remove(selectedAddress);
+                                        refreshPagination();
+                                        showAlert(Alert.AlertType.INFORMATION, "Deletion Successful", "The address has been successfully deleted.");
+                                } catch (Exception e) {
+                                        showAlert(Alert.AlertType.ERROR, "Deletion Error", "An error occurred while deleting the address: " + e.getMessage());
+                                }
                         }
                 } else {
-                        showAlert(Alert.AlertType.WARNING, "No Selection", "Nuk ka adresë të selektuar. Ju lutem selektoni një adresë për ta fshirë.");
+                        showAlert(Alert.AlertType.WARNING, "No Selection", "No address selected. Please select an address to delete.");
                 }
+        }
+
+
+        @FXML
+        private void handleChangeLanguage(ActionEvent ae){
+                Navigator.changeLanguage();
+                Navigator.navigate(ae,Navigator.ADRESA_DASHBOARD);
         }
 }

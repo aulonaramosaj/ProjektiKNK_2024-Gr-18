@@ -18,4 +18,9 @@ public class HelpController {
     private void handleFaqjaKryesore (ActionEvent ae){
         Navigator.navigate(ae, Navigator.HOME_PAGE);
     }
+    @FXML
+    private void handleChangeLanguage(ActionEvent ae){
+        Navigator.changeLanguage();
+        Navigator.navigate(ae,Navigator.HELP);
+    }
 }

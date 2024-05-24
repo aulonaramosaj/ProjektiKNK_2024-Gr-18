@@ -15,17 +15,17 @@
    <children>
       <Pane prefHeight="98.0" prefWidth="850.0" style="-fx-background-color: #FA8072;">
          <children>
-            <Button fx:id="buttonOpen1" layoutX="216.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen1" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="Open1" textFill="WHITE">
+            <Button fx:id="buttonOpen1" layoutX="216.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen1" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="%btnOpen1" textFill="WHITE">
                <effect>
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="buttonOpen2" layoutX="411.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen2" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="Open2" textFill="WHITE">
+            <Button fx:id="buttonOpen2" layoutX="411.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen2" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="%btnOpen2" textFill="WHITE">
                <effect>
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="buttonOpen3" layoutX="605.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen3" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="Open3" textFill="WHITE">
+            <Button fx:id="buttonOpen3" layoutX="605.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen3" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="%btnOpen3" textFill="WHITE">
                <effect>
                   <Glow />
                </effect>
@@ -39,53 +39,54 @@
                   <Image url="@../img/Picture1.png" />
                </image>
             </ImageView>
+            <Button layoutX="39.0" layoutY="168.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" />
          </children>
       </Pane>
-      <Label layoutX="197.0" layoutY="195.0" prefHeight="26.0" prefWidth="130.0" text="Lloji i vendbanimit:" textFill="#ec4431">
+      <Label layoutX="197.0" layoutY="195.0" prefHeight="26.0" prefWidth="150.0" text="%lblLlojiivendbanimit" textFill="#ec4431">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </Label>
-      <RadioButton fx:id="radioPerhershem" layoutX="389.0" layoutY="198.0" mnemonicParsing="false" text="I Përhershëm" textFill="#ec4431">
+      <RadioButton fx:id="radioPerhershem" layoutX="389.0" layoutY="198.0" mnemonicParsing="false" text="%rbtnIPërhershëm" textFill="#ec4431">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="radioPerkohshem" layoutX="574.0" layoutY="198.0" mnemonicParsing="false" text="I Përkohshëm" textFill="#ec4431">
+      <RadioButton fx:id="radioPerkohshem" layoutX="574.0" layoutY="198.0" mnemonicParsing="false" text="%rbtnIPërkohshëm" textFill="#ec4431">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </RadioButton>
-      <Label layoutX="163.0" layoutY="145.0" prefHeight="23.0" prefWidth="245.0" text="VENDOS ADRESËN " textFill="#d93323">
+      <Label layoutX="163.0" layoutY="145.0" prefHeight="23.0" prefWidth="245.0" text="%lblVENDOSADRESËN" textFill="#d93323">
          <font>
             <Font name="Bodoni MT Black" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="196.0" layoutY="239.0" prefHeight="26.0" prefWidth="130.0" text="Komuna:" textFill="#ec4431">
+      <Label layoutX="196.0" layoutY="239.0" prefHeight="26.0" prefWidth="130.0" text="%lblKomuna" textFill="#ec4431">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </Label>
       <TextField fx:id="txtKomuna" layoutX="389.0" layoutY="240.0" promptText="Komuna:" />
-      <Label layoutX="197.0" layoutY="289.0" prefHeight="26.0" prefWidth="130.0" text="Kodi Postar:" textFill="#ec4431">
+      <Label layoutX="197.0" layoutY="289.0" prefHeight="26.0" prefWidth="130.0" text="%lblKodiPostar" textFill="#ec4431">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </Label>
       <TextField fx:id="txtKodiPostar" layoutX="390.0" layoutY="289.0" promptText="Kodi Postar:" />
-      <Label layoutX="196.0" layoutY="334.0" prefHeight="26.0" prefWidth="130.0" text="Fshati/Lagjja:" textFill="#ec4431">
+      <Label layoutX="196.0" layoutY="334.0" prefHeight="26.0" prefWidth="130.0" text="%lblFshatiLagjja" textFill="#ec4431">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </Label>
       <TextField fx:id="txtFshati" layoutX="390.0" layoutY="335.0" promptText="Fshati/Lagjja:" />
-      <Label layoutX="196.0" layoutY="431.0" prefHeight="26.0" prefWidth="130.0" text="Numri i ndërtesës:" textFill="#ec4431">
+      <Label layoutX="196.0" layoutY="431.0" prefHeight="26.0" prefWidth="130.0" text="%lblNumriindërtesës" textFill="#ec4431">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </Label>
       <TextField fx:id="txtNumriNderteses" layoutX="390.0" layoutY="431.0" promptText="Numri i ndërtesës:" />
-      <Button fx:id="vendosAdresen" layoutX="547.0" layoutY="487.0" mnemonicParsing="false" onAction="#vendosAdresen" prefHeight="28.0" prefWidth="230.0" style="-fx-background-color: #d93323;" text="VENDOS ADRESËN" textFill="WHITE">
+      <Button fx:id="vendosAdresen" layoutX="547.0" layoutY="487.0" mnemonicParsing="false" onAction="#vendosAdresen" prefHeight="28.0" prefWidth="230.0" style="-fx-background-color: #d93323;" text="%btnVENDOSADRESËN" textFill="WHITE">
          <font>
             <Font name="Segoe UI Black" size="15.0" />
          </font>
@@ -93,7 +94,7 @@
             <Glow />
          </effect>
       </Button>
-      <Label layoutX="197.0" layoutY="384.0" prefHeight="26.0" prefWidth="130.0" text="Rruga:" textFill="#ec4431">
+      <Label layoutX="197.0" layoutY="384.0" prefHeight="26.0" prefWidth="130.0" text="%lblRruga" textFill="#ec4431">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>

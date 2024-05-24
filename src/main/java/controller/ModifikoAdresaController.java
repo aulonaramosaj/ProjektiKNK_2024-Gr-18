@@ -103,4 +103,9 @@ public class ModifikoAdresaController implements ParametrizedController {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void handleChangeLanguage(ActionEvent ae){
+        Navigator.changeLanguage();
+        Navigator.navigate(ae,Navigator.MODIFIKO_ADRESEN);
+    }
 }

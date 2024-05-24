@@ -82,4 +82,9 @@ public class SignUpController {
         this.pwdKonfirmoFjalekalimin.setText("");
 
     }
+    @FXML
+    private void handleChangeLanguage(ActionEvent ae){
+        Navigator.changeLanguage();
+        Navigator.navigate(ae,Navigator.SIGNUP_PAGE);
+    }
 }

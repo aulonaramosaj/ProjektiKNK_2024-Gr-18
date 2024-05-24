@@ -50,7 +50,7 @@ public class Qytetari {
         return Email;
     }
 
-    public String getNrTel() {
+    public String getNrTelefonit() {
         return NrTel;
     }
 
@@ -58,6 +58,5 @@ public class Qytetari {
         return Gjinia;
     }
     public int getUser(){return User;}
-
 
 }

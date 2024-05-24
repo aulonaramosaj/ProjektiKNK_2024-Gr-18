@@ -1,8 +1,12 @@
 package controller;
+<<<<<<< HEAD
 
 import App.Navigator;
 import Database.DatabaseUtil;
 import javafx.event.ActionEvent;
+=======
+import Database.DatabaseUtil;
+>>>>>>> origin/master
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.BarChart;
@@ -18,8 +22,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+<<<<<<< HEAD
 public class StatisticsController {
 
+=======
+
+public class StatisticsController {
+ 
+>>>>>>> origin/master
     @FXML
     private Label numriPerdoruesve;
 
@@ -139,6 +149,7 @@ public class StatisticsController {
         }
         return "";
     }
+<<<<<<< HEAD
     @FXML
     private void handleChangeLanguage(ActionEvent ae){
         Navigator.changeLanguage();
@@ -149,3 +160,7 @@ public class StatisticsController {
         Navigator.navigate(ae,Navigator.HOME_PAGE);
     }
 }
+=======
+}
+
+>>>>>>> origin/master

@@ -12,35 +12,35 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #FA8072;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogInController">
+<AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #6DBFE3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogInController">
    <children>
-      <Pane layoutX="37.0" layoutY="31.0" prefHeight="441.0" prefWidth="324.0" style="-fx-background-color: ffffff;">
+      <Pane layoutX="37.0" layoutY="31.0" prefHeight="441.0" prefWidth="324.0" style="-fx-background-color: DAE3E7;">
          <children>
             <ImageView fitHeight="163.0" fitWidth="179.0" layoutX="71.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/Picture1.png" />
                </image>
             </ImageView>
-            <Label layoutX="84.0" layoutY="162.0" prefHeight="31.0" prefWidth="163.0" text="%lblLOGIN" textFill="#c74949">
+            <Label layoutX="84.0" layoutY="162.0" prefHeight="31.0" prefWidth="163.0" text="%lblLOGIN" textFill="#294a5a">
                <font>
                   <Font name="Bell MT Bold" size="26.0" />
                </font>
             </Label>
-            <Label layoutX="84.0" layoutY="410.0" onMouseClicked="#notHaveAccount" text="%lblDon'thaveanaccount" textFill="#c74949" underline="true">
+            <Label layoutX="84.0" layoutY="410.0" onMouseClicked="#notHaveAccount" text="%lblDon'thaveanaccount" textFill="#294a5a" underline="true">
                <font>
                   <Font name="Bell MT" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtEmail" layoutX="40.0" layoutY="238.0" prefHeight="25.0" prefWidth="224.0" promptText="Email:" />
-            <Label layoutX="40.0" layoutY="283.0" text="%lblPassword" textFill="#c74949">
+            <TextField fx:id="txtEmail" layoutX="40.0" layoutY="238.0" prefHeight="25.0" prefWidth="224.0" />
+            <Label layoutX="40.0" layoutY="283.0" text="%lblPassword" textFill="#294a5a">
                <font>
                   <Font name="Bell MT" size="15.0" />
                </font>
             </Label>
-            <PasswordField fx:id="pwdPassword" layoutX="40.0" layoutY="318.0" prefHeight="25.0" prefWidth="224.0" promptText="Password:" />
+            <PasswordField fx:id="pwdPassword" layoutX="40.0" layoutY="318.0" prefHeight="25.0" prefWidth="224.0" />
             <ButtonBar layoutX="73.0" layoutY="360.0" prefHeight="40.0" prefWidth="139.0">
                <buttons>
-                  <Button fx:id="handleLogIn" mnemonicParsing="false" onAction="#handleLogIn" prefHeight="28.0" prefWidth="105.0" style="-fx-background-color: #c74949;" text="%btnLOGIN" textFill="WHITE">
+                  <Button fx:id="handleLogIn" mnemonicParsing="false" onAction="#handleLogIn" prefHeight="28.0" prefWidth="105.0" style="-fx-background-color: #294a5a;" text="%btnLOGIN" textFill="WHITE">
                      <font>
                         <Font name="Bell MT Bold" size="15.0" />
                      </font>
@@ -50,13 +50,13 @@
                   </Button>
                </buttons>
             </ButtonBar>
-            <Label layoutX="40.0" layoutY="203.0" text="%lblEmail" textFill="#c74949">
+            <Label layoutX="40.0" layoutY="203.0" text="%lblEmail" textFill="#294a5a">
                <font>
                   <Font name="Bell MT" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="txtRegisteringFinding" layoutX="60.0" layoutY="136.0" prefHeight="17.0" prefWidth="224.0" text="%txtRegisteringandFindingAddresses" />
-            <Button layoutX="247.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" />
+            <Label fx:id="txtRegisteringFinding" layoutX="60.0" layoutY="136.0" prefHeight="17.0" prefWidth="224.0" text="%txtRegisteringandFindingAddresses" textFill="#294a5a" />
+            <Button layoutX="247.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" textFill="#294a5a" />
          </children>
       </Pane>
    </children>

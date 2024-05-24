@@ -42,70 +42,70 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: DAE3E7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
    <children>
-      <Pane prefHeight="500.0" prefWidth="143.0" style="-fx-background-color: #FA8072;">
+      <Pane prefHeight="500.0" prefWidth="143.0" style="-fx-background-color: #6DBFE3;">
          <children>
             <ImageView fitHeight="173.0" fitWidth="189.0" layoutX="-22.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/Picture1.png" />
                </image>
             </ImageView>
-            <Button layoutX="46.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" />
+            <Button layoutX="37.0" layoutY="453.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" textFill="#294a5a" />
          </children></Pane>
-      <Label layoutX="163.0" layoutY="14.0" prefHeight="27.0" prefWidth="136.0" text="%lblSIGNUP" textFill="SALMON">
+      <Label layoutX="179.0" layoutY="59.0" prefHeight="39.0" prefWidth="205.0" text="%lblSIGNUP" textFill="#294a5a">
          <font>
             <Font name="Bell MT Bold" size="31.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEmri" layoutX="167.0" layoutY="101.0" promptText="Emri:" style="-fx-background-color: #EEEEEE;" />
-      <TextField fx:id="txtMbiemri" layoutX="418.0" layoutY="101.0" promptText="Mbiemri:" style="-fx-background-color: #EEEEEE;" />
-      <Label layoutX="167.0" layoutY="74.0" text="%lblEmri" textFill="SALMON">
+      <TextField fx:id="txtEmri" layoutX="177.0" layoutY="152.0" style="-fx-background-color: #EEEEEE;" />
+      <TextField fx:id="txtMbiemri" layoutX="423.0" layoutY="152.0" prefHeight="25.0" prefWidth="173.0" style="-fx-background-color: #EEEEEE;" />
+      <Label layoutX="177.0" layoutY="135.0" text="%lblEmri" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="418.0" layoutY="74.0" text="%lblMbiemri" textFill="SALMON">
+      <Label layoutX="424.0" layoutY="135.0" text="%lblMbiemri" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="167.0" layoutY="150.0" text="%lblNumriPersonal" textFill="SALMON">
+      <Label layoutX="182.0" layoutY="189.0" text="%lblNumriPersonal" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNumriPersonal" layoutX="167.0" layoutY="175.0" prefHeight="26.0" prefWidth="432.0" promptText="Numri Personal:" style="-fx-background-color: #EEEEEE;" />
-      <Label layoutX="167.0" layoutY="217.0" text="%lblUsername" textFill="SALMON">
+      <TextField fx:id="txtNumriPersonal" layoutX="179.0" layoutY="206.0" prefHeight="26.0" prefWidth="420.0" style="-fx-background-color: #EEEEEE;" />
+      <Label layoutX="177.0" layoutY="242.0" text="%lblUsername" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUsername" layoutX="167.0" layoutY="243.0" prefHeight="26.0" prefWidth="432.0" promptText="Username:" style="-fx-background-color: #EEEEEE;" />
-      <Label layoutX="167.0" layoutY="277.0" text="%lblEmail" textFill="SALMON">
+      <TextField fx:id="txtUsername" layoutX="179.0" layoutY="261.0" prefHeight="26.0" prefWidth="420.0" style="-fx-background-color: #EEEEEE;" />
+      <Label layoutX="179.0" layoutY="303.0" text="%lblEmail" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEmail" layoutX="167.0" layoutY="308.0" prefHeight="26.0" prefWidth="432.0" promptText="Email:" style="-fx-background-color: #EEEEEE;" />
-      <Label layoutX="167.0" layoutY="350.0" text="%lblFjalëkalimi" textFill="SALMON">
+      <TextField fx:id="txtEmail" layoutX="179.0" layoutY="320.0" prefHeight="26.0" prefWidth="420.0" style="-fx-background-color: #EEEEEE;" />
+      <Label layoutX="179.0" layoutY="367.0" text="%lblFjalëkalimi" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="418.0" layoutY="350.0" text="%lblKonfirmoFjalëkalimin" textFill="SALMON">
+      <Label layoutX="419.0" layoutY="367.0" text="%lblKonfirmoFjalëkalimin" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </Label>
-      <PasswordField fx:id="pwdFjalekalimi" layoutX="167.0" layoutY="381.0" promptText="Fjalëkalimi:" style="-fx-background-color: #EEEEEE;" />
-      <PasswordField fx:id="pwdKonfirmoFjalekalimin" layoutX="418.0" layoutY="381.0" promptText="Konfirmo fjalëkalimin:" style="-fx-background-color: #EEEEEE;" />
-      <Button fx:id="handleCancel" layoutX="179.0" layoutY="432.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #FA8072;" text="%btnAnulo" textFill="WHITE">
+      <PasswordField fx:id="pwdFjalekalimi" layoutX="177.0" layoutY="387.0" style="-fx-background-color: #EEEEEE;" />
+      <PasswordField fx:id="pwdKonfirmoFjalekalimin" layoutX="420.0" layoutY="387.0" prefHeight="25.0" prefWidth="180.0" style="-fx-background-color: #EEEEEE;" />
+      <Button fx:id="handleCancel" layoutX="179.0" layoutY="432.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #294a5a;" text="%btnAnulo" textFill="WHITE">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="handleSignUp" layoutX="534.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: #FA8072;" text="%btnSignUp" textFill="WHITE">
+      <Button fx:id="handleSignUp" layoutX="499.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #294a5a;" text="%btnSignUp" textFill="WHITE">
          <font>
             <Font name="Bell MT Bold" size="13.0" />
          </font>

@@ -28,47 +28,10 @@ public class HomeController {
         }
         Navigator.navigate(ae, Navigator.QYTETARI_DASHBOARD);
     }
-
     @FXML
-    private void handleAdresa(ActionEvent ae){
-        if (!SessionManager.isLoggedIn()) {
-            System.out.println("Please log in first.");
-            Navigator.navigate(ae, Navigator.LOGIN_PAGE);
-            return;
-        }
-        Navigator.navigate(ae, Navigator.ADRESA);
+    private void handleStatistikat(ActionEvent ae){
+        Navigator.navigate(ae,Navigator.STATISTICS);
     }
-
-    @FXML
-    private void handleQytetari(ActionEvent ae){
-        if (!SessionManager.isLoggedIn()) {
-            System.out.println("Please log in first.");
-            Navigator.navigate(ae, Navigator.LOGIN_PAGE);
-            return;
-        }
-        Navigator.navigate(ae, Navigator.QYTETARI);
-    }
-
-    @FXML
-    private void handleModifikoAdresen(ActionEvent ae){
-        if (!SessionManager.isLoggedIn()) {
-            System.out.println("Please log in first.");
-            Navigator.navigate(ae, Navigator.LOGIN_PAGE);
-            return;
-        }
-        Navigator.navigate(ae, Navigator.MODIFIKO_ADRESEN);
-    }
-
-    @FXML
-    private void handleModifikoQytetarin(ActionEvent ae){
-        if (!SessionManager.isLoggedIn()) {
-            System.out.println("Please log in first.");
-            Navigator.navigate(ae, Navigator.LOGIN_PAGE);
-            return;
-        }
-        Navigator.navigate(ae, Navigator.MODIFIKO_QYTETARIN);
-    }
-
     @FXML
     private void handleHelp(ActionEvent ae){
         // Help mund te kete qasje edhe pa LogIn

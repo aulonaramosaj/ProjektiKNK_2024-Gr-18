@@ -9,20 +9,20 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: DAE3E7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelpController">
    <children>
-      <Pane layoutY="1.0" prefHeight="500.0" prefWidth="132.0" style="-fx-background-color: #FA8072;">
+      <Pane layoutY="1.0" prefHeight="500.0" prefWidth="132.0" style="-fx-background-color: #6DBFE3;">
          <children>
-            <Button layoutX="40.0" layoutY="156.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" />
+            <Button layoutX="40.0" layoutY="156.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" textFill="#294a5a" />
          </children></Pane>
-      <Pane prefHeight="122.0" prefWidth="800.0" style="-fx-background-color: #FA8072;">
+      <Pane prefHeight="122.0" prefWidth="800.0" style="-fx-background-color: #6DBFE3;">
          <children>
             <ImageView fitHeight="168.0" fitWidth="146.0" layoutX="-9.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/Picture1.png" />
                </image>
             </ImageView>
-            <Button fx:id="handleFaqjaKryesore" layoutX="616.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleFaqjaKryesore" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #dc3d3d;" text="%btnFaqjaKryesore" textFill="WHITE">
+            <Button fx:id="handleFaqjaKryesore" layoutX="616.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleFaqjaKryesore" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #294a5a;" text="%btnFaqjaKryesore" textFill="WHITE">
                <font>
                   <Font name="Bell MT" size="12.0" />
                </font>
@@ -32,7 +32,7 @@
             </Button>
          </children>
       </Pane>
-      <Label fx:id="ckaeshteSistemi" layoutX="138.0" layoutY="148.0" prefHeight="22.0" prefWidth="661.0" text="%lblÇkaështëSistemiInteraktivpërregjistrimindhegjetjeneAdresavenëRepublikëneKosovës?">
+      <Label fx:id="ckaeshteSistemi" layoutX="138.0" layoutY="148.0" prefHeight="22.0" prefWidth="661.0" text="%lblÇkaështëSistemiInteraktivpërregjistrimindhegjetjeneAdresavenëRepublikëneKosovës?" textFill="#294a5a">
          <font>
             <Font name="Bell MT Bold" size="15.5" />
          </font>
@@ -42,7 +42,7 @@
             <Font name="Bell MT" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="funksionimiSistemit" layoutX="138.0" layoutY="228.0" prefHeight="22.0" prefWidth="208.0" text="%lblSifunksiononSistemi?">
+      <Label fx:id="funksionimiSistemit" layoutX="138.0" layoutY="228.0" prefHeight="22.0" prefWidth="208.0" text="%lblSifunksiononSistemi?" textFill="#294a5a">
          <font>
             <Font name="Bell MT Bold" size="16.0" />
          </font>

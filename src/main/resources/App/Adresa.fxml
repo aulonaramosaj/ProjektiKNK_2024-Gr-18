@@ -11,82 +11,82 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdresaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="850.0" style="-fx-background-color: DAE3E7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdresaController">
    <children>
-      <Pane prefHeight="98.0" prefWidth="850.0" style="-fx-background-color: #FA8072;">
+      <Pane prefHeight="98.0" prefWidth="850.0" style="-fx-background-color: #6DBFE3;">
          <children>
-            <Button fx:id="buttonOpen1" layoutX="216.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen1" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="%btnOpen1" textFill="WHITE">
+            <Button fx:id="buttonOpen1" layoutX="216.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen1" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: #294a5a;" text="%btnHome" textFill="WHITE">
                <effect>
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="buttonOpen2" layoutX="411.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen2" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="%btnOpen2" textFill="WHITE">
+            <Button fx:id="buttonOpen2" layoutX="411.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen2" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: #294a5a;" text="%btnAdresa" textFill="WHITE">
                <effect>
                   <Glow />
                </effect>
             </Button>
-            <Button fx:id="buttonOpen3" layoutX="605.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen3" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: EE5342;" text="%btnOpen3" textFill="WHITE">
+            <Button fx:id="buttonOpen3" layoutX="605.0" layoutY="44.0" mnemonicParsing="false" onAction="#buttonOpen3" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: #294a5a;" text="%btnQytetari" textFill="WHITE">
                <effect>
                   <Glow />
                </effect>
             </Button>
          </children>
       </Pane>
-      <Pane layoutY="27.0" prefHeight="524.0" prefWidth="130.0" style="-fx-background-color: #FA8072;">
+      <Pane layoutY="27.0" prefHeight="524.0" prefWidth="130.0" style="-fx-background-color: #6DBFE3;">
          <children>
-            <ImageView fitHeight="145.0" fitWidth="147.0" layoutX="-15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="145.0" fitWidth="147.0" layoutX="-7.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/Picture1.png" />
                </image>
             </ImageView>
-            <Button layoutX="39.0" layoutY="168.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" />
+            <Button layoutX="30.0" layoutY="485.0" mnemonicParsing="false" onAction="#handleChangeLanguage" style="-fx-background-color: DAE3E7;" text=" AL | EN" textFill="#294a5a" />
          </children>
       </Pane>
-      <Label layoutX="197.0" layoutY="195.0" prefHeight="26.0" prefWidth="150.0" text="%lblLlojiivendbanimit" textFill="#ec4431">
+      <Label layoutX="197.0" layoutY="195.0" prefHeight="26.0" prefWidth="150.0" text="%lblLlojiivendbanimit" textFill="#294a5a">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </Label>
-      <RadioButton fx:id="radioPerhershem" layoutX="389.0" layoutY="198.0" mnemonicParsing="false" text="%rbtnIPërhershëm" textFill="#ec4431">
+      <RadioButton fx:id="radioPerhershem" layoutX="389.0" layoutY="198.0" mnemonicParsing="false" text="%rbtnIPërhershëm" textFill="#294a5a">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="radioPerkohshem" layoutX="574.0" layoutY="198.0" mnemonicParsing="false" text="%rbtnIPërkohshëm" textFill="#ec4431">
+      <RadioButton fx:id="radioPerkohshem" layoutX="574.0" layoutY="198.0" mnemonicParsing="false" text="%rbtnIPërkohshëm" textFill="#294a5a">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </RadioButton>
-      <Label layoutX="163.0" layoutY="145.0" prefHeight="23.0" prefWidth="245.0" text="%lblVENDOSADRESËN" textFill="#d93323">
+      <Label layoutX="163.0" layoutY="145.0" prefHeight="23.0" prefWidth="245.0" text="%lblVENDOSADRESËN" textFill="#294a5a">
          <font>
             <Font name="Bodoni MT Black" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="196.0" layoutY="239.0" prefHeight="26.0" prefWidth="130.0" text="%lblKomuna" textFill="#ec4431">
+      <Label layoutX="196.0" layoutY="239.0" prefHeight="26.0" prefWidth="130.0" text="%lblKomuna" textFill="#294a5a">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtKomuna" layoutX="389.0" layoutY="240.0" promptText="Komuna:" />
-      <Label layoutX="197.0" layoutY="289.0" prefHeight="26.0" prefWidth="130.0" text="%lblKodiPostar" textFill="#ec4431">
+      <TextField fx:id="txtKomuna" layoutX="389.0" layoutY="240.0" />
+      <Label layoutX="197.0" layoutY="289.0" prefHeight="26.0" prefWidth="130.0" text="%lblKodiPostar" textFill="#294a5a">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtKodiPostar" layoutX="390.0" layoutY="289.0" promptText="Kodi Postar:" />
-      <Label layoutX="196.0" layoutY="334.0" prefHeight="26.0" prefWidth="130.0" text="%lblFshatiLagjja" textFill="#ec4431">
+      <TextField fx:id="txtKodiPostar" layoutX="390.0" layoutY="289.0" />
+      <Label layoutX="196.0" layoutY="334.0" prefHeight="26.0" prefWidth="130.0" text="%lblFshatiLagjja" textFill="#294a5a">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtFshati" layoutX="390.0" layoutY="335.0" promptText="Fshati/Lagjja:" />
-      <Label layoutX="196.0" layoutY="431.0" prefHeight="26.0" prefWidth="130.0" text="%lblNumriindërtesës" textFill="#ec4431">
+      <TextField fx:id="txtFshati" layoutX="390.0" layoutY="335.0" />
+      <Label layoutX="196.0" layoutY="431.0" prefHeight="26.0" prefWidth="130.0" text="%lblNumriindërtesës" textFill="#294a5a">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNumriNderteses" layoutX="390.0" layoutY="431.0" promptText="Numri i ndërtesës:" />
-      <Button fx:id="vendosAdresen" layoutX="547.0" layoutY="487.0" mnemonicParsing="false" onAction="#vendosAdresen" prefHeight="28.0" prefWidth="230.0" style="-fx-background-color: #d93323;" text="%btnVENDOSADRESËN" textFill="WHITE">
+      <TextField fx:id="txtNumriNderteses" layoutX="390.0" layoutY="431.0" />
+      <Button fx:id="vendosAdresen" layoutX="547.0" layoutY="487.0" mnemonicParsing="false" onAction="#vendosAdresen" prefHeight="28.0" prefWidth="230.0" style="-fx-background-color: #294a5a;" text="%btnVENDOSADRESËN" textFill="WHITE">
          <font>
             <Font name="Segoe UI Black" size="15.0" />
          </font>
@@ -94,11 +94,11 @@
             <Glow />
          </effect>
       </Button>
-      <Label layoutX="197.0" layoutY="384.0" prefHeight="26.0" prefWidth="130.0" text="%lblRruga" textFill="#ec4431">
+      <Label layoutX="197.0" layoutY="384.0" prefHeight="26.0" prefWidth="130.0" text="%lblRruga" textFill="#294a5a">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtRruga" layoutX="390.0" layoutY="384.0" promptText="Rruga:" />
+      <TextField fx:id="txtRruga" layoutX="390.0" layoutY="384.0" />
    </children>
 </AnchorPane>

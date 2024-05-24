@@ -5,7 +5,6 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
-<<<<<<< HEAD
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,50 +13,23 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StatisticsController">
     <VBox alignment="CENTER" prefHeight="800.0" prefWidth="1100.0" spacing="10" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-=======
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.ScrollPane?>
-
-<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StatisticsController">
-    <VBox alignment="CENTER" prefHeight="800.0" prefWidth="1100.0" spacing="10">
->>>>>>> origin/master
         <padding>
             <Insets bottom="20" left="20" right="20" top="20" />
         </padding>
 
-<<<<<<< HEAD
         <HBox alignment="CENTER" spacing="10">
-         <Button mnemonicParsing="false" onAction="#handleHome" text="%btnFaqjaKryesore" />
-         <Button mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" />
-            <Label text="\%lblNumriiPërdoruesve" />
+            <Button mnemonicParsing="false" onAction="#handleHome" text="%btnFaqjaKryesore" />
+            <Button mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" />
+            <Label text="%lblNumriiPërdoruesve" />
             <Label fx:id="numriPerdoruesve" />
-            <Label text="\%lblNumriiAdresave" />
+            <Label text="%lblNumriiAdresave" />
             <Label fx:id="numriAdresave" />
-            <Label text="\%lblNumriiQytetarëve" />
+            <Label text="%lblNumriiQytetarëve" />
             <Label fx:id="numriQytetareve" />
         </HBox>
 
         <PieChart fx:id="gjiniaPieChart" title="Gjinia" />
 
-=======
-
-        <HBox alignment="CENTER" spacing="10">
-            <Label text="Numri i Përdoruesve:" />
-            <Label fx:id="numriPerdoruesve" />
-            <Label text="Numri i Adresave:" />
-            <Label fx:id="numriAdresave" />
-            <Label text="Numri i Qytetarëve:" />
-            <Label fx:id="numriQytetareve" />
-        </HBox>
-
-
-        <PieChart fx:id="gjiniaPieChart" title="Gjinia" />
-
-
-
->>>>>>> origin/master
         <BarChart fx:id="QytetaretPerAddresaBarChart" title="Numri i Qytetarëve nëpër adresa">
             <xAxis>
                 <CategoryAxis fx:id="adresaCategoryAxis" label="Adresa" />
@@ -67,28 +39,13 @@
             </yAxis>
         </BarChart>
 
-<<<<<<< HEAD
         <PieChart fx:id="llojiVendbanimitPieChart" title="Lloji Vendbanimit më i përhapur" />
 
         <HBox alignment="CENTER" spacing="10">
-            <Label text="\%lblMoshaMesatareeQytetarëve" />
+            <Label text="%lblMoshaMesatareeQytetarëve" />
             <Label fx:id="moshaMesatare" />
-            <Label text="\%lblMbiemrimëishpeshtë" />
+            <Label text="%lblMbiemrimëishpeshtë" />
             <Label fx:id="mbiemriMeShpesh" />
         </HBox>
     </VBox>
 </AnchorPane>
-=======
-
-        <PieChart fx:id="llojiVendbanimitPieChart" title="Lloji Vendbanimit më i përhapur" />
-
-
-        <HBox alignment="CENTER" spacing="10">
-            <Label text="Mosha Mesatare e Qytetarëve:" />
-            <Label fx:id="moshaMesatare" />
-            <Label text="Mbiemri më i shpeshtë:" />
-            <Label fx:id="mbiemriMeShpesh" />
-        </HBox>
-    </VBox>
-</ScrollPane>
->>>>>>> origin/master

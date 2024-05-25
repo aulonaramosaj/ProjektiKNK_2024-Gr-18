@@ -1,9 +1,10 @@
 CREATE DATABASE KNK;
 USE KNK;
 
+
 CREATE TABLE `User` (
   `Id` INT NOT NULL AUTO_INCREMENT,
-  `NrPersonal` CHAR(10) NOT NULL UNIQUE, 
+  `NrPersonal` CHAR(10) NOT NULL UNIQUE,
   `Emri` VARCHAR(50) NOT NULL,
   `Mbiemri` VARCHAR(50) NOT NULL,
   `Email` VARCHAR(150) NOT NULL UNIQUE,
@@ -14,10 +15,11 @@ CREATE TABLE `User` (
   PRIMARY KEY (`Id`)
 );
 
+
 CREATE TABLE `Adresa` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `Komuna` VARCHAR(50) DEFAULT NULL,
-  `LlojiVendbanimit` VARCHAR(20) NOT NULL, 
+  `LlojiVendbanimit` VARCHAR(20) NOT NULL,
   `Fshati` VARCHAR(50) DEFAULT NULL,
   `Rruga` VARCHAR(100) DEFAULT NULL,
   `NumriNderteses` INT DEFAULT NULL,
@@ -27,23 +29,24 @@ CREATE TABLE `Adresa` (
   PRIMARY KEY (`Id`)
 );
 
+
 CREATE TABLE `Qytetari` (
   `Id` INT NOT NULL AUTO_INCREMENT,
-  `NrPersonal` CHAR(10) NOT NULL UNIQUE, 
+  `NrPersonal` CHAR(10) NOT NULL UNIQUE,
   `Emri` VARCHAR(50) NOT NULL,
   `Mbiemri` VARCHAR(50) NOT NULL,
-  `Gjinia` VARCHAR(20) NOT NULL, 
-  `Ditelindja` DATE NOT NULL, 
+  `Gjinia` VARCHAR(20) NOT NULL,
+  `Ditelindja` DATE NOT NULL,
   `Adresa` INT NOT NULL,
-  `NrTelefonit` VARCHAR(20) NOT NULL,
+  `NrTelefonit` VARCHAR(30) NOT NULL,
   `Email` VARCHAR(150) DEFAULT NULL,
   `Created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `User` INT,
   PRIMARY KEY (`Id`),
-  FOREIGN KEY (`Adresa`) REFERENCES `Adresa` (`Id`)
+  FOREIGN KEY (`Adresa`) REFERENCES `Adresa` (`Id`) ON DELETE CASCADE
 );
+
 
 SELECT * FROM `User`;
 SELECT * FROM `Adresa`;
 SELECT * FROM `Qytetari`;
-

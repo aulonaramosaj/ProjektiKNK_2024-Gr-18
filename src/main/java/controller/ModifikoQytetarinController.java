@@ -10,7 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import model.User;
 import model.dto.QytetariDto;
-import repository.QytetariRepository;
+import service.QytetariService;
 import App.Navigator.ParametrizedController;
 
 import java.sql.Connection;
@@ -60,6 +60,8 @@ public class ModifikoQytetarinController implements ParametrizedController {
     @FXML
     private Label nrTelefonitLabel;
 
+    private QytetariService qytetariService = new QytetariService();
+
     @FXML
     void modifikoQytetarin(ActionEvent ae) {
         if (!SessionManager.isLoggedIn()) {
@@ -79,7 +81,7 @@ public class ModifikoQytetarinController implements ParametrizedController {
             int userId = currentUser.getId();
 
             QytetariDto qytetari = new QytetariDto(nrPersonal.getText(), emri.getText(), mbiemri.getText(), Gjinia, ditelindjaValue, idAdresaValue, email.getText(), nrTel.getText(), userId);
-            boolean isModified = QytetariRepository.modifiko(qytetari);
+            boolean isModified = qytetariService.updateQytetari(qytetari);
 
             if (isModified) {
                 System.out.println("Të dhënat e qytetarit u modifikuan me sukses");
@@ -101,8 +103,8 @@ public class ModifikoQytetarinController implements ParametrizedController {
     }
 
     private void loadCitizenData(String nrPersonal) {
-        try (Connection conn = DatabaseUtil.getConnection()) {
-            QytetariDto qytetari = QytetariRepository.findByNrPersonal(nrPersonal);
+        try {
+            QytetariDto qytetari = qytetariService.getQytetariByNrPersonal(nrPersonal);
             if (qytetari != null) {
                 emri.setText(qytetari.getEmri());
                 mbiemri.setText(qytetari.getMbiemri());

@@ -16,7 +16,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import model.Qytetari;
 import model.filter.QytetariFilter;
-import repository.QytetariRepository;
+import service.QytetariService;
 import App.Navigator.ParametrizedController;
 
 import java.net.URL;
@@ -35,9 +35,9 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
     @FXML
     private TableView<Qytetari> qytetariTable;
     @FXML
-    private TableColumn<Qytetari, Number> qytetariId, qytetariNrPersonal, qytetariAdresa;
+    private TableColumn<Qytetari, Number> qytetariId, qytetariAdresa;
     @FXML
-    private TableColumn<Qytetari, String> qytetariEmri, qytetariMbiemri, qytetariEmail, qytetariDitelindja, qytetariGjinia, qytetariNrTelefonit;
+    private TableColumn<Qytetari, String> qytetariNrPersonal, qytetariEmri, qytetariMbiemri, qytetariEmail, qytetariDitelindja, qytetariGjinia, qytetariNrTelefonit;
     @FXML
     private Pagination pagination;
     @FXML
@@ -52,6 +52,8 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
     private ObservableList<Qytetari> qytetariList = FXCollections.observableArrayList();
     private final int rowsPerPage = 10;
     private Integer adresaId;
+
+    private QytetariService qytetariService = new QytetariService();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -70,13 +72,11 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
 
     private void initializeTableColumns() {
         qytetariId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()));
-        qytetariNrPersonal.setCellValueFactory(cellData -> new SimpleIntegerProperty(Integer.parseInt(cellData.getValue().getNrPersonal())));
+        qytetariNrPersonal.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNrPersonal()));
         qytetariEmri.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmri()));
         qytetariMbiemri.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMbiemri()));
         qytetariEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
-        qytetariDitelindja.setCellValueFactory(cellData -> {
-            return new SimpleStringProperty(new SimpleDateFormat("dd-MM-yyyy").format(cellData.getValue().getDitelindja()));
-        });
+        qytetariDitelindja.setCellValueFactory(cellData -> new SimpleStringProperty(new SimpleDateFormat("dd-MM-yyyy").format(cellData.getValue().getDitelindja())));
         qytetariNrTelefonit.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNrTelefonit()));
         qytetariGjinia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGjinia()));
         qytetariAdresa.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getAdresa()));
@@ -98,8 +98,8 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
     }
 
     public void loadData() {
-        try (Connection conn = DatabaseUtil.getConnection()) {
-            List<Qytetari> qytetaret = QytetariRepository.getAllQytetaret(conn);
+        try {
+            List<Qytetari> qytetaret = qytetariService.getAllQytetaret();
             qytetariList.setAll(qytetaret);
             refreshPagination();
         } catch (SQLException e) {
@@ -108,8 +108,8 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
     }
 
     public void filterQytetariByAdresaId(int adresaId) {
-        try (Connection conn = DatabaseUtil.getConnection()) {
-            List<Qytetari> filteredQytetaret = QytetariRepository.getQytetariByAdresaId(conn, adresaId);
+        try {
+            List<Qytetari> filteredQytetaret = qytetariService.getQytetaretByAdresaId(adresaId);
             qytetariList.setAll(filteredQytetaret);
             refreshPagination();
         } catch (SQLException e) {
@@ -151,8 +151,8 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
 
         QytetariFilter filter = new QytetariFilter(nrPersonal, emri, mbiemri, ditelindjaValue, adresaId);
 
-        try (Connection conn = DatabaseUtil.getConnection()) {
-            List<Qytetari> filteredQytetaret = QytetariRepository.filterQytetaret(conn, filter);
+        try {
+            List<Qytetari> filteredQytetaret = qytetariService.filterQytetaret(filter);
             qytetariList.setAll(filteredQytetaret);
             refreshPagination();
         } catch (SQLException e) {
@@ -197,7 +197,7 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
 
             Optional<ButtonType> response = confirmationAlert.showAndWait();
             if (response.isPresent() && response.get() == ButtonType.OK) {
-                if (QytetariRepository.deleteQytetari(selectedQytetari.getId())) {
+                if (qytetariService.deleteQytetari(selectedQytetari.getId())) {
                     qytetariList.remove(selectedQytetari);
                     refreshPagination();
                     showAlert(Alert.AlertType.INFORMATION, "Success", "Citizen deleted successfully.");

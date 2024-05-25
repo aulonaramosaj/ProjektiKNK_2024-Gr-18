@@ -12,11 +12,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import model.dto.CreateQytetariDto;
 import repository.QytetariRepository;
+import service.QytetariService;
+import App.Navigator.ParametrizedController;
 
 import java.sql.Date;
 import java.time.LocalDate;
-
-import App.Navigator.ParametrizedController;
 
 public class QytetariController implements ParametrizedController {
 
@@ -37,6 +37,8 @@ public class QytetariController implements ParametrizedController {
     private DatePicker Ditelindja;
     @FXML
     private RadioButton Femer, Mashkull;
+
+    private QytetariService qytetariService = new QytetariService();
 
     @Override
     public void setParams(Object params) {
@@ -64,29 +66,29 @@ public class QytetariController implements ParametrizedController {
     @FXML
     void Ruaj(ActionEvent ae) {
         if (!SessionManager.isLoggedIn()) {
-            SessionManager.setLastAttemptedPage(Navigator.QYTETARI);
+            SessionManager.setLastAttemptedPage(Navigator.QYTETARI); // Store last attempted page
+            System.out.println("Please log in first.");
             Navigator.navigate(ae, Navigator.LOGIN_PAGE);
             return;
         }
 
-
-        if (Emri.getText().isEmpty() || Mbiemri.getText().isEmpty() || NrPersonal.getText().isEmpty() ||
-                NrTel.getText().isEmpty() || Email.getText().isEmpty() || Ditelindja.getValue() == null ||
-                (!Femer.isSelected() && !Mashkull.isSelected())) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "Ju lutem plotesoni te gjitha pjeset ne menyre korrekte.");
-            return;
-        }
-
-        if (QytetariRepository.existsByNrPersonal(NrPersonal.getText())) {
-            showAlert(Alert.AlertType.ERROR, "Duplicate Error", "Një qytetar me këtë Numër Personal tashmë ekziston.");
-            return;
-        }
-
         try {
+            if (QytetariRepository.existsByNrPersonal(NrPersonal.getText())) {
+                showAlert(Alert.AlertType.ERROR, "Duplicate Error", "Një qytetar me këtë Numër Personal tashmë ekziston.");
+                return;
+            }
+
+            if (Emri.getText().isEmpty() || Mbiemri.getText().isEmpty() || NrPersonal.getText().isEmpty() ||
+                    NrTel.getText().isEmpty() || Email.getText().isEmpty() || Ditelindja.getValue() == null ||
+                    (!Femer.isSelected() && !Mashkull.isSelected())) {
+                showAlert(Alert.AlertType.ERROR, "Validation Error", "Ju lutem plotesoni te gjitha pjeset ne menyre korrekte.");
+                return;
+            }
+
+            int userId = SessionManager.getUser().getId(); // Assuming SessionManager has a method to get the current user
             String Gjinia = Femer.isSelected() ? "Femer" : "Mashkull";
             LocalDate localDate = Ditelindja.getValue();
             Date ditelindjaValue = Date.valueOf(localDate);
-            int userId = SessionManager.getUser().getId();
 
             CreateQytetariDto qytetari = new CreateQytetariDto(
                     NrPersonal.getText(),
@@ -94,7 +96,7 @@ public class QytetariController implements ParametrizedController {
                     Mbiemri.getText(),
                     Gjinia,
                     ditelindjaValue,
-                    Integer.parseInt(Adresa.getText()),
+                    Integer.parseInt(Adresa.getText()), // Assuming Adresa is correctly set
                     NrTel.getText(),
                     Email.getText(),
                     userId

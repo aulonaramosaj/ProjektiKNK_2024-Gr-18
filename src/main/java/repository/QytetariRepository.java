@@ -16,7 +16,7 @@ public class QytetariRepository {
 
     public static boolean existsByNrPersonal(String nrPersonal) {
         String query = "SELECT COUNT(*) AS count FROM Qytetari WHERE NrPersonal = ?";
-        try (Connection conn = DBConnector.getConnection();
+        try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement pst = conn.prepareStatement(query)) {
             pst.setString(1, nrPersonal);
             ResultSet rs = pst.executeQuery();
@@ -29,32 +29,26 @@ public class QytetariRepository {
         return false;
     }
 
-
-    public static boolean create(CreateQytetariDto qytetariData) {
-        String query = """
-            INSERT INTO Qytetari (NrPersonal, Emri, Mbiemri, Gjinia, Ditelindja, Adresa, NrTelefonit, Email, User)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """;
+    public static boolean create(CreateQytetariDto qytetari) {
+        String query = "INSERT INTO Qytetari (NrPersonal, Emri, Mbiemri, Gjinia, Ditelindja, Adresa, NrTelefonit, Email, User) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement pst = conn.prepareStatement(query)) {
-            pst.setString(1, qytetariData.getNrPersonal());
-            pst.setString(2, qytetariData.getEmri());
-            pst.setString(3, qytetariData.getMbiemri());
-            pst.setString(4, qytetariData.getGjinia());
-            pst.setDate(5, new java.sql.Date(qytetariData.getDitelindja().getTime()));
-            pst.setInt(6, qytetariData.getAdresa());
-            pst.setString(7, qytetariData.getNrTel());
-            pst.setString(8, qytetariData.getEmail());
-            pst.setInt(9, qytetariData.getUserId());
+            pst.setString(1, qytetari.getNrPersonal());
+            pst.setString(2, qytetari.getEmri());
+            pst.setString(3, qytetari.getMbiemri());
+            pst.setString(4, qytetari.getGjinia());
+            pst.setDate(5, qytetari.getDitelindja());
+            pst.setInt(6, qytetari.getAdresa());
+            pst.setString(7, qytetari.getNrTel());
+            pst.setString(8, qytetari.getEmail());
+            pst.setInt(9, qytetari.getUserId());
             int rowsAffected = pst.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {
-            System.out.println("Database error when modifying citizen: " + e.getMessage());
             e.printStackTrace();
-            return false;
         }
+        return false;
     }
-
 
 
     public static boolean modifiko(QytetariDto qytetari) {

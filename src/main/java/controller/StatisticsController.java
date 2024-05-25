@@ -1,12 +1,8 @@
 package controller;
 
-
 import App.Navigator;
 import Database.DatabaseUtil;
 import javafx.event.ActionEvent;
-
-import Database.DatabaseUtil;
-
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.BarChart;
@@ -22,11 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-
-
 public class StatisticsController {
- 
 
     @FXML
     private Label numriPerdoruesve;
@@ -65,12 +57,21 @@ public class StatisticsController {
             numriAdresave.setText(String.valueOf(getNumerimin(connection, "Adresa")));
             numriQytetareve.setText(String.valueOf(getNumerimin(connection, "Qytetari")));
 
-
+            // Gjinia pie chart
             ObservableList<PieChart.Data> gjiniaData = FXCollections.observableArrayList(
                     new PieChart.Data("Mashkull", getGjiniaNumerimin(connection, "Mashkull")),
                     new PieChart.Data("Femer", getGjiniaNumerimin(connection, "Femer"))
             );
             gjiniaPieChart.setData(gjiniaData);
+
+
+            for (PieChart.Data data : gjiniaPieChart.getData()) {
+                if (data.getName().equals("Mashkull")) {
+                    data.getNode().setStyle("-fx-pie-color: #4682B4;");
+                } else if (data.getName().equals("Femer")) {
+                    data.getNode().setStyle("-fx-pie-color: #FF69B4;");
+                }
+            }
 
             // Popullimi me Qytetare per secilen Adrese
             XYChart.Series<String, Number> series = new XYChart.Series<>();
@@ -84,12 +85,28 @@ public class StatisticsController {
             }
             QytetaretPerAddresaBarChart.getData().add(series);
 
-            //  Lloji vendbanimit  pie chart
+
+            for (XYChart.Series<String, Number> s : QytetaretPerAddresaBarChart.getData()) {
+                for (XYChart.Data<String, Number> data : s.getData()) {
+                    data.getNode().setStyle("-fx-bar-fill: #20B2AA;"); // LightSeaGreen
+                }
+            }
+
+            // Lloji vendbanimit pie chart
             ObservableList<PieChart.Data> llojiVendbanimitData = FXCollections.observableArrayList(
                     new PieChart.Data("Përhershëm", getLlojiVendbanimitCount(connection, "Përhershëm")),
                     new PieChart.Data("Përkohshëm", getLlojiVendbanimitCount(connection, "Përkohshëm"))
             );
             llojiVendbanimitPieChart.setData(llojiVendbanimitData);
+
+
+            for (PieChart.Data data : llojiVendbanimitPieChart.getData()) {
+                if (data.getName().equals("Përhershëm")) {
+                    data.getNode().setStyle("-fx-pie-color: #3CB371;"); // MediumSeaGreen
+                } else if (data.getName().equals("Përkohshëm")) {
+                    data.getNode().setStyle("-fx-pie-color: #FFA07A;"); // LightSalmon
+                }
+            }
 
             // Vendos moshen mesatare dhe mbiemrin me te shpeshte
             moshaMesatare.setText(String.valueOf(getMoshenMesatare(connection)));
@@ -149,16 +166,13 @@ public class StatisticsController {
     }
 
     @FXML
-    private void handleChangeLanguage(ActionEvent ae){
+    private void handleChangeLanguage(ActionEvent ae) {
         Navigator.changeLanguage();
-        Navigator.navigate(ae,Navigator.STATISTICS);
+        Navigator.navigate(ae, Navigator.STATISTICS);
     }
+
     @FXML
-    public void handleHome(ActionEvent ae){
-        Navigator.navigate(ae,Navigator.HOME_PAGE);
+    public void handleHome(ActionEvent ae) {
+        Navigator.navigate(ae, Navigator.HOME_PAGE);
     }
 }
-
-
-
-

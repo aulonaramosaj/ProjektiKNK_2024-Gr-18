@@ -95,6 +95,6 @@
             <Font name="Bell MT Bold" size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="addressId" layoutX="402.0" layoutY="217.0" />
+      <TextField fx:id="idAdresa" layoutX="402.0" layoutY="217.0" />
    </children>
 </AnchorPane>

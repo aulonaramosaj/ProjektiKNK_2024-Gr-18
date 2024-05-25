@@ -13,7 +13,7 @@
    <children>
       <Pane layoutX="-5.0" prefHeight="242.0" prefWidth="906.0" style="-fx-background-color: #6DBFE3;">
          <children>
-            <Button layoutX="770.0" layoutY="178.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color: #294a5a;" text="%btnSignUp" textFill="WHITE">
+            <Button layoutX="770.0" layoutY="178.0" mnemonicParsing="false" onAction="#handleSignup" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color: #294a5a;" text="%btnSignUp" textFill="WHITE">
                <font>
                   <Font name="Bell MT Bold" size="14.0" />
                </font>
@@ -21,7 +21,7 @@
                   <Glow />
                </effect>
             </Button>
-            <Button layoutX="770.0" layoutY="132.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color: #294a5a;" text="%btnLOGIN" textFill="WHITE">
+            <Button layoutX="770.0" layoutY="132.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="27.0" prefWidth="102.0" style="-fx-background-color: #294a5a;" text="%btnLOGIN" textFill="WHITE">
                <font>
                   <Font name="Bell MT Bold" size="14.0" />
                </font>
@@ -41,14 +41,6 @@
       </Pane>
       <Label layoutX="302.0" layoutY="212.0" />
       <Button fx:id="handleAdresaDashboard" layoutX="37.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleAdresaDashboard" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #294a5a;" text="%btnPANELIIADRESAVE" textFill="WHITE">
-         <font>
-            <Font name="Bell MT Bold" size="14.0" />
-         </font>
-         <effect>
-            <Glow />
-         </effect>
-      </Button>
-      <Button fx:id="handleQytetariDashboard" layoutX="346.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleQytetariDashboard" style="-fx-background-color: #294a5a;" text="%btnPANELIIQYTETARËVE" textFill="WHITE">
          <font>
             <Font name="Bell MT Bold" size="14.0" />
          </font>
@@ -90,5 +82,13 @@
             <Image url="@../img/Picture1.png" />
          </image>
       </ImageView>
+      <Button fx:id="handleQytetariDashboard" layoutX="350.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleQytetariDashboard" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #294a5a;" text="%btnPANELIIQYTETARËVE" textFill="WHITE">
+         <font>
+            <Font name="Bell MT Bold" size="14.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

@@ -54,10 +54,9 @@
             <Label fx:id="emriLabel" layoutX="220.0" layoutY="253.0" text="%lblEmri" textFill="#294a5a" />
             <Label fx:id="mbiemriLabel" layoutX="468.0" layoutY="253.0" text="%lblMbiemri" textFill="#294a5a" />
             <Label fx:id="ditelindjaLabel" layoutX="217.0" layoutY="331.0" text="%lblDitelindja" textFill="#294a5a" />
-            <Label fx:id="adresaLabel" layoutX="214.0" layoutY="370.0" text="%lblAdresa" textFill="#294a5a" />
+            <Label fx:id="adresaLabel" layoutX="214.0" layoutY="423.0" text="%lblAdresa" textFill="#294a5a" />
             <Label fx:id="emailLabel" layoutX="218.0" layoutY="461.0" text="%lblEmail" textFill="#294a5a" />
             <Label fx:id="nrTelefonitLabel" layoutX="469.0" layoutY="461.0" text="%lblNumriTelefonit" textFill="#294a5a" />
-            <Label fx:id="gjiniaLabel" layoutX="217.0" layoutY="423.0" text="%lblGjinia" textFill="#294a5a" />
             <TextField fx:id="NrPersonal" layoutX="468.0" layoutY="200.0" prefHeight="25.0" prefWidth="149.0" />
             <TextField fx:id="Emri" layoutX="220.0" layoutY="274.0" />
             <TextField fx:id="Mbiemri" layoutX="468.0" layoutY="274.0" />
@@ -86,17 +85,17 @@
             </Pane>
             <Pane layoutX="140.0" layoutY="-2.0" prefHeight="124.0" prefWidth="760.0" style="-fx-background-color: #6DBFE3;">
                <children>
-                  <Button fx:id="txtOpen1" layoutX="67.0" layoutY="56.0" mnemonicParsing="false" onAction="#btnOpen1" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #294a5a;" text="%btnOpen1" textFill="#f8f3f3">
+                  <Button fx:id="txtOpen1" layoutX="67.0" layoutY="56.0" mnemonicParsing="false" onAction="#btnOpen1" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #294a5a;" text="%btnHome" textFill="#f8f3f3">
                      <effect>
                         <Glow />
                      </effect>
                   </Button>
-                  <Button fx:id="txtOpen2" layoutX="285.0" layoutY="56.0" mnemonicParsing="false" onAction="#btnOpen2" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #294a5a;" text="%btnOpen2" textFill="#fffafa">
+                  <Button fx:id="txtOpen2" layoutX="285.0" layoutY="56.0" mnemonicParsing="false" onAction="#btnOpen2" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #294a5a;" text="%btnAdresa" textFill="#fffafa">
                      <effect>
                         <Glow />
                      </effect>
                   </Button>
-                  <Button fx:id="txtOpen3" layoutX="479.0" layoutY="56.0" mnemonicParsing="false" onAction="#btnOpen3" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #294a5a;" text="%btnOpen3" textFill="#fffbfb">
+                  <Button fx:id="txtOpen3" layoutX="479.0" layoutY="56.0" mnemonicParsing="false" onAction="#btnOpen3" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #294a5a;" text="%btnQytetari" textFill="#fffbfb">
                      <effect>
                         <Glow />
                      </effect>
@@ -109,6 +108,7 @@
                   <Font name="System Bold" size="19.0" />
                </font>
             </Label>
+            <Label fx:id="gjiniaLabel" layoutX="217.0" layoutY="370.0" text="%lblGjinia" textFill="#294a5a" />
          </children>
       </AnchorPane>
       <Pane prefHeight="411.0" prefWidth="640.0" />

@@ -22,6 +22,7 @@ public class HomeController {
     @FXML
     private void handleQytetariDashboard(ActionEvent ae){
         if (!SessionManager.isLoggedIn()) {
+            SessionManager.setLastAttemptedPage(Navigator.QYTETARI_DASHBOARD); // Store last attempted page
             System.out.println("Please log in first.");
             Navigator.navigate(ae, Navigator.LOGIN_PAGE);
             return;
@@ -30,8 +31,15 @@ public class HomeController {
     }
     @FXML
     private void handleStatistikat(ActionEvent ae){
-        Navigator.navigate(ae,Navigator.STATISTICS);
+        if (!SessionManager.isLoggedIn()) {
+            SessionManager.setLastAttemptedPage(Navigator.STATISTICS); // Store last attempted page
+            System.out.println("Please log in first.");
+            Navigator.navigate(ae, Navigator.LOGIN_PAGE);
+            return;
+        }
+        Navigator.navigate(ae, Navigator.STATISTICS);
     }
+
     @FXML
     private void handleHelp(ActionEvent ae){
         // Help mund te kete qasje edhe pa LogIn
@@ -41,5 +49,13 @@ public class HomeController {
     private void handleChangeLanguage(ActionEvent ae){
         Navigator.changeLanguage();
         Navigator.navigate(ae,Navigator.HOME_PAGE);
+    }
+    @FXML
+    private void handleLogin(ActionEvent ae){
+        Navigator.navigate(ae,Navigator.LOGIN_PAGE);
+    }
+    @FXML
+    private void handleSignup(ActionEvent ae){
+        Navigator.navigate(ae,Navigator.SIGNUP_PAGE);
     }
 }

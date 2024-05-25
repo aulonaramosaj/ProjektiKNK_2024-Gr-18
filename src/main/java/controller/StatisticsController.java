@@ -65,7 +65,7 @@ public class StatisticsController {
             numriAdresave.setText(String.valueOf(getNumerimin(connection, "Adresa")));
             numriQytetareve.setText(String.valueOf(getNumerimin(connection, "Qytetari")));
 
-            // Gjinia pie chart
+
             ObservableList<PieChart.Data> gjiniaData = FXCollections.observableArrayList(
                     new PieChart.Data("Mashkull", getGjiniaNumerimin(connection, "Mashkull")),
                     new PieChart.Data("Femer", getGjiniaNumerimin(connection, "Femer"))

@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import model.User;
 import model.dto.AdresaDto;
 import service.AdresaService;
@@ -65,13 +67,14 @@ public class ModifikoAdresaController implements ParametrizedController {
     }
 
     @FXML
-    private void buttonOpen3(ActionEvent ae) {Navigator.navigate(ae,Navigator.QYTETARI_DASHBOARD);
+    private void buttonOpen3(ActionEvent ae) {
+        Navigator.navigate(ae, Navigator.QYTETARI_DASHBOARD);
     }
-    @FXML
 
+    @FXML
     private void modifikoAdresen(ActionEvent ae) {
         if (!SessionManager.isLoggedIn()) {
-            SessionManager.setLastAttemptedPage(Navigator.MODIFIKO_ADRESEN); // Store last attempted page
+            SessionManager.setLastAttemptedPage(Navigator.MODIFIKO_ADRESEN);
             System.out.println("Please log in first.");
             Navigator.navigate(ae, Navigator.LOGIN_PAGE);
             return;
@@ -103,9 +106,32 @@ public class ModifikoAdresaController implements ParametrizedController {
             e.printStackTrace();
         }
     }
+
     @FXML
-    private void handleChangeLanguage(ActionEvent ae){
+    private void handleChangeLanguage(ActionEvent ae) {
         Navigator.changeLanguage();
-        Navigator.navigate(ae,Navigator.MODIFIKO_ADRESEN);
+        Navigator.navigate(ae, Navigator.MODIFIKO_ADRESEN);
+    }
+
+    @FXML
+    private void initialize() {
+        setupEnterKeySubmission();
+    }
+
+    private void setupEnterKeySubmission() {
+        idAdresa.setOnKeyPressed(this::handleEnterKey);
+        txtKomuna.setOnKeyPressed(this::handleEnterKey);
+        txtKodiPostar.setOnKeyPressed(this::handleEnterKey);
+        txtFshati.setOnKeyPressed(this::handleEnterKey);
+        txtRruga.setOnKeyPressed(this::handleEnterKey);
+        txtNumriNderteses.setOnKeyPressed(this::handleEnterKey);
+        radioPerhershem.setOnKeyPressed(this::handleEnterKey);
+        radioPerkohshem.setOnKeyPressed(this::handleEnterKey);
+    }
+
+    private void handleEnterKey(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            modifikoAdresen(new ActionEvent(keyEvent.getSource(), null));
+        }
     }
 }

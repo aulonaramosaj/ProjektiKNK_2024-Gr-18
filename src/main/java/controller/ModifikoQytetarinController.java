@@ -5,12 +5,9 @@ import App.SessionManager;
 import Database.DatabaseUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import model.User;
 import model.dto.QytetariDto;
 import repository.QytetariRepository;
@@ -134,16 +131,38 @@ public class ModifikoQytetarinController implements ParametrizedController {
     }
 
     @FXML
-    void btnOpen1(ActionEvent ae) {Navigator.navigate(ae,Navigator.HOME_PAGE);}
+    void btnOpen1(ActionEvent ae) { Navigator.navigate(ae, Navigator.HOME_PAGE); }
 
     @FXML
-    void btnOpen2(ActionEvent ae) {Navigator.navigate(ae,Navigator.ADRESA_DASHBOARD);}
+    void btnOpen2(ActionEvent ae) { Navigator.navigate(ae, Navigator.ADRESA_DASHBOARD); }
 
     @FXML
-    void btnOpen3(ActionEvent ae) {Navigator.navigate(ae,Navigator.QYTETARI_DASHBOARD);}
+    void btnOpen3(ActionEvent ae) { Navigator.navigate(ae, Navigator.QYTETARI_DASHBOARD); }
+
     @FXML
-    private void handleChangeLanguage(ActionEvent ae){
+    private void handleChangeLanguage(ActionEvent ae) {
         Navigator.changeLanguage();
-        Navigator.navigate(ae,Navigator.MODIFIKO_QYTETARIN);
+        Navigator.navigate(ae, Navigator.MODIFIKO_QYTETARIN);
+    }
+
+    @FXML
+    private void initialize() {
+        setupEnterKeySubmission();
+    }
+
+    private void setupEnterKeySubmission() {
+        nrPersonal.setOnKeyPressed(this::handleEnterKey);
+        adresaId.setOnKeyPressed(this::handleEnterKey);
+        ditelindja.getEditor().setOnKeyPressed(this::handleEnterKey);
+        email.setOnKeyPressed(this::handleEnterKey);
+        emri.setOnKeyPressed(this::handleEnterKey);
+        mbiemri.setOnKeyPressed(this::handleEnterKey);
+        nrTel.setOnKeyPressed(this::handleEnterKey);
+    }
+
+    private void handleEnterKey(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            modifikoQytetarin(new ActionEvent());
+        }
     }
 }

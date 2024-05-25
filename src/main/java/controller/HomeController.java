@@ -32,7 +32,7 @@ public class HomeController {
     @FXML
     private void handleStatistikat(ActionEvent ae){
         if (!SessionManager.isLoggedIn()) {
-            SessionManager.setLastAttemptedPage(Navigator.STATISTICS); // Store last attempted page
+            SessionManager.setLastAttemptedPage(Navigator.STATISTICS);
             System.out.println("Please log in first.");
             Navigator.navigate(ae, Navigator.LOGIN_PAGE);
             return;

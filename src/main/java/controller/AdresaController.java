@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import model.Adresa;
 import model.User;
 import model.dto.CreateAdresaDto;
@@ -30,6 +32,11 @@ public class AdresaController {
 
     private final AdresaService adresaService = new AdresaService();
     private AddressAddedListener addressAddedListener;
+
+    @FXML
+    private void initialize() {
+        setupEnterKeySubmission();
+    }
 
     @FXML
     private void vendosAdresen(ActionEvent ae) {
@@ -64,22 +71,38 @@ public class AdresaController {
 
     @FXML
     private void buttonOpen1(ActionEvent ae) {
-        Navigator.navigate(ae,Navigator.HOME_PAGE);
-
+        Navigator.navigate(ae, Navigator.HOME_PAGE);
     }
 
     @FXML
     private void buttonOpen2(ActionEvent ae) {
-        Navigator.navigate(ae,Navigator.ADRESA_DASHBOARD);
+        Navigator.navigate(ae, Navigator.ADRESA_DASHBOARD);
     }
 
     @FXML
     private void buttonOpen3(ActionEvent ae) {
-        Navigator.navigate(ae,Navigator.QYTETARI_DASHBOARD);
+        Navigator.navigate(ae, Navigator.QYTETARI_DASHBOARD);
     }
+
     @FXML
-    private void handleChangeLanguage(ActionEvent ae){
+    private void handleChangeLanguage(ActionEvent ae) {
         Navigator.changeLanguage();
-        Navigator.navigate(ae,Navigator.ADRESA);
+        Navigator.navigate(ae, Navigator.ADRESA);
+    }
+
+    private void setupEnterKeySubmission() {
+        txtKomuna.setOnKeyPressed(this::handleEnterKey);
+        txtKodiPostar.setOnKeyPressed(this::handleEnterKey);
+        txtFshati.setOnKeyPressed(this::handleEnterKey);
+        txtRruga.setOnKeyPressed(this::handleEnterKey);
+        txtNumriNderteses.setOnKeyPressed(this::handleEnterKey);
+        radioPerhershem.setOnKeyPressed(this::handleEnterKey);
+        radioPerkohshem.setOnKeyPressed(this::handleEnterKey);
+    }
+
+    private void handleEnterKey(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            vendosAdresen(new ActionEvent(keyEvent.getSource(), null));
+        }
     }
 }

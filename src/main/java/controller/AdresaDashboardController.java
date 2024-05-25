@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import model.Adresa;
 import model.dto.AdresaDto;
@@ -65,6 +67,7 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
                 bindTableViewToObservableList();
                 setupPagination();
                 loadData();
+                setupEnterKeyFiltering();
         }
 
         @Override
@@ -120,7 +123,6 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
         }
 
         private Adresa mapToAdresa(AdresaDto addressDto) {
-
                 return new Adresa(
                         addressDto.getId(),
                         addressDto.getKomuna(),
@@ -131,7 +133,6 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
                         addressDto.getLlojiVendbanimit()
                 );
         }
-
 
         private void refreshPagination() {
                 faqet.setPageCount((int) Math.ceil(addressList.size() / (double) rowsPerPage));
@@ -202,7 +203,6 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
         private void handleShfaqQytetaret(ActionEvent ae) {
                 Adresa selectedAdresa = tableView.getSelectionModel().getSelectedItem();
                 if (selectedAdresa != null) {
-                        // Pass the selected address ID to the navigator
                         Navigator.navigate(ae, Navigator.QYTETARI_DASHBOARD, selectedAdresa.getId());
                 } else {
                         showAlert(Alert.AlertType.WARNING, "No Selection", "No address selected. Please select an address to show related citizens.");
@@ -252,11 +252,24 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
                 alert.showAndWait();
         }
 
-
         @FXML
         private void handleChangeLanguage(ActionEvent ae) {
                 Navigator.changeLanguage();
                 Navigator.navigate(ae, Navigator.ADRESA_DASHBOARD);
         }
-}
 
+        private void setupEnterKeyFiltering() {
+                komunaTextField.setOnKeyPressed(this::handleEnterKey);
+                kodiPostarTextField.setOnKeyPressed(this::handleEnterKey);
+                fshatiLagjiaTextField.setOnKeyPressed(this::handleEnterKey);
+                rrugaTextField.setOnKeyPressed(this::handleEnterKey);
+                NrNdertesesTextField.setOnKeyPressed(this::handleEnterKey);
+                LlojiVendbanimitTextField.setOnKeyPressed(this::handleEnterKey);
+        }
+
+        private void handleEnterKey(KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.ENTER) {
+                        handleFilter();
+                }
+        }
+}

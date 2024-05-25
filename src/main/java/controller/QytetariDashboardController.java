@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import model.Qytetari;
 import model.filter.QytetariFilter;
@@ -44,7 +46,8 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
     private TextField emriTextField;
     @FXML
     private TextField mbiemriTextField;
-    @FXML private DatePicker ditelindja;
+    @FXML
+    private DatePicker ditelindja;
 
     private ObservableList<Qytetari> qytetariList = FXCollections.observableArrayList();
     private final int rowsPerPage = 10;
@@ -56,6 +59,7 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
         bindTableViewToObservableList();
         setupPagination();
         loadData();
+        setupEnterKeySubmission();
     }
 
     @Override
@@ -213,6 +217,19 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
             Navigator.navigate(ae, Navigator.ADRESA_DASHBOARD, selectedQytetari.getAdresa());
         } else {
             showAlert(Alert.AlertType.WARNING, "No Citizen Selected", "Please select a citizen to view the address.");
+        }
+    }
+
+    private void setupEnterKeySubmission() {
+        nrPersonalTextField.setOnKeyPressed(this::handleEnterKey);
+        emriTextField.setOnKeyPressed(this::handleEnterKey);
+        mbiemriTextField.setOnKeyPressed(this::handleEnterKey);
+        ditelindja.getEditor().setOnKeyPressed(this::handleEnterKey);
+    }
+
+    private void handleEnterKey(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            handleFilter();
         }
     }
 }

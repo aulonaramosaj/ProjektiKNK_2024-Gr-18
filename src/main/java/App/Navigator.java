@@ -47,7 +47,6 @@ public class Navigator {
         }
     }
 
-
     public static void navigate(Event event, String page) {
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
@@ -78,7 +77,6 @@ public class Navigator {
             e.printStackTrace();
         }
     }
-
 
     public static void navigateWithListener(AnchorPane root, String page, AddressAddedListener listener) {
         try {

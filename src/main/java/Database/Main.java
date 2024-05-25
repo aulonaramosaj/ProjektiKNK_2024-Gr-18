@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         String url = "jdbc:mysql://localhost:3306/KNK";
         String user = "root";
-        String password = "123";
+        String password = "Arlinda.Be2004";
         Connection connection = DriverManager.getConnection(
                 url, user, password
         );

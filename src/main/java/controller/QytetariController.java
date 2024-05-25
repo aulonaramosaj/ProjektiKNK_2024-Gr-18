@@ -8,6 +8,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import model.dto.CreateQytetariDto;
 import repository.QytetariRepository;
 
@@ -43,6 +45,11 @@ public class QytetariController implements ParametrizedController {
         }
     }
 
+    @FXML
+    private void initialize() {
+        setupEnterKeySubmission();
+    }
+
     public void clearForm() {
         NrPersonal.setText("");
         Emri.setText("");
@@ -57,13 +64,12 @@ public class QytetariController implements ParametrizedController {
     @FXML
     void Ruaj(ActionEvent ae) {
         if (!SessionManager.isLoggedIn()) {
-            SessionManager.setLastAttemptedPage(Navigator.QYTETARI); // Store last attempted page
-            System.out.println("Please log in first.");
+            SessionManager.setLastAttemptedPage(Navigator.QYTETARI);
             Navigator.navigate(ae, Navigator.LOGIN_PAGE);
             return;
         }
 
-        // Validate the input fields
+
         if (Emri.getText().isEmpty() || Mbiemri.getText().isEmpty() || NrPersonal.getText().isEmpty() ||
                 NrTel.getText().isEmpty() || Email.getText().isEmpty() || Ditelindja.getValue() == null ||
                 (!Femer.isSelected() && !Mashkull.isSelected())) {
@@ -80,7 +86,7 @@ public class QytetariController implements ParametrizedController {
             String Gjinia = Femer.isSelected() ? "Femer" : "Mashkull";
             LocalDate localDate = Ditelindja.getValue();
             Date ditelindjaValue = Date.valueOf(localDate);
-            int userId = SessionManager.getUser().getId(); // Assuming SessionManager has a method to get the current user
+            int userId = SessionManager.getUser().getId();
 
             CreateQytetariDto qytetari = new CreateQytetariDto(
                     NrPersonal.getText(),
@@ -88,7 +94,7 @@ public class QytetariController implements ParametrizedController {
                     Mbiemri.getText(),
                     Gjinia,
                     ditelindjaValue,
-                    Integer.parseInt(Adresa.getText()), // Assuming Adresa is correctly set
+                    Integer.parseInt(Adresa.getText()),
                     NrTel.getText(),
                     Email.getText(),
                     userId
@@ -132,8 +138,26 @@ public class QytetariController implements ParametrizedController {
     }
 
     @FXML
-    private void handleChangeLanguage(ActionEvent ae){
+    private void handleChangeLanguage(ActionEvent ae) {
         Navigator.changeLanguage();
         Navigator.navigate(ae, Navigator.QYTETARI);
+    }
+
+    private void setupEnterKeySubmission() {
+        Emri.setOnKeyPressed(this::handleEnterKey);
+        Mbiemri.setOnKeyPressed(this::handleEnterKey);
+        NrPersonal.setOnKeyPressed(this::handleEnterKey);
+        NrTel.setOnKeyPressed(this::handleEnterKey);
+        Email.setOnKeyPressed(this::handleEnterKey);
+        Adresa.setOnKeyPressed(this::handleEnterKey);
+        Ditelindja.setOnKeyPressed(this::handleEnterKey);
+        Femer.setOnKeyPressed(this::handleEnterKey);
+        Mashkull.setOnKeyPressed(this::handleEnterKey);
+    }
+
+    private void handleEnterKey(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            Ruaj(new ActionEvent(keyEvent.getSource(), null));
+        }
     }
 }

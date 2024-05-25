@@ -12,89 +12,89 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifikoAdresaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="900.0" style="-fx-background-color: DAE3E7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifikoAdresaController">
    <children>
       <MenuBar accessibleRole="CHECK_BOX" layoutX="226.0" layoutY="1.0" />
-      <Pane prefHeight="594.0" prefWidth="142.0" style="-fx-background-color: #FA8072;">
+      <Pane prefHeight="594.0" prefWidth="181.0" style="-fx-background-color: #6DBFE3;">
          <children>
-            <Button layoutX="45.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" />
+            <Button layoutX="43.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" textFill="#294a5a" />
          </children></Pane>
-      <Pane prefHeight="119.0" prefWidth="900.0" style="-fx-background-color: #FA8072;">
+      <Pane prefHeight="119.0" prefWidth="900.0" style="-fx-background-color: #6DBFE3;">
          <children>
             <ImageView fitHeight="151.0" fitWidth="150.0" layoutX="-7.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/Picture1.png" />
                </image>
             </ImageView>
-            <Button fx:id="buttonOpen3" layoutX="594.0" layoutY="47.0" mnemonicParsing="false" onAction="#buttonOpen3" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: EE5342;" text="%btnOpen3" textFill="#fffefe">
+            <Button fx:id="buttonOpen3" layoutX="624.0" layoutY="60.0" mnemonicParsing="false" onAction="#buttonOpen3" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: #294a5a;" text="%btnQytetari" textFill="#fffefe">
                <effect>
                   <Glow />
                </effect></Button>
-            <Button fx:id="buttonOpen2" layoutX="424.0" layoutY="47.0" mnemonicParsing="false" onAction="#buttonOpen2" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: EE5342;" text="%btnOpen2" textFill="WHITE">
+            <Button fx:id="buttonOpen2" layoutX="423.0" layoutY="60.0" mnemonicParsing="false" onAction="#buttonOpen2" prefHeight="25.0" prefWidth="137.0" style="-fx-background-color: #294a5a;" text="%btnAdresa" textFill="WHITE">
                <effect>
                   <Glow />
                </effect></Button>
-            <Button fx:id="buttonOpen1" layoutX="256.0" layoutY="47.0" mnemonicParsing="false" onAction="#buttonOpen1" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: EE5342;" text="%btnOpen1" textFill="WHITE">
+            <Button fx:id="buttonOpen1" layoutX="214.0" layoutY="60.0" mnemonicParsing="false" onAction="#buttonOpen1" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #294a5a;" text="%btnHome" textFill="WHITE">
                <effect>
                   <Glow />
                </effect></Button>
          </children>
       </Pane>
-      <Label layoutX="205.0" layoutY="150.0" text="%lblMODIFIKOADRESËN" textFill="#a12727">
+      <Label layoutX="226.0" layoutY="165.0" text="%lblMODIFIKOADRESËN" textFill="#294a5a">
          <font>
             <Font name="Bell MT Bold" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="idAdresa" layoutX="335.0" layoutY="199.0" promptText="ID e Adresës:" />
-      <Label layoutX="205.0" layoutY="243.0" text="%lblLlojiivendbanimit" textFill="#b12727">
+      <Label layoutX="233.0" layoutY="264.0" text="%lblLlojiivendbanimit" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </Label>
-      <RadioButton fx:id="radioPerhershem" layoutX="403.0" layoutY="243.0" mnemonicParsing="false" text="%rbtnIPërhershëm" textFill="#b12727">
+      <RadioButton fx:id="radioPerhershem" layoutX="409.0" layoutY="263.0" mnemonicParsing="false" text="%rbtnIPërhershëm" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="radioPerkohshem" layoutX="600.0" layoutY="243.0" mnemonicParsing="false" text="%rbtnIPërkohshëm" textFill="#b12727">
+      <RadioButton fx:id="radioPerkohshem" layoutX="610.0" layoutY="263.0" mnemonicParsing="false" text="%rbtnIPërkohshëm" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </RadioButton>
-      <Label layoutX="205.0" layoutY="288.0" text="%lblKomuna" textFill="#b12727">
+      <Label layoutX="232.0" layoutY="307.0" text="%lblKomuna" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtKomuna" layoutX="328.0" layoutY="284.0" promptText="Komuna:" />
-      <Label layoutX="205.0" layoutY="336.0" text="%lblKodiPostar" textFill="#b12727">
+      <TextField fx:id="txtKomuna" layoutX="402.0" layoutY="303.0" />
+      <Label layoutX="234.0" layoutY="360.0" text="%lblKodiPostar" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtKodiPostar" layoutX="328.0" layoutY="332.0" promptText="Kodi Postar:" />
-      <Label layoutX="205.0" layoutY="380.0" prefHeight="18.0" prefWidth="124.0" text="%lblFshatiLagjja" textFill="#b12727">
+      <TextField fx:id="txtKodiPostar" layoutX="402.0" layoutY="356.0" />
+      <Label layoutX="234.0" layoutY="411.0" prefHeight="18.0" prefWidth="124.0" text="%lblFshatiLagjja" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtFshati" layoutX="328.0" layoutY="376.0" promptText="Fshati\Lagjja:" />
-      <Label layoutX="205.0" layoutY="422.0" text="%lblRruga" textFill="#b12727">
+      <TextField fx:id="txtFshati" layoutX="402.0" layoutY="407.0" />
+      <Label layoutX="238.0" layoutY="471.0" text="%lblRruga" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtRruga" layoutX="328.0" layoutY="418.0" promptText="Rruga:" />
-      <Label layoutX="205.0" layoutY="462.0" text="%lblNumriiNdërtesës" textFill="#b12727">
+      <TextField fx:id="txtRruga" layoutX="402.0" layoutY="467.0" />
+      <Label layoutX="234.0" layoutY="518.0" text="%lblNumriiNdërtesës" textFill="#294a5a">
          <font>
             <Font name="Bell MT" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNumriNderteses" layoutX="328.0" layoutY="458.0" promptText="Numri i Ndërtesës:" />
-      <Button fx:id="modifikoAdresen" layoutX="600.0" layoutY="517.0" mnemonicParsing="false" onAction="#modifikoAdresen" prefHeight="34.0" prefWidth="174.0" style="-fx-background-color: EE5342;" text="%btnMODIFIKOADRESËN" textFill="WHITE">
+      <TextField fx:id="txtNumriNderteses" layoutX="402.0" layoutY="514.0" />
+      <Button fx:id="modifikoAdresen" layoutX="645.0" layoutY="518.0" mnemonicParsing="false" onAction="#modifikoAdresen" prefHeight="34.0" prefWidth="174.0" style="-fx-background-color: #294a5a;" text="%btnMODIFIKOADRESËN" textFill="WHITE">
          <font>
             <Font name="Bell MT Bold" size="14.0" />
          </font>
       </Button>
+      <TextField fx:id="addressId" layoutX="402.0" layoutY="217.0" />
    </children>
 </AnchorPane>

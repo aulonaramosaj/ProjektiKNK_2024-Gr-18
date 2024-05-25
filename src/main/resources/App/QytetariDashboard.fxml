@@ -15,15 +15,15 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="719.0" prefWidth="1073.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QytetariDashboardController">
+<AnchorPane fx:id="anchorPane" prefHeight="719.0" prefWidth="1073.0" style="-fx-background-color: DAE3E7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QytetariDashboardController">
     <children>
-        <Label fx:id="nrPersonalLabel" layoutX="227.0" layoutY="153.0" prefHeight="18.0" prefWidth="150.0" style="-fx-text-fill: #d93323;" text="%lblNumriPersonal" />
-        <Label fx:id="emriLabel" layoutX="397.0" layoutY="153.0" prefHeight="18.0" prefWidth="71.0" style="-fx-text-fill: #d93323;" text="%lblEmri" />
-        <Label fx:id="mbiemriLabel" layoutX="579.0" layoutY="153.0" prefHeight="18.0" prefWidth="80.0" style="-fx-text-fill: #d93323;" text="%lblMbiemri" />
-        <Label fx:id="ditelindjaLabel" layoutX="753.0" layoutY="153.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #d93323;" text="%lblDitelindja" />
-        <Pane layoutY="-1.0" prefHeight="720.0" prefWidth="166.0" style="-fx-background-color: #FA8072;">
+        <Label fx:id="nrPersonalLabel" layoutX="227.0" layoutY="153.0" prefHeight="18.0" prefWidth="150.0" style="-fx-text-fill: #294a5a;" text="%lblNumriPersonal" textFill="#294a5a" />
+        <Label fx:id="emriLabel" layoutX="397.0" layoutY="153.0" prefHeight="18.0" prefWidth="71.0" style="-fx-text-fill: #294a5a;" text="%lblEmri" textFill="#294a5a" />
+        <Label fx:id="mbiemriLabel" layoutX="579.0" layoutY="153.0" prefHeight="18.0" prefWidth="80.0" style="-fx-text-fill: #294a5a;" text="%lblMbiemri" textFill="#294a5a" />
+        <Label fx:id="ditelindjaLabel" layoutX="753.0" layoutY="153.0" prefHeight="18.0" prefWidth="92.0" style="-fx-text-fill: #294a5a;" text="%lblDitelindja" textFill="#294a5a" />
+        <Pane layoutY="-1.0" prefHeight="720.0" prefWidth="166.0" style="-fx-background-color: #6DBFE3;">
             <children>
-                <Button fx:id="shfaqAdresenBtn" layoutX="22.0" layoutY="190.0" mnemonicParsing="false" onAction="#shfaqAdresenBtn" prefHeight="31.0" prefWidth="123.0" style="-fx-background-color: #d93323;" text="%btnShfaqAdresen" textFill="WHITE">
+                <Button fx:id="shfaqAdresenBtn" layoutX="22.0" layoutY="223.0" mnemonicParsing="false" onAction="#shfaqAdresenBtn" prefHeight="31.0" prefWidth="123.0" style="-fx-background-color: #294a5a;" text="%btnShfaqAdresen" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -31,21 +31,21 @@
                         <Glow />
                     </effect>
                 </Button>
-                <Pane layoutX="4.0" prefHeight="122.0" prefWidth="1067.0" style="-fx-background-color: #FA8072;">
+                <Pane layoutX="4.0" prefHeight="122.0" prefWidth="1067.0" style="-fx-background-color: #6DBFE3;">
                     <children>
-                        <ImageView fitHeight="155.0" fitWidth="216.0" layoutX="-8.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="163.0" fitWidth="165.0" layoutX="-6.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../img/Picture1.png" />
                             </image>
                         </ImageView>
-                        <Label layoutX="195.0" layoutY="61.0" prefHeight="17.0" prefWidth="190.0" text="%lblPaneliQytetari" textFill="WHITE">
+                        <Label layoutX="179.0" layoutY="75.0" prefHeight="27.0" prefWidth="212.0" text="%lblPaneliQytetari" textFill="#294a5a">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
                     </children>
                 </Pane>
-                <Button fx:id="handleHome" layoutX="22.0" layoutY="517.0" mnemonicParsing="false" onAction="#handleHome" prefHeight="31.0" prefWidth="123.0" style="-fx-background-color: #d93323;" text="%btnFaqjaKryesore" textFill="WHITE">
+                <Button fx:id="handleHome" layoutX="23.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleHome" prefHeight="31.0" prefWidth="123.0" style="-fx-background-color: #294a5a;" text="%btnFaqjaKryesore" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -53,7 +53,7 @@
                         <Glow />
                     </effect>
                 </Button>
-                <Button fx:id="modifikoQytetarinBtn" layoutX="22.0" layoutY="249.0" mnemonicParsing="false" onAction="#modifikoQytetarinBtn" prefHeight="31.0" prefWidth="123.0" style="-fx-background-color: #d93323;" text="%btnMODIFIKOQYTETARIN" textFill="WHITE">
+                <Button fx:id="modifikoQytetarinBtn" layoutX="23.0" layoutY="266.0" mnemonicParsing="false" onAction="#modifikoQytetarinBtn" prefHeight="31.0" prefWidth="123.0" style="-fx-background-color: #294a5a;" text="%btnMODIFIKOQYTETARIN" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -61,7 +61,7 @@
                         <Glow />
                     </effect>
                 </Button>
-                <Button fx:id="fshiQytetarinBtn" layoutX="22.0" layoutY="301.0" mnemonicParsing="false" onAction="#fshiQytetarinBtn" prefHeight="31.0" prefWidth="123.0" style="-fx-background-color: #d93323;" text="%btnFshiQytetarin" textFill="WHITE">
+                <Button fx:id="fshiQytetarinBtn" layoutX="23.0" layoutY="312.0" mnemonicParsing="false" onAction="#fshiQytetarinBtn" prefHeight="31.0" prefWidth="123.0" style="-fx-background-color: #294a5a;" text="%btnFshiQytetarin" textFill="WHITE">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -69,23 +69,23 @@
                         <Glow />
                     </effect>
                 </Button>
-                <Button layoutX="57.0" layoutY="616.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" />
+                <Button layoutX="55.0" layoutY="665.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" textFill="#294a5a" />
             </children>
         </Pane>
-        <DatePicker fx:id="ditelindja" layoutX="753.0" layoutY="177.0" style="-fx-background-color: #FFC1B2; -fx-background-insets: 0;">
+        <DatePicker fx:id="ditelindja" layoutX="753.0" layoutY="177.0">
             <effect>
                 <Glow />
             </effect>
         </DatePicker>
 
-        <Pagination fx:id="pagination" accessibleRole="MENU_BUTTON" layoutX="770.0" layoutY="536.0" prefHeight="38.0" prefWidth="165.0" style="-fx-border-color: #d93323; -fx-background-color: #FA8072;">
+        <Pagination fx:id="pagination" accessibleRole="MENU_BUTTON" layoutX="770.0" layoutY="536.0" prefHeight="38.0" prefWidth="165.0" style="-fx-border-color: #294a5a; -fx-background-color: #294a5a;">
             <effect>
                 <Glow />
             </effect></Pagination>
         <TextField fx:id="nrPersonalTextField" layoutX="212.0" layoutY="177.0" />
         <TextField fx:id="emriTextField" layoutX="394.0" layoutY="177.0" />
         <TextField fx:id="mbiemriTextField" layoutX="573.0" layoutY="177.0" />
-        <TableView fx:id="qytetariTable" layoutX="187.0" layoutY="296.0" prefHeight="204.0" prefWidth="864.0" style="-fx-background-color: #FA8072;">
+        <TableView fx:id="qytetariTable" layoutX="187.0" layoutY="296.0" prefHeight="204.0" prefWidth="864.0" style="-fx-background-color: #6DBFE3;">
             <columns>
                 <TableColumn fx:id="qytetariId" prefWidth="35.199981689453125" text="Id" />
                 <TableColumn fx:id="qytetariNrPersonal" prefWidth="120.79994201660156" text="NrPersonal" />

@@ -18,10 +18,6 @@ public class QytetariRepository {
         String query = "SELECT COUNT(*) AS count FROM Qytetari WHERE NrPersonal = ?";
         try (Connection conn = DBConnector.getConnection();
              PreparedStatement pst = conn.prepareStatement(query)) {
-            if (conn == null || conn.isClosed()) {
-                System.out.println("Connection is closed or not available");
-                return false;
-            }
             pst.setString(1, nrPersonal);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
@@ -33,10 +29,8 @@ public class QytetariRepository {
         return false;
     }
 
+
     public static boolean create(CreateQytetariDto qytetariData) {
-        if (existsByNrPersonal(qytetariData.getNrPersonal())) {
-            return false;
-        }
         String query = """
             INSERT INTO Qytetari (NrPersonal, Emri, Mbiemri, Gjinia, Ditelindja, Adresa, NrTelefonit, Email, User)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)

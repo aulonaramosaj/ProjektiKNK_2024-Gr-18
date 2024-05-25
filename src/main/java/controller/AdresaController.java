@@ -64,17 +64,18 @@ public class AdresaController {
 
     @FXML
     private void buttonOpen1(ActionEvent ae) {
+        Navigator.navigate(ae,Navigator.HOME_PAGE);
 
     }
 
     @FXML
     private void buttonOpen2(ActionEvent ae) {
-
+        Navigator.navigate(ae,Navigator.ADRESA_DASHBOARD);
     }
 
     @FXML
     private void buttonOpen3(ActionEvent ae) {
-
+        Navigator.navigate(ae,Navigator.QYTETARI_DASHBOARD);
     }
     @FXML
     private void handleChangeLanguage(ActionEvent ae){

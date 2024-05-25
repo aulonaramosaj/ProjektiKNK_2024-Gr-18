@@ -5,19 +5,23 @@ import model.Qytetari;
 import model.dto.AdresaDto;
 import model.dto.CreateQytetariDto;
 import model.dto.QytetariDto;
+import model.filter.QytetariFilter;
 import service.DBConnector;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class QytetariRepository {
 
-
-
     public static boolean existsByNrPersonal(String nrPersonal) {
         String query = "SELECT COUNT(*) AS count FROM Qytetari WHERE NrPersonal = ?";
         try (Connection conn = DBConnector.getConnection();
              PreparedStatement pst = conn.prepareStatement(query)) {
+            if (conn == null || conn.isClosed()) {
+                System.out.println("Connection is closed or not available");
+                return false;
+            }
             pst.setString(1, nrPersonal);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
@@ -34,10 +38,10 @@ public class QytetariRepository {
             return false;
         }
         String query = """
-                INSERT INTO Qytetari (NrPersonal, Emri, Mbiemri, Gjinia, Ditelindja, Adresa, NrTelefonit, Email, User)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """;
-        try (Connection conn = DBConnector.getConnection();
+            INSERT INTO Qytetari (NrPersonal, Emri, Mbiemri, Gjinia, Ditelindja, Adresa, NrTelefonit, Email, User)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """;
+        try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement pst = conn.prepareStatement(query)) {
             pst.setString(1, qytetariData.getNrPersonal());
             pst.setString(2, qytetariData.getEmri());
@@ -48,17 +52,18 @@ public class QytetariRepository {
             pst.setString(7, qytetariData.getNrTel());
             pst.setString(8, qytetariData.getEmail());
             pst.setInt(9, qytetariData.getUserId());
-            pst.executeUpdate();
-            return true;
+            int rowsAffected = pst.executeUpdate();
+            return rowsAffected > 0;
         } catch (SQLException e) {
+            System.out.println("Database error when modifying citizen: " + e.getMessage());
             e.printStackTrace();
             return false;
         }
     }
 
-    public static boolean modifiko(QytetariDto qytetari) {
 
-        // Update query for the Qytetari table
+
+    public static boolean modifiko(QytetariDto qytetari) {
         String query = """
                 UPDATE Qytetari 
                 SET Emri = ?, Mbiemri = ?, Gjinia = ?, Ditelindja = ?, Adresa = ?, NrTelefonit = ?, Email = ?, User = ?
@@ -102,28 +107,20 @@ public class QytetariRepository {
         return qytetaret;
     }
 
-    public static List<Qytetari> filterQytetaret(Connection conn, String nrPersonal, String emri, String mbiemri, Integer adresaId) throws SQLException {
+    public static List<Qytetari> filterQytetaret(Connection conn, QytetariFilter filter) throws SQLException {
         List<Qytetari> qytetaret = new ArrayList<>();
-        // Include Adresa in the WHERE clause. Assuming 'Adresa' is an integer field (address ID).
-        String query = "SELECT * FROM Qytetari WHERE NrPersonal LIKE ? AND Emri LIKE ? AND Mbiemri LIKE ? AND Adresa = ?";
-        try (PreparedStatement pst = conn.prepareStatement(query)) {
-            pst.setString(1, "%" + nrPersonal + "%");
-            pst.setString(2, "%" + emri + "%");
-            pst.setString(3, "%" + mbiemri + "%");
-            if (adresaId != null) {
-                pst.setInt(4, adresaId);  // Set the address ID
-            } else {
-                pst.setNull(4, java.sql.Types.INTEGER);  // Handle null if no address ID is provided
-            }
-
-            ResultSet rs = pst.executeQuery();
+        String query = "SELECT * FROM Qytetari" + filter.buildQuery();
+        try (PreparedStatement pst = conn.prepareStatement(query);
+             ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
-                qytetaret.add(getFromResultSet(rs));
+                Qytetari qytetari = getFromResultSet(rs);
+                if (qytetari != null) {
+                    qytetaret.add(qytetari);
+                }
             }
         }
         return qytetaret;
     }
-
 
     public static boolean deleteQytetari(int id) {
         String query = "DELETE FROM Qytetari WHERE Id = ?";
@@ -187,10 +184,10 @@ public class QytetariRepository {
                 rs.getInt("User")
         );
     }
+
     public static List<Qytetari> getQytetariByAdresaId(Connection conn, int adresaId) throws SQLException {
         List<Qytetari> qytetaret = new ArrayList<>();
         String query = "SELECT * FROM Qytetari WHERE Adresa = ?";
-
         try (PreparedStatement pst = conn.prepareStatement(query)) {
             pst.setInt(1, adresaId);
             ResultSet rs = pst.executeQuery();

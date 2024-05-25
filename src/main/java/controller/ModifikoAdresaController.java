@@ -56,7 +56,7 @@ public class ModifikoAdresaController implements ParametrizedController {
 
     @FXML
     private void buttonOpen1(ActionEvent ae) {
-        Navigator.navigate(ae, Navigator.ADRESA);
+        Navigator.navigate(ae, Navigator.HOME_PAGE);
     }
 
     @FXML
@@ -65,7 +65,7 @@ public class ModifikoAdresaController implements ParametrizedController {
     }
 
     @FXML
-    private void buttonOpen3(ActionEvent ae) {
+    private void buttonOpen3(ActionEvent ae) {Navigator.navigate(ae,Navigator.QYTETARI_DASHBOARD);
     }
     @FXML
 

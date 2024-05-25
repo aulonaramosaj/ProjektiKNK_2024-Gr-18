@@ -10,6 +10,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import model.User;
 import model.dto.CreateQytetariDto;
+import model.dto.QytetariDto;
 import repository.QytetariRepository;
 import java.sql.Connection;
 import java.sql.Date;
@@ -73,9 +74,9 @@ public class QytetariController implements ParametrizedController {
             int adresa = Integer.parseInt(Adresa.getText());
             LocalDate localDate = Ditelindja.getValue();
             Date ditelindjaValue = (localDate != null) ? Date.valueOf(localDate) : null;
-            String gjinia = Femer.isSelected() ? "Femer" : Mashkull.isSelected() ? "Mashkull" : null;
+            String gjinia = Femer.isSelected() ? "Femer" : Mashkull.isSelected() ? "Mashkull" : "";
 
-            if (emri.isEmpty() || mbiemri.isEmpty() || email.isEmpty() || nrTel.isEmpty() || gjinia == null || ditelindjaValue == null) {
+            if (emri.isEmpty() || mbiemri.isEmpty() || email.isEmpty() || nrTel.isEmpty() || gjinia.isEmpty() || ditelindjaValue == null) {
                 showAlert(Alert.AlertType.ERROR, "Validation Error", "Ju lutem plotesoni te gjitha pjeset ne menyre korrekte.");
                 return;
             }
@@ -89,27 +90,21 @@ public class QytetariController implements ParametrizedController {
             User currentUser = SessionManager.getUser();
             int userId = currentUser.getId();
 
-            Connection connection = DatabaseUtil.getConnection();
-            if (connection != null) {
-                CreateQytetariDto qytetariDto = new CreateQytetariDto(nrPersonal, emri, mbiemri, gjinia, ditelindjaValue, adresa, nrTel, email, userId);
-                boolean success = QytetariRepository.create(qytetariDto);
-                if (success) {
-                    showAlert(Alert.AlertType.INFORMATION, "Success", "Qytetari eshte ruajtur me sukses.");
-                    clearForm();
-                } else {
-                    showAlert(Alert.AlertType.ERROR, "Failure", "Qytetari deshtoi qe te ruhet.");
-                }
-            } else {
-                showAlert(Alert.AlertType.ERROR, "Database Error", "Deshtoi qe te ruhet ne databaze.");
-            }
+            CreateQytetariDto qytetari = new CreateQytetariDto(nrPersonal, emri, mbiemri, gjinia, ditelindjaValue, adresa, email, nrTel, userId);
+            boolean isCreated = QytetariRepository.create(qytetari);
 
-        } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.ERROR, "Input Error", "Id e adreses eshte invalide. Ju lutem shkruani nje numer valid.");
+            if (isCreated) {
+                showAlert(Alert.AlertType.INFORMATION, "Success", "Qytetari eshte ruajtur me sukses.");
+                clearForm();
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Failure", "Qytetari deshtoi qe te ruhet.");
+            }
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Error", "An error occurred: " + e.getMessage());
             e.printStackTrace();
         }
     }
+
 
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
@@ -121,14 +116,14 @@ public class QytetariController implements ParametrizedController {
 
     @FXML
     private void btnOpen1(ActionEvent ae) {
-        Navigator.navigate(ae, Navigator.ADRESA);
+        Navigator.navigate(ae, Navigator.HOME_PAGE);
     }
 
     @FXML
     private void btnOpen2(ActionEvent ae) {Navigator.navigate(ae,Navigator.ADRESA_DASHBOARD);}
 
     @FXML
-    private void btnOpen3(ActionEvent ae) {}
+    private void btnOpen3(ActionEvent ae) {Navigator.navigate(ae,Navigator.QYTETARI_DASHBOARD);}
     @FXML
     private void handleChangeLanguage(ActionEvent ae){
         Navigator.changeLanguage();

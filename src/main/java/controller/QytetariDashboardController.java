@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import model.Qytetari;
+import model.filter.QytetariFilter;
 import repository.QytetariRepository;
 import App.Navigator.ParametrizedController;
 
@@ -20,23 +21,34 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class QytetariDashboardController implements Initializable, ParametrizedController {
 
-    @FXML private AnchorPane root;
-    @FXML private TableView<Qytetari> qytetariTable;
-    @FXML private TableColumn<Qytetari, Number> qytetariId, qytetariNrPersonal, qytetariAdresa;
-    @FXML private TableColumn<Qytetari, String> qytetariEmri, qytetariMbiemri, qytetariEmail, qytetariDitelindja, qytetariGjinia, qytetariNrTelefonit;
-    @FXML private Pagination pagination;
-    @FXML private TextField nrPersonalTextField, emriTextField, mbiemriTextField;
+    @FXML
+    private AnchorPane root;
+    @FXML
+    private TableView<Qytetari> qytetariTable;
+    @FXML
+    private TableColumn<Qytetari, Number> qytetariId, qytetariNrPersonal, qytetariAdresa;
+    @FXML
+    private TableColumn<Qytetari, String> qytetariEmri, qytetariMbiemri, qytetariEmail, qytetariDitelindja, qytetariGjinia, qytetariNrTelefonit;
+    @FXML
+    private Pagination pagination;
+    @FXML
+    private TextField nrPersonalTextField;
+    @FXML
+    private TextField emriTextField;
+    @FXML
+    private TextField mbiemriTextField;
     @FXML private DatePicker ditelindja;
 
     private ObservableList<Qytetari> qytetariList = FXCollections.observableArrayList();
     private final int rowsPerPage = 10;
-    private Integer adresaId; // Store the passed address ID
+    private Integer adresaId;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -48,8 +60,8 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
 
     @Override
     public void setParams(Object params) {
-        this.adresaId = (Integer) params; // Cast and set the address ID
-        filterQytetariByAdresaId(adresaId); // Immediately filter by address ID
+        this.adresaId = (Integer) params;
+        filterQytetariByAdresaId(adresaId);
     }
 
     private void initializeTableColumns() {
@@ -59,8 +71,7 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
         qytetariMbiemri.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMbiemri()));
         qytetariEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
         qytetariDitelindja.setCellValueFactory(cellData -> {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            return new SimpleStringProperty(sdf.format(cellData.getValue().getDitelindja()));
+            return new SimpleStringProperty(new SimpleDateFormat("dd-MM-yyyy").format(cellData.getValue().getDitelindja()));
         });
         qytetariNrTelefonit.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNrTelefonit()));
         qytetariGjinia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGjinia()));
@@ -120,7 +131,11 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
 
     @FXML
     private void handleClear() {
-        clearFilters();
+        nrPersonalTextField.clear();
+        emriTextField.clear();
+        mbiemriTextField.clear();
+        ditelindja.setValue(null);
+        adresaId = null;
         loadData();
     }
 
@@ -128,22 +143,18 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
         String nrPersonal = nrPersonalTextField.getText();
         String emri = emriTextField.getText();
         String mbiemri = mbiemriTextField.getText();
+        Date ditelindjaValue = ditelindja.getValue() != null ? java.sql.Date.valueOf(ditelindja.getValue()) : null;
+
+        QytetariFilter filter = new QytetariFilter(nrPersonal, emri, mbiemri, ditelindjaValue, adresaId);
+
         try (Connection conn = DatabaseUtil.getConnection()) {
-            List<Qytetari> filteredQytetaret = QytetariRepository.filterQytetaret(conn, nrPersonal, emri, mbiemri, adresaId);
+            List<Qytetari> filteredQytetaret = QytetariRepository.filterQytetaret(conn, filter);
             qytetariList.setAll(filteredQytetaret);
             refreshPagination();
         } catch (SQLException e) {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Database Error", "Error filtering the records.");
         }
-    }
-
-    private void clearFilters() {
-        nrPersonalTextField.clear();
-        emriTextField.clear();
-        mbiemriTextField.clear();
-        ditelindja.setValue(null);
-        loadData();
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String message) {
@@ -194,8 +205,14 @@ public class QytetariDashboardController implements Initializable, ParametrizedC
             showAlert(Alert.AlertType.WARNING, "No Citizen Selected", "Please select a citizen to delete.");
         }
     }
-    @FXML
-    private void shfaqAdresenBtn (ActionEvent ae){
 
+    @FXML
+    private void shfaqAdresenBtn(ActionEvent ae) {
+        Qytetari selectedQytetari = qytetariTable.getSelectionModel().getSelectedItem();
+        if (selectedQytetari != null) {
+            Navigator.navigate(ae, Navigator.ADRESA_DASHBOARD, selectedQytetari.getAdresa());
+        } else {
+            showAlert(Alert.AlertType.WARNING, "No Citizen Selected", "Please select a citizen to view the address.");
+        }
     }
 }

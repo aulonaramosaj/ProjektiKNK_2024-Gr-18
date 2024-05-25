@@ -9,10 +9,10 @@ public class QytetariFilter {
     private String emri;
     private String mbiemri;
     private Date ditelindja;
-    private Integer adresaId;  // Add an address ID field
+    private Integer adresaId;
     private String formatPattern = "yyyy-MM-dd";
 
-    // Add adresaId to the constructor
+
     public QytetariFilter(String nrPersonal, String emri, String mbiemri, Date ditelindja, Integer adresaId) {
         this.nrPersonal = nrPersonal;
         this.emri = emri;
@@ -38,7 +38,7 @@ public class QytetariFilter {
             query.add("Ditelindja = '" + sdf.format(ditelindja) + "'");
         }
         if (adresaId != null) {
-            query.add("Adresa = " + adresaId);  // Add condition for address ID
+            query.add("Adresa = " + adresaId);
         }
 
         return query.toString();

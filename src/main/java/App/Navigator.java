@@ -61,7 +61,7 @@ public class Navigator {
     }
 
     public static void navigate(ActionEvent ae, String page, Object param) {
-        params.put(page, param); // Storing parameter
+        params.put(page, param);
         Node node = (Node) ae.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         try {

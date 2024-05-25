@@ -134,13 +134,13 @@ public class ModifikoQytetarinController implements ParametrizedController {
     }
 
     @FXML
-    void btnOpen1(ActionEvent event) {}
+    void btnOpen1(ActionEvent ae) {Navigator.navigate(ae,Navigator.HOME_PAGE);}
 
     @FXML
-    void btnOpen2(ActionEvent event) {}
+    void btnOpen2(ActionEvent ae) {Navigator.navigate(ae,Navigator.ADRESA_DASHBOARD);}
 
     @FXML
-    void btnOpen3(ActionEvent event) {}
+    void btnOpen3(ActionEvent ae) {Navigator.navigate(ae,Navigator.QYTETARI_DASHBOARD);}
     @FXML
     private void handleChangeLanguage(ActionEvent ae){
         Navigator.changeLanguage();

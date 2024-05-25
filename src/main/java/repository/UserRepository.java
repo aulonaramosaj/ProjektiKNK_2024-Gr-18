@@ -31,7 +31,7 @@ public class UserRepository {
  //           conn.close();
             return true;
         } catch (Exception e) {
-            e.printStackTrace(); // or use a logger to log the exception
+            e.printStackTrace();
             return false;
         }
 

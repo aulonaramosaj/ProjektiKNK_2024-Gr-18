@@ -98,7 +98,7 @@
                 <TableColumn fx:id="qytetariAdresa" prefWidth="90.4000244140625" text="Adresa" />
             </columns>
         </TableView>
-        <Button fx:id="handleFilter" layoutX="907.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleFilter" style="-fx-background-color: #d93323;" text="%btnFilter" textFill="WHITE" />
+        <Button fx:id="handleFilter" layoutX="907.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleFilter" style="-fx-background-color: #294a5a;" text="%btnFilter" textFill="WHITE" />
         <Button fx:id="handleClear" layoutX="1007.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleClear" text="%btnFshi" />
     </children>
     <opaqueInsets>

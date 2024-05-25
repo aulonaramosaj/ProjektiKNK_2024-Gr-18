@@ -57,12 +57,12 @@
                 <Button layoutX="50.0" layoutY="599.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" textFill="#294a5a" />
             </children></Pane>
 
-        <!-- Top color panel with image and title -->
+
         <Pane layoutX="-1.0" prefHeight="111.0" prefWidth="1100.0" style="-fx-background-color: #6DBFE3;">
             <children>
                 <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <!-- Ensure the image path is correct; use absolute path if necessary -->
+
                         <Image url="@../img/Picture1.png" />
                     </image>
                 </ImageView>
@@ -74,7 +74,7 @@
             </children>
         </Pane>
 
-        <!-- Labels and TextFields for address information -->
+
         <Label fx:id="komunaLabel" layoutX="210.0" layoutY="132.0" text="%lblKomuna" textFill="#294a5a" />
         <Label fx:id="kodiPostarLabel" layoutX="416.0" layoutY="132.0" text="%lblKodiPostar" textFill="#294a5a" />
         <Label fx:id="fshatiLagjiaLabel" layoutX="630.0" layoutY="132.0" text="%lblFshatiLagjja" textFill="#294a5a" />
@@ -86,7 +86,7 @@
         <TextField fx:id="rrugaTextField" layoutX="832.0" layoutY="158.0" />
         <TextField fx:id="NrNdertesesTextField" layoutX="171.0" layoutY="254.0" />
 
-        <!-- Table for displaying addresses -->
+
         <TableView fx:id="tableView" layoutX="167.0" layoutY="319.0" prefHeight="204.0" prefWidth="867.0" style="-fx-background-color: #6DBFE3;">
             <columns>
                 <TableColumn fx:id="idColumn" prefWidth="108.79998779296875" text="Id" />

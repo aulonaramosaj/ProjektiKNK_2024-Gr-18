@@ -51,7 +51,7 @@
                   <Image url="@../img/Picture1.png" />
                </image>
             </ImageView>
-            <Button layoutX="37.0" layoutY="453.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" textFill="#294a5a" />
+            <Button layoutX="37.0" layoutY="453.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | AL" textFill="#294a5a" />
          </children></Pane>
       <Label layoutX="179.0" layoutY="59.0" prefHeight="39.0" prefWidth="205.0" text="%lblSIGNUP" textFill="#294a5a">
          <font>

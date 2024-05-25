@@ -8,21 +8,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: DAE3E7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelpController">
    <children>
-      <Pane layoutY="1.0" prefHeight="500.0" prefWidth="132.0" style="-fx-background-color: #6DBFE3;">
+      <Pane prefHeight="95.0" prefWidth="1000.0" style="-fx-background-color: #6DBFE3;">
          <children>
-            <Button layoutX="40.0" layoutY="156.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" textFill="#294a5a" />
-         </children></Pane>
-      <Pane prefHeight="122.0" prefWidth="800.0" style="-fx-background-color: #6DBFE3;">
-         <children>
-            <ImageView fitHeight="168.0" fitWidth="146.0" layoutX="-9.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/Picture1.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="handleFaqjaKryesore" layoutX="616.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleFaqjaKryesore" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #294a5a;" text="%btnFaqjaKryesore" textFill="WHITE">
+            <Button fx:id="handleFaqjaKryesore" layoutX="830.0" layoutY="56.0" mnemonicParsing="false" onAction="#handleFaqjaKryesore" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #294a5a;" text="%btnFaqjaKryesore" textFill="WHITE">
                <font>
                   <Font name="Bell MT" size="12.0" />
                </font>
@@ -32,21 +24,41 @@
             </Button>
          </children>
       </Pane>
-      <Label fx:id="ckaeshteSistemi" layoutX="138.0" layoutY="148.0" prefHeight="22.0" prefWidth="661.0" text="%lblÇkaështëSistemiInteraktivpërregjistrimindhegjetjeneAdresavenëRepublikëneKosovës?" textFill="#294a5a">
-         <font>
-            <Font name="Bell MT Bold" size="15.5" />
-         </font>
-      </Label>
-      <Label fx:id="ckaeshtesistemi1" layoutX="178.0" layoutY="188.0" prefHeight="18.0" prefWidth="542.0" text="%lblKysistemështëkrijuarpërqëllimtëregjistrimittëadresavenëRepublikëneKosovës">
-         <font>
-            <Font name="Bell MT" size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="funksionimiSistemit" layoutX="138.0" layoutY="228.0" prefHeight="22.0" prefWidth="208.0" text="%lblSifunksiononSistemi?" textFill="#294a5a">
+      <Label fx:id="funksionimiSistemit" layoutX="35.0" layoutY="251.0" prefHeight="22.0" prefWidth="208.0" text="%lblSifunksiononSistemi?" textFill="#294a5a">
          <font>
             <Font name="Bell MT Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="funksionimiSistemit1" layoutX="178.0" layoutY="276.0" prefHeight="18.0" prefWidth="415.0" text="%lblFunksionimiiSistemit" />
+      <Text layoutX="75.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtQkaeshte" wrappingWidth="863.13671875" />
+      <Label fx:id="ckaeshteSistemi" layoutX="176.0" layoutY="125.0" prefHeight="22.0" prefWidth="661.0" text="%lblSistemiInteraktivpërregjistrimindhegjetjeneAdresavenëRepublikëneKosovës" textFill="#294a5a">
+         <font>
+            <Font name="Bell MT Bold" size="15.5" />
+         </font>
+      </Label>
+      <Text layoutX="36.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtfunksioni" wrappingWidth="881.13671875" />
+      <Text layoutX="36.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtAdresa" wrappingWidth="881.13671875" />
+      <Text layoutX="38.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtQytetari" wrappingWidth="903.13671875" />
+      <Text layoutX="38.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtStatistika" wrappingWidth="894.13671875" />
+      <Label layoutX="36.0" layoutY="334.0" text="\%lblPaneliiAdresave" textFill="#6dbfe3">
+         <font>
+            <Font name="Britannic Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="416.0" text="\%lblPaneliiQytetareve" textFill="#6dbfe3">
+         <font>
+            <Font name="Britannic Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="492.0" text="\%lblPaneliiStatistikave" textFill="#6dbfe3">
+         <font>
+            <Font name="Britannic Bold" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="178.0" fitWidth="180.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Picture1.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="930.0" layoutY="561.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | AL" textFill="#294a5a" />
    </children>
 </AnchorPane>

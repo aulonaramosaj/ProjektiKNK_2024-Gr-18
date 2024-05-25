@@ -17,7 +17,7 @@
       <MenuBar accessibleRole="CHECK_BOX" layoutX="226.0" layoutY="1.0" />
       <Pane prefHeight="594.0" prefWidth="181.0" style="-fx-background-color: #6DBFE3;">
          <children>
-            <Button layoutX="43.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" textFill="#294a5a" />
+            <Button layoutX="43.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | AL" textFill="#294a5a" />
          </children></Pane>
       <Pane prefHeight="119.0" prefWidth="900.0" style="-fx-background-color: #6DBFE3;">
          <children>

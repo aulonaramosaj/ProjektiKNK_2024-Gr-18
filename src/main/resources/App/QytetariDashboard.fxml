@@ -69,7 +69,7 @@
                         <Glow />
                     </effect>
                 </Button>
-                <Button layoutX="55.0" layoutY="665.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" textFill="#294a5a" />
+                <Button layoutX="55.0" layoutY="665.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | AL" textFill="#294a5a" />
             </children>
         </Pane>
         <DatePicker fx:id="ditelindja" layoutX="753.0" layoutY="177.0">

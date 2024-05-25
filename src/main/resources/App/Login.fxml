@@ -21,7 +21,7 @@
                   <Image url="@../img/Picture1.png" />
                </image>
             </ImageView>
-            <Label layoutX="84.0" layoutY="162.0" prefHeight="31.0" prefWidth="163.0" text="%lblLOGIN" textFill="#294a5a">
+            <Label layoutX="103.0" layoutY="162.0" prefHeight="31.0" prefWidth="163.0" text="%lblLOGIN" textFill="#294a5a">
                <font>
                   <Font name="Bell MT Bold" size="26.0" />
                </font>
@@ -32,7 +32,7 @@
                </font>
             </Label>
             <TextField fx:id="txtEmail" layoutX="40.0" layoutY="238.0" prefHeight="25.0" prefWidth="224.0" />
-            <Label layoutX="40.0" layoutY="283.0" text="%lblPassword" textFill="#294a5a">
+            <Label layoutX="41.0" layoutY="294.0" text="%lblPassword" textFill="#294a5a">
                <font>
                   <Font name="Bell MT" size="15.0" />
                </font>
@@ -50,13 +50,13 @@
                   </Button>
                </buttons>
             </ButtonBar>
-            <Label layoutX="40.0" layoutY="203.0" text="%lblEmail" textFill="#294a5a">
+            <Label layoutX="41.0" layoutY="212.0" text="%lblEmail" textFill="#294a5a">
                <font>
                   <Font name="Bell MT" size="15.0" />
                </font>
             </Label>
             <Label fx:id="txtRegisteringFinding" layoutX="60.0" layoutY="136.0" prefHeight="17.0" prefWidth="224.0" text="%txtRegisteringandFindingAddresses" textFill="#294a5a" />
-            <Button layoutX="247.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" textFill="#294a5a" />
+            <Button layoutX="247.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | AL" textFill="#294a5a" />
          </children>
       </Pane>
    </children>

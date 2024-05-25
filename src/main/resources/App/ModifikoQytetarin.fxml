@@ -80,7 +80,7 @@
                                 <Image url="@../img/Picture1.png" />
                             </image>
                         </ImageView>
-                        <Button layoutX="39.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" textFill="#294a5a" />
+                        <Button layoutX="39.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | AL" textFill="#294a5a" />
                     </children></Pane>
                 <Pane layoutX="150.0" prefHeight="107.0" prefWidth="751.0" style="-fx-background-color: #6DBFE3;">
                     <children>

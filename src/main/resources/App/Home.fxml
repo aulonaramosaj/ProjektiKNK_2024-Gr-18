@@ -56,22 +56,22 @@
             <Glow />
          </effect>
       </Button>
-      <Label layoutX="56.0" layoutY="416.0" text="%lblPANELIIADRESAVE" textFill="#294a5a">
+      <Label layoutX="56.0" layoutY="425.0" text="%lblPANELIIADRESAVE" textFill="#294a5a">
          <font>
             <Font name="Bell MT Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="358.0" layoutY="416.0" text="%lblPANELIIQYTETARËVE" textFill="#294a5a">
+      <Label layoutX="358.0" layoutY="425.0" text="%lblPANELIIQYTETARËVE" textFill="#294a5a">
          <font>
             <Font name="Bell MT Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="679.0" layoutY="416.0" text="%lblSTATISTIKAT" textFill="#294a5a">
+      <Label layoutX="679.0" layoutY="425.0" text="%lblSTATISTIKAT" textFill="#294a5a">
          <font>
             <Font name="Bell MT Bold" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="32.0" layoutY="551.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | SQ" textFill="#294a5a" />
+      <Button layoutX="32.0" layoutY="551.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="EN | AL" textFill="#294a5a" />
       <Label layoutX="69.0" layoutY="344.0" prefHeight="23.0" prefWidth="792.0" text="%lblSISTEMIINTERAKTIVPËRREGJISTRIMINEADRESAVENËKOSOVË" textFill="#294a5a">
          <font>
             <Font name="Book Antiqua Italic" size="22.0" />

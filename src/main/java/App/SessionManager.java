@@ -20,16 +20,16 @@ public class SessionManager {
 
     public static void logout() {
         currentUser = null;
-        lastAttemptedPage = null; // Clear last attempted page on logout
+        lastAttemptedPage = null;
     }
 
     public static void setLastAttemptedPage(String page) {
         lastAttemptedPage = page;
-        System.out.println("Set last attempted page: " + page);  // Debug statement
+        System.out.println("Set last attempted page: " + page);
     }
 
     public static String getLastAttemptedPage() {
-        System.out.println("Getting last attempted page: " + lastAttemptedPage);  // Debug statement
+        System.out.println("Getting last attempted page: " + lastAttemptedPage);
         return lastAttemptedPage;
     }
 }

@@ -2,7 +2,6 @@ package controller;
 
 import App.Navigator;
 import Database.DatabaseUtil;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -15,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import model.Qytetari;
 import repository.QytetariRepository;
+import App.Navigator.ParametrizedController;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -24,26 +24,19 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class QytetariDashboardController implements Initializable {
+public class QytetariDashboardController implements Initializable, ParametrizedController {
 
-    @FXML
-    private AnchorPane root;
-    @FXML
-    private TableView<Qytetari> qytetariTable;
-    @FXML
-    private TableColumn<Qytetari, Number> qytetariId, qytetariNrPersonal, qytetariAdresa;
-    @FXML
-    private TableColumn<Qytetari, String> qytetariEmri, qytetariMbiemri, qytetariEmail, qytetariDitelindja, qytetariGjinia, qytetariNrTelefonit;
-    @FXML
-    private Pagination pagination;
-    @FXML
-    private TextField nrPersonalTextField, emriTextField, mbiemriTextField;
-    @FXML
-    private DatePicker ditelindja;
-
+    @FXML private AnchorPane root;
+    @FXML private TableView<Qytetari> qytetariTable;
+    @FXML private TableColumn<Qytetari, Number> qytetariId, qytetariNrPersonal, qytetariAdresa;
+    @FXML private TableColumn<Qytetari, String> qytetariEmri, qytetariMbiemri, qytetariEmail, qytetariDitelindja, qytetariGjinia, qytetariNrTelefonit;
+    @FXML private Pagination pagination;
+    @FXML private TextField nrPersonalTextField, emriTextField, mbiemriTextField;
+    @FXML private DatePicker ditelindja;
 
     private ObservableList<Qytetari> qytetariList = FXCollections.observableArrayList();
     private final int rowsPerPage = 10;
+    private Integer adresaId; // Store the passed address ID
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,6 +44,12 @@ public class QytetariDashboardController implements Initializable {
         bindTableViewToObservableList();
         setupPagination();
         loadData();
+    }
+
+    @Override
+    public void setParams(Object params) {
+        this.adresaId = (Integer) params; // Cast and set the address ID
+        filterQytetariByAdresaId(adresaId); // Immediately filter by address ID
     }
 
     private void initializeTableColumns() {
@@ -76,6 +75,39 @@ public class QytetariDashboardController implements Initializable {
         pagination.setPageFactory(this::createPage);
     }
 
+    private Node createPage(int pageIndex) {
+        int fromIndex = pageIndex * rowsPerPage;
+        int toIndex = Math.min(fromIndex + rowsPerPage, qytetariList.size());
+        qytetariTable.setItems(FXCollections.observableArrayList(qytetariList.subList(fromIndex, toIndex)));
+        return new AnchorPane();
+    }
+
+    public void loadData() {
+        try (Connection conn = DatabaseUtil.getConnection()) {
+            List<Qytetari> qytetaret = QytetariRepository.getAllQytetaret(conn);
+            qytetariList.setAll(qytetaret);
+            refreshPagination();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void filterQytetariByAdresaId(int adresaId) {
+        try (Connection conn = DatabaseUtil.getConnection()) {
+            List<Qytetari> filteredQytetaret = QytetariRepository.getQytetariByAdresaId(conn, adresaId);
+            qytetariList.setAll(filteredQytetaret);
+            refreshPagination();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Database Error", "Error filtering the records.");
+        }
+    }
+
+    private void refreshPagination() {
+        pagination.setPageCount((int) Math.ceil(qytetariList.size() / (double) rowsPerPage));
+        qytetariTable.setItems(FXCollections.observableArrayList(qytetariList.subList(0, Math.min(rowsPerPage, qytetariList.size()))));
+    }
+
     @FXML
     private void handleHome(ActionEvent ae) {
         Navigator.navigate(ae, Navigator.HOME_PAGE);
@@ -92,30 +124,12 @@ public class QytetariDashboardController implements Initializable {
         loadData();
     }
 
-    private Node createPage(int pageIndex) {
-        int fromIndex = pageIndex * rowsPerPage;
-        int toIndex = Math.min(fromIndex + rowsPerPage, qytetariList.size());
-        qytetariTable.setItems(FXCollections.observableArrayList(qytetariList.subList(fromIndex, toIndex)));
-        return new AnchorPane();
-    }
-
-    private void loadData() {
-        try (Connection conn = DatabaseUtil.getConnection()) {
-            List<Qytetari> qytetaret = QytetariRepository.getAllQytetaret(conn);
-            qytetariList.setAll(qytetaret);
-            refreshPagination();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     private void filterQytetariTable() {
         String nrPersonal = nrPersonalTextField.getText();
         String emri = emriTextField.getText();
         String mbiemri = mbiemriTextField.getText();
-
         try (Connection conn = DatabaseUtil.getConnection()) {
-            List<Qytetari> filteredQytetaret = QytetariRepository.filterQytetaret(conn, nrPersonal, emri, mbiemri);
+            List<Qytetari> filteredQytetaret = QytetariRepository.filterQytetaret(conn, nrPersonal, emri, mbiemri, adresaId);
             qytetariList.setAll(filteredQytetaret);
             refreshPagination();
         } catch (SQLException e) {
@@ -132,33 +146,30 @@ public class QytetariDashboardController implements Initializable {
         loadData();
     }
 
-    private void refreshPagination() {
-        pagination.setPageCount((int) Math.ceil(qytetariList.size() / (double) rowsPerPage));
-        qytetariTable.setItems(FXCollections.observableArrayList(qytetariList.subList(0, Math.min(rowsPerPage, qytetariList.size()))));
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     @FXML
-    private void shfaqAdresenBtn(ActionEvent ae) {
-        Qytetari selectedQytetari = qytetariTable.getSelectionModel().getSelectedItem();
-        if (selectedQytetari != null) {
-            Navigator.navigate(ae, Navigator.ADRESA_DASHBOARD, selectedQytetari.getAdresa());
-        } else {
-            showAlert(Alert.AlertType.WARNING, "No Address Found", "Please select a citizen to show the address.");
-        }
+    private void handleChangeLanguage(ActionEvent ae) {
+        Navigator.changeLanguage();
+        Navigator.navigate(ae, Navigator.QYTETARI_DASHBOARD);
     }
 
     @FXML
     private void modifikoQytetarinBtn(ActionEvent ae) {
         Qytetari selectedQytetari = qytetariTable.getSelectionModel().getSelectedItem();
         if (selectedQytetari != null) {
-            // Pass the NrPersonal as a parameter to the navigateWithParams method.
             String nrPersonal = selectedQytetari.getNrPersonal();
             Navigator.navigate(ae, Navigator.MODIFIKO_QYTETARIN, nrPersonal);
         } else {
             showAlert(Alert.AlertType.WARNING, "No Citizen Selected", "Please select a citizen to modify.");
         }
     }
-
 
     @FXML
     private void fshiQytetarinBtn(ActionEvent ae) {
@@ -183,17 +194,8 @@ public class QytetariDashboardController implements Initializable {
             showAlert(Alert.AlertType.WARNING, "No Citizen Selected", "Please select a citizen to delete.");
         }
     }
-
-    private void showAlert(Alert.AlertType alertType, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
     @FXML
-    private void handleChangeLanguage(ActionEvent ae){
-        Navigator.changeLanguage();
-        Navigator.navigate(ae,Navigator.QYTETARI_DASHBOARD);
+    private void shfaqAdresenBtn (ActionEvent ae){
+
     }
 }

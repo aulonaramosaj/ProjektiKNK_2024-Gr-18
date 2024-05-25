@@ -92,7 +92,6 @@ public class AdresaRepository {
         return adresat;
     }
 
-
     public AdresaDto getAddressById(int addressId) {
         String query = "SELECT * FROM Adresa WHERE Id = ?";
         try (Connection conn = DatabaseUtil.getConnection();
@@ -108,7 +107,6 @@ public class AdresaRepository {
         }
         return null;
     }
-
 
     private static AdresaDto mapToAdresaDto(ResultSet rs) throws SQLException {
         int id = rs.getInt("Id");
@@ -139,12 +137,20 @@ public class AdresaRepository {
         }
         return addresses;
     }
-    public List<Adresa> getFilteredAddresses(Connection conn, String filterConditions) throws SQLException {
-        List<Adresa> addresses = new ArrayList<>();
-        String query = "SELECT * FROM Adresa" + filterConditions;
 
-        try (Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
+    public List<Adresa> getFilteredAddresses(Connection conn, String komuna, String kodiPostar, String fshatiLagjia, String rruga, String nrNderteses, String llojiVendbanimit) throws SQLException {
+        List<Adresa> addresses = new ArrayList<>();
+        String query = "SELECT * FROM Adresa WHERE Komuna LIKE ? AND KodiPostar LIKE ? AND Fshati LIKE ? AND Rruga LIKE ? AND NumriNderteses LIKE ? AND LlojiVendbanimit LIKE ?";
+
+        try (PreparedStatement pst = conn.prepareStatement(query)) {
+            pst.setString(1, "%" + komuna + "%");
+            pst.setString(2, "%" + kodiPostar + "%");
+            pst.setString(3, "%" + fshatiLagjia + "%");
+            pst.setString(4, "%" + rruga + "%");
+            pst.setString(5, "%" + nrNderteses + "%");
+            pst.setString(6, "%" + llojiVendbanimit + "%");
+
+            ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 Adresa adresa = getFromResultSet(rs);
                 if (adresa != null) {

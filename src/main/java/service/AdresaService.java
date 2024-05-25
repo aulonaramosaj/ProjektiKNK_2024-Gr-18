@@ -47,7 +47,7 @@ public class AdresaService {
         }
     }
 
-    public List<Adresa> getFilteredAdresas(Connection conn, String filterConditions) throws SQLException {
-        return adresaRepository.getFilteredAddresses(conn, filterConditions);
+    public List<Adresa> getFilteredAdresas(Connection conn, String komuna, String kodiPostar, String fshatiLagjia, String rruga, String nrNderteses, String llojiVendbanimit) throws SQLException {
+        return adresaRepository.getFilteredAddresses(conn, komuna, kodiPostar, fshatiLagjia, rruga, nrNderteses, llojiVendbanimit);
     }
 }

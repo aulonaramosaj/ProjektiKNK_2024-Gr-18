@@ -36,7 +36,14 @@ public class Qytetari {
         return Emri;
     }
 
-    public int getAdresa(){return Adresa;}
+    public Integer getAdresa() {
+        return Adresa;
+    }
+
+    public void setAdresa(Integer adresa) {
+        this.Adresa = adresa;
+    }
+
 
     public String getMbiemri() {
         return Mbiemri;

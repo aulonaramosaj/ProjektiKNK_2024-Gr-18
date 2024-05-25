@@ -9,13 +9,16 @@ public class QytetariFilter {
     private String emri;
     private String mbiemri;
     private Date ditelindja;
+    private Integer adresaId;  // Add an address ID field
     private String formatPattern = "yyyy-MM-dd";
 
-    public QytetariFilter(String nrPersonal, String emri, String mbiemri, Date ditelindja) {
+    // Add adresaId to the constructor
+    public QytetariFilter(String nrPersonal, String emri, String mbiemri, Date ditelindja, Integer adresaId) {
         this.nrPersonal = nrPersonal;
         this.emri = emri;
         this.mbiemri = mbiemri;
         this.ditelindja = ditelindja;
+        this.adresaId = adresaId;
     }
 
     public String buildQuery() {
@@ -23,16 +26,19 @@ public class QytetariFilter {
         StringJoiner query = new StringJoiner(" AND ", " WHERE ", "");
 
         if (nrPersonal != null && !nrPersonal.isEmpty()) {
-            query.add("nrPersonal = '" + nrPersonal + "'");
+            query.add("NrPersonal = '" + nrPersonal + "'");
         }
         if (emri != null && !emri.isEmpty()) {
-            query.add("emri LIKE '" + emri + "%'");
+            query.add("Emri LIKE '" + emri + "%'");
         }
         if (mbiemri != null && !mbiemri.isEmpty()) {
-            query.add("mbiemri LIKE '" + mbiemri + "%'");
+            query.add("Mbiemri LIKE '" + mbiemri + "%'");
         }
         if (ditelindja != null) {
-            query.add("ditelindja = '" + sdf.format(ditelindja) + "'");
+            query.add("Ditelindja = '" + sdf.format(ditelindja) + "'");
+        }
+        if (adresaId != null) {
+            query.add("Adresa = " + adresaId);  // Add condition for address ID
         }
 
         return query.toString();

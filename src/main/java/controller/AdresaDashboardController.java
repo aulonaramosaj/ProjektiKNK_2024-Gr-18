@@ -1,6 +1,5 @@
 package controller;
 
-
 import App.Navigator;
 import Database.DatabaseUtil;
 import interfaces.AddressAddedListener;
@@ -16,56 +15,36 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import model.Adresa;
-import model.filter.AdresaFilter;
 import service.AdresaService;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-
 public class AdresaDashboardController implements Initializable, AddressAddedListener {
 
-        @FXML
-        private AnchorPane root;
-        @FXML
-        private ImageView imageView;
-        @FXML
-        private TextField komunaTextField;
-        @FXML
-        private TextField kodiPostarTextField;
-        @FXML
-        private TextField fshatiLagjiaTextField;
-        @FXML
-        private TextField rrugaTextField;
-        @FXML
-        private TextField NrNdertesesTextField;
-        @FXML
-        private TextField LlojiVendbanimitTextField;
-        @FXML
-        private TableView<Adresa> tableView;
-        @FXML
-        private TableColumn<Adresa, Number> kodiPostarColumn, numriNdertesesColumn, idColumn;
-        @FXML
-        private TableColumn<Adresa, String> komunaColumn, fshatiLagjiaColumn, rrugaColumn, llojiVendbanimitColumn;
-        @FXML
-        private Button button;
-        @FXML
-        private Button handleHome;
-        @FXML
-        private Button handleFilter;
-        @FXML
-        private Button handleClear;
-        @FXML
-        private Pagination faqet;
+        @FXML private AnchorPane root;
+        @FXML private ImageView imageView;
+        @FXML private TextField komunaTextField, kodiPostarTextField, fshatiLagjiaTextField, rrugaTextField, NrNdertesesTextField, LlojiVendbanimitTextField;
+        @FXML private TableView<Adresa> tableView;
+        @FXML private TableColumn<Adresa, Number> kodiPostarColumn, numriNdertesesColumn, idColumn;
+        @FXML private TableColumn<Adresa, String> komunaColumn, fshatiLagjiaColumn, rrugaColumn, llojiVendbanimitColumn;
+        @FXML private Button button, handleHome, handleFilter, handleClear;
+        @FXML private Pagination faqet;
 
-        private final AdresaService adresaService = new AdresaService();
         private ObservableList<Adresa> addressList = FXCollections.observableArrayList();
+        private final AdresaService adresaService = new AdresaService();
         private final int rowsPerPage = 10;
+        private int adresaId; // Add this field
+
+        private QytetariDashboardController qytetariDashboardController;
+
+        public void setQytetariDashboardController(QytetariDashboardController controller) {
+                this.qytetariDashboardController = controller;
+        }
 
         @Override
         public void initialize(URL location, ResourceBundle resources) {
@@ -93,33 +72,6 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
                 faqet.setPageFactory(this::createPage);
         }
 
-        @FXML
-        private void addAddress(ActionEvent ae) {
-                Navigator.navigateWithListener(root,Navigator.ADRESA, this);
-        }
-
-        @FXML
-        private void handleHome(ActionEvent ae) {
-                Navigator.navigate(ae, Navigator.HOME_PAGE);
-        }
-
-        @FXML
-        private void handleFilter() {
-                filterAddresses();
-        }
-
-        @FXML
-        private void handleClear() {
-                clearFilters();
-                loadData();
-        }
-
-        @Override
-        public void onAddressAdded(Adresa newAdresa) {
-                addressList.add(newAdresa);
-                refreshPagination();
-        }
-
         private Node createPage(int pageIndex) {
                 int fromIndex = pageIndex * rowsPerPage;
                 int toIndex = Math.min(fromIndex + rowsPerPage, addressList.size());
@@ -138,31 +90,45 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
         }
 
         private void filterAddresses() {
-                AdresaFilter filter = new AdresaFilter(
-                        komunaTextField.getText(),
-                        kodiPostarTextField.getText(),
-                        fshatiLagjiaTextField.getText(),
-                        rrugaTextField.getText(),
-                        NrNdertesesTextField.getText(),
-                        LlojiVendbanimitTextField.getText()
-                );
+                String komuna = komunaTextField.getText();
+                String kodiPostar = kodiPostarTextField.getText();
+                String fshatiLagjia = fshatiLagjiaTextField.getText();
+                String rruga = rrugaTextField.getText();
+                String nrNderteses = NrNdertesesTextField.getText();
+                String llojiVendbanimit = LlojiVendbanimitTextField.getText();
 
-                String sqlQuery = filter.buildQuery();
-                loadDataFiltered(sqlQuery);
-        }
-
-        private void loadDataFiltered(String filterConditions) {
                 try (Connection conn = DatabaseUtil.getConnection()) {
-                        List<Adresa> filteredAddresses = adresaService.getFilteredAdresas(conn, filterConditions);
+                        List<Adresa> filteredAddresses = adresaService.getFilteredAdresas(conn, komuna, kodiPostar, fshatiLagjia, rruga, nrNderteses, llojiVendbanimit);
                         addressList.setAll(filteredAddresses);
                         refreshPagination();
                 } catch (SQLException e) {
                         e.printStackTrace();
+                        showAlert(Alert.AlertType.ERROR, "Database Error", "Error filtering the records.");
                 }
         }
 
+        private void refreshPagination() {
+                faqet.setPageCount((int) Math.ceil(addressList.size() / (double) rowsPerPage));
+                tableView.setItems(FXCollections.observableArrayList(addressList.subList(0, Math.min(rowsPerPage, addressList.size()))));
+        }
 
-        private void clearFilters() {
+
+        @FXML
+        private void handleHome(ActionEvent ae) {
+                Navigator.navigate(ae, Navigator.HOME_PAGE);
+        }
+
+        @FXML
+        private void handleFilter() {
+                filterAddresses();
+                Adresa selectedAdresa = tableView.getSelectionModel().getSelectedItem();
+                if (selectedAdresa != null && qytetariDashboardController != null) {
+                        qytetariDashboardController.filterQytetariByAdresaId(selectedAdresa.getId());
+                }
+        }
+
+        @FXML
+        private void handleClear() {
                 komunaTextField.clear();
                 kodiPostarTextField.clear();
                 fshatiLagjiaTextField.clear();
@@ -170,11 +136,15 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
                 NrNdertesesTextField.clear();
                 LlojiVendbanimitTextField.clear();
                 loadData();
+                if (qytetariDashboardController != null) {
+                        qytetariDashboardController.loadData();
+                }
         }
 
-        private void refreshPagination() {
-                faqet.setPageCount((int) Math.ceil(addressList.size() / (double) rowsPerPage));
-                tableView.setItems(FXCollections.observableArrayList(addressList.subList(0, Math.min(rowsPerPage, addressList.size()))));
+        @Override
+        public void onAddressAdded(Adresa newAdresa) {
+                addressList.add(newAdresa);
+                refreshPagination();
         }
 
         @FXML
@@ -183,20 +153,27 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
                 if (selectedAddress != null) {
                         Navigator.navigate(ae, Navigator.QYTETARI, selectedAddress.getId());
                 } else {
-                        showAlert(Alert.AlertType.WARNING, "No Selection", "Nuk është adresa e selektuar. Ju lutem selektoni një adresë.");
+                        showAlert(Alert.AlertType.WARNING, "No Selection", "No address selected. Please select an address.");
                 }
         }
-        @FXML
-        private void handleShfaqQytetaret (ActionEvent ae){
 
+        @FXML
+        private void addAddress(ActionEvent ae) {
+                Navigator.navigateWithListener(root, Navigator.ADRESA, this);
         }
-        private void showAlert(Alert.AlertType alertType, String title, String message) {
-                Alert alert = new Alert(alertType);
-                alert.setTitle(title);
-                alert.setHeaderText(null);
-                alert.setContentText(message);
-                alert.showAndWait();
+
+        @FXML
+        private void handleShfaqQytetaret(ActionEvent ae) {
+                Adresa selectedAdresa = tableView.getSelectionModel().getSelectedItem();
+                if (selectedAdresa != null) {
+                        // Pass the selected address ID to the navigator
+                        Navigator.navigate(ae, Navigator.QYTETARI_DASHBOARD, selectedAdresa.getId());
+                } else {
+                        showAlert(Alert.AlertType.WARNING, "No Selection", "No address selected. Please select an address to show related citizens.");
+                }
         }
+
+
         @FXML
         private void handleModifikoAdresen(ActionEvent ae) {
                 Adresa selectedAddress = tableView.getSelectionModel().getSelectedItem();
@@ -204,9 +181,10 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
                         int addressId = selectedAddress.getId();
                         Navigator.navigate(ae, Navigator.MODIFIKO_ADRESEN, addressId);
                 } else {
-                        showAlert(Alert.AlertType.WARNING, "No Selection", "Nuk është adresa e selektuar. Ju lutem selektoni një adresë.");
+                        showAlert(Alert.AlertType.WARNING, "No Selection", "No address selected. Please select an address.");
                 }
         }
+
         @FXML
         private void handleClearAdresa(ActionEvent ae) {
                 Adresa selectedAddress = tableView.getSelectionModel().getSelectedItem();
@@ -232,10 +210,17 @@ public class AdresaDashboardController implements Initializable, AddressAddedLis
                 }
         }
 
+        private void showAlert(Alert.AlertType alertType, String title, String message) {
+                Alert alert = new Alert(alertType);
+                alert.setTitle(title);
+                alert.setHeaderText(null);
+                alert.setContentText(message);
+                alert.showAndWait();
+        }
 
         @FXML
-        private void handleChangeLanguage(ActionEvent ae){
+        private void handleChangeLanguage(ActionEvent ae) {
                 Navigator.changeLanguage();
-                Navigator.navigate(ae,Navigator.ADRESA_DASHBOARD);
+                Navigator.navigate(ae, Navigator.ADRESA_DASHBOARD);
         }
 }

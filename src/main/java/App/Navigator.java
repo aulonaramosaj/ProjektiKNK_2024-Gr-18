@@ -47,6 +47,7 @@ public class Navigator {
         }
     }
 
+
     public static void navigate(Event event, String page) {
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
@@ -60,9 +61,24 @@ public class Navigator {
     }
 
     public static void navigate(ActionEvent ae, String page, Object param) {
-        params.put(page, param);
-        navigate(ae, page);
+        params.put(page, param); // Storing parameter
+        Node node = (Node) ae.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        try {
+            FXMLLoader loader = new FXMLLoader(Navigator.class.getResource(page), bundle);
+            Parent parent = loader.load();
+            Object controller = loader.getController();
+            if (controller instanceof ParametrizedController) {
+                ((ParametrizedController) controller).setParams(param);
+            }
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     public static void navigateWithListener(AnchorPane root, String page, AddressAddedListener listener) {
         try {
@@ -108,7 +124,7 @@ public class Navigator {
 
             Object controller = loader.getController();
             if (controller instanceof ParametrizedController && params.containsKey(form)) {
-                ((ParametrizedController) controller).setParams(params.get(form)); // Set parameters
+                ((ParametrizedController) controller).setParams(params.get(form));
             }
 
             return (Pane) formPane;
